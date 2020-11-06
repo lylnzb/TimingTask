@@ -34,8 +34,11 @@
             </form>
         </div>
         <div class="col-sm-12 select-table table-striped">
-            <div class="btn-group hidden-xs" id="toolbar" role="group" style="margin-top: 10px">
+            <div class="btn-group hidden-xs" role="group" style="margin-top: 10px">
                 <a class="btn btn-success" id="addRole" onclick="addOrUpdateRole('add')"><i class="fa fa-plus"></i> 新增</a>
+            </div>
+            <div class="btn-group hidden-xs" role="group" style="margin-top: 10px">
+                <a class="btn btn-danger" id="deleteRoles" onclick="deleteRole()"><i class="fa fa-remove"></i> 批量删除</a>
             </div>
             <table id="table" class="layui-hide" lay-filter="tableEvent" style="margin: 0 auto"></table>
         </div>
