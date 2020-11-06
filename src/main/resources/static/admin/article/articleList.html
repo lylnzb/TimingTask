@@ -1,0 +1,67 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link href="../css/table.css" rel="stylesheet" type="text/css" />
+    <link href="../css/animate.css" rel="stylesheet"/>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <link href="../css/ry-ui.css" rel="stylesheet"/>
+    <style>
+        .layui-table-cell .layui-form-checkbox[lay-skin="primary"]{top: 48%;transform: translateY(-48%);}
+        .layui-table-fixed.layui-table-fixed-r .layui-table-body tr{background-color: white}
+    </style>
+</head>
+<body>
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 select-info">
+            <form id="layui-form">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            文章名称：<input type="text" name="dictLabel"/>
+                        </li>
+                        <li>
+                            文章分类：
+                            <select id="permType" name="permType" lay-verify="permType" lay-filter="college">
+                                <option value=""></option>
+                                <option value="0">目录</option>
+                                <option value="1">菜单</option>
+                                <option value="2">按钮</option>
+                            </select>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-success btn-rounded btn-sm"><i class="fa fa-download"></i>&nbsp;导出</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <div class="btn-group hidden-xs" id="toolbar" role="group" style="margin-top: 10px">
+                <a class="btn btn-success" id="releaseArticle"><i class="fa fa-plus"></i> 发布文章</a>
+            </div>
+            <table id="table" class="layui-hide" lay-filter="tableEvent" style="margin: 0 auto"></table>
+        </div>
+    </div>
+</div>
+<div id="barDemo" style="display:none;">
+    <a class="btn btn-success btn-xs" lay-event="edit"><i class="fa fa-paper-plane"></i> 预览</a>
+    <a class="btn btn-success btn-xs" lay-event="edit"><i class="fa fa-edit"></i> 编辑</a>
+    <a class="btn btn-danger btn-xs" lay-event="deleteCode"><i class="fa fa-remove"></i> 删除</a>
+</div>
+<script type="text/javascript" src="/common/util.js"></script>
+<script type="text/javascript" src="../js/jquery/jQuery-2.2.0.min.js"></script>
+<script type="text/javascript" src="../js/bstable/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bstable/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="../js/bstable/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../layuiTablePlug/layui/src/layui.js"></script>
+<script type="text/javascript" src="../article/js/articleList.js"></script>
+</body>
+</html>

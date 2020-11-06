@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lylBlog.login.mapper.LoginMapper">
+
+	<!--用户注册-->
+	<insert id="registerUser" parameterType="com.lylBlog.login.bean.UserBean">
+		insert into m_user(
+		<if test="id != null and id != ''">id,</if>
+		<if test="nickname != null and nickname != ''">nickname,</if>
+		<if test="email != null and email != ''">email,</if>
+		<if test="password != null and password != ''">password,</if>
+		<if test="salt != null and salt != ''">salt,</if>
+		<if test="signature != null and signature != ''">signature,</if>
+		regtime)
+        values(
+		<if test="id != null and id != ''">#{id},</if>
+		<if test="nickname != null and nickname != ''">#{nickname},</if>
+		<if test="email != null and email != ''">#{email},</if>
+		<if test="password != null and password != ''">#{password},</if>
+		<if test="salt != null and salt != ''">#{salt},</if>
+		<if test="signature != null and signature != ''">#{signature},</if>
+        #{regtime})
+	</insert>
+
+	<!--通过邮箱查询用户是否存在-->
+	<select id="findUserByEmail" resultType="com.lylBlog.login.bean.UserBean" parameterType="String">
+		SELECT * FROM m_user where email = #{email}
+	</select>
+
+	<!-- 新增角色与用户关联表数据 -->
+	<insert id="addUserAndRoleRelevant" parameterType="com.lylBlog.login.bean.UserBean">
+		insert into m_user_role(
+			<if test="userId != null and userId != ''">userId,</if>
+			<if test="roleId != null and roleId != ''">roleid,</if>
+			<if test="valid != null and valid != ''">valid,</if>
+			<if test="createperson != null and createperson != ''">createperson,</if>
+			<if test="createtime != null and createtime != ''">createtime,</if>
+			id
+		)values(
+			<if test="userId != null and userId != ''">#{userId},</if>
+			<if test="roleId != null and roleId != ''">#{roleId},</if>
+			<if test="valid != null and valid != ''">#{valid},</if>
+			<if test="createperson != null and createperson != ''">#{createperson},</if>
+			<if test="createtime != null and createtime != ''">#{createtime},</if>
+			#{id}
+		)
+	</insert>
+
+	<!-- 删除角色与用户关联表数据 -->
+	<delete id="deleteUserAndRoleRelevant" parameterType="String">
+		delete from m_user_role where userId = #{userId}
+	</delete>
+
+	<!-- 查询用户所属的角色信息 -->
+	<select id="queryRoles" parameterType="String" resultType="com.lylBlog.admin.bean.RoleBean">
+		SELECT DISTINCT	r.*
+		FROM
+			m_role r
+			LEFT JOIN m_user_role ur ON r.roleid = ur.roleid
+			LEFT JOIN m_user u ON u.id = ur.userid
+		WHERE
+			email = #{email}
+	</select>
+
+	<!-- 查询用户所属的权限信息 -->
+	<select id="queryPerms" parameterType="String" resultType="com.lylBlog.admin.bean.PermissionBean">
+		SELECT DISTINCT	m.*
+		FROM
+			m_permission m
+			LEFT JOIN m_role_permission rm ON m.permid = rm.permid
+			LEFT JOIN m_user_role ur ON rm.roleid = ur.roleid
+			LEFT JOIN m_user u ON ur.userid = u.id
+		WHERE
+			u.email = #{email}
+	</select>
+</mapper>
