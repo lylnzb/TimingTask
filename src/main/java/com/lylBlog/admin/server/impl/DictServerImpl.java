@@ -101,6 +101,12 @@ public class DictServerImpl implements DictServer {
         //获取当前用户信息
         UserBean userBean = ShiroUtils.getUserInfo();
 
+        //如果系统默认新增或修改的字典为‘是’，则修改其他数据的值为‘否’
+        if("Y".equals(dictDataBean.getIsDefault())){
+            dictMapper.updateIsDefault(dictDataBean.getDictType(), dictDataBean.getDictValue());
+        }
+
+        //新增
         if("add".equals(type)){
             dictDataBean.setCreateBy(userBean.getId());//创建人id
             int count = dictMapper.addDictDataInfo(dictDataBean);
@@ -109,7 +115,7 @@ public class DictServerImpl implements DictServer {
             }else{
                 return ResultObj.ok("新增成功");
             }
-        }else if("update".equals(type)){
+        }else if("update".equals(type)){//修改
             dictDataBean.setUpdateBy(userBean.getId());//修改人id
             int count = dictMapper.editDictDataInfo(dictDataBean);
             if(count == 0){

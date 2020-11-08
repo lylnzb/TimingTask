@@ -61,7 +61,7 @@ layui.use(['form', 'layer'], function(){
         var valId = data.field.valid;//状态
         var remark = data.field.remark;//备注
         var paramData = {
-            dictCode : dictCode,
+            dictCode : (type == 'update') ? dictCode : '',
             dictLabel : dictLabel,
             dictValue : dictValue,
             dictType : dictType,

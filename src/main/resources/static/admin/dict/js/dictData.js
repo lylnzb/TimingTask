@@ -1,8 +1,7 @@
 var tableIns;
 var tableIns1;
-var ind;
 var nowPage;
-layui.use(['form', 'table','tree'], function(){
+layui.config({base: '../layuiTablePlug/test/js/'}).use(['testTablePlug'], function () {
     var table = layui.table,
         form = layui.form;
 
@@ -164,10 +163,16 @@ layui.use(['form', 'table','tree'], function(){
         ,method: 'post'
         ,contentType: "application/json; charset=utf-8"
         ,dataType:"json"
+        ,skin:'nob'// 无边框风格
+        ,loading: true
+        // 是否开启字段筛选的记忆功能，支持true/false/'local'/'session'/其他 开启的情况下默认是session，除非显式的指定为'local'
+        ,colFilterRecord: true
+        // 是否开启智能reload的模式
+        ,smartReloadModel: true
         ,cols: [[
-            {field:'dictType', title:'类别编码', width:'23%', align:'center'}
-            ,{field:'dictName', title:'类别名称', width:'43%', align:'center'}
-            ,{field:'valId', title:'有效标识', width:'19%', align:'center',
+            {field:'dictType', title:'类别编码', width:'28%', align:'center'}
+            ,{field:'dictName', title:'类别名称', width:'40%', align:'center'}
+            ,{field:'valId', title:'有效标识', width:'17%', align:'center',
                 templet : function(data) {// 替换数据
                     if(data.valId == 0){
                         return "无效";
@@ -179,7 +184,12 @@ layui.use(['form', 'table','tree'], function(){
             ,{field:'right', title:'操作', width:'15%', align:'center', toolbar: '#barDemo'},
         ]]
         ,done:function(res,curr,count){
-            layer.close(ind);
+            $('th').css({ 'color': 'black', 'font-weight': 'bold'})//用于设置表头的样式，th即代表表头
+            $(".layui-table-box").css("border-width","0px");
+            $(".layui-table-header tr").css("height","25px");
+            $(".layui-table-header tr span").css("color","#666666");
+            $(".layui-table-body tr").css("height","25px");
+            $(".layui-form-checkbox").css("style","margin-top: 5px;");
         }
         ,where : {
             parentId : '3'
@@ -201,6 +211,12 @@ layui.use(['form', 'table','tree'], function(){
         ,method: 'post'
         ,contentType: "application/json; charset=utf-8"
         ,dataType:"json"
+        ,skin:'nob'// 无边框风格
+        ,loading: true
+        // 是否开启字段筛选的记忆功能，支持true/false/'local'/'session'/其他 开启的情况下默认是session，除非显式的指定为'local'
+        ,colFilterRecord: true
+        // 是否开启智能reload的模式
+        ,smartReloadModel: true
         ,cols: [[
             {field:'dictValue', title:'字典键值', width:'25%', align:'center'}
             ,{field:'dictLabel', title:'字典标签', width:'35%', align:'center'}
@@ -216,7 +232,12 @@ layui.use(['form', 'table','tree'], function(){
             ,{field:'right', title:'操作', width:'22.7%', align:'center', toolbar: '#barDemo1'},
         ]]
         ,done:function(res,curr,count){
-            layer.close(ind);
+            $('th').css({ 'color': 'black', 'font-weight': 'bold'})//用于设置表头的样式，th即代表表头
+            $(".layui-table-box").css("border-width","0px");
+            $(".layui-table-header tr").css("height","25px");
+            $(".layui-table-header tr span").css("color","#666666");
+            $(".layui-table-body tr").css("height","25px");
+            $(".layui-form-checkbox").css("style","margin-top: 5px;");
         }
         ,where : {
             dictType:'99999'
@@ -254,7 +275,7 @@ $("#addDictData").click(function(){
             skin: 'layui-layer-rim',
             closeBtn:1,
             area: ['800px', '600px'],
-            content: '../admin/dict/saveOrEditDictData.html??type=add&dictType='+$("#dictType").val(),
+            content: '../admin/dict/saveOrEditDictData.html?type=add&dictType='+$("#dictType").val(),
             end: function () {//层消失回调
                 layReload1();
             }
@@ -269,8 +290,6 @@ $("#query").on("click",function(){
 
 //查询条件
 function layReload(page){
-    /*  */
-    ind=layer.load(1);
     tableIns.reload({
         where: { //设定异步数据接口的额外参数，任意设
             dictName:$("#codeValue").val(),
@@ -288,8 +307,6 @@ function layReload(page){
 
 //查询条件
 function layReload1(){
-    /*  */
-    ind=layer.load(1);
     tableIns1.reload({
         where: { //设定异步数据接口的额外参数，任意设
             dictType:$("#dictType").val()

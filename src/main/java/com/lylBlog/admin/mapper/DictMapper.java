@@ -72,4 +72,12 @@ public interface DictMapper {
      * @return
      */
     int deleteDictDataInfo(DictDataBean dictDataBean);
+
+    /**
+     * 修改字典数据默认值为‘否’
+     * @param dictType
+     * @param dictValue
+     * @return
+     */
+    int updateIsDefault(@Param("dictType") String dictType, @Param("dictValue") String dictValue);
 }

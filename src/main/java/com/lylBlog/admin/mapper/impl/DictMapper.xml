@@ -167,4 +167,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="dictType != null and dictType != ''">and dict_type = #{dictType}</if>
         <if test="dictCode != null and dictCode != ''">and dict_code = #{dictCode}</if>
     </delete>
+
+    <!-- 修改字典数据默认值为‘否’ -->
+    <update id="updateIsDefault" parameterType="String">
+        update sys_dict_data set is_default = 'N' where dict_type = #{dictType} and dict_value != #{dictValue}
+    </update>
 </mapper>

@@ -77,7 +77,7 @@ layui.config({base: '../layuiTablePlug/test/js/'}).use(['testTablePlug'], functi
         ,cols: [[
             {checkbox: true, id:"idTest", width:'2%'}
             ,{field:'rk', title:'序号', width:'6%', align:'center'}
-            ,{field:'rolename', title:'角色名称', width:'11.3%', align:'center'}
+            ,{field:'rolename', title:'角色名称', width:'11.1%', align:'center'}
             ,{field:'rolekey', title:'权限字符', width:'10%', align:'center'}
             ,{field:'orderBy', title:'显示顺序', width:'10%', align:'center'}
             ,{field:'valid', title:'状态', width:'18%', align:'center', templet : '#valId'}
@@ -93,7 +93,7 @@ layui.config({base: '../layuiTablePlug/test/js/'}).use(['testTablePlug'], functi
             $(".layui-table-body tr").css("height","25px");
             $(".layui-form-checkbox").css("style","margin-top: 5px;");
         }
-        ,height : "500"
+        ,height : "full-195"
         ,page: false
     });
 

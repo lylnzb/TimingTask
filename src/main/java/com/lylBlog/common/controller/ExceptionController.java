@@ -24,11 +24,10 @@ public class ExceptionController {
         return ResultObj.fail(1,"无该权限的操作权，请联系博主！");
     }
 
-//    @ExceptionHandler(UnknownSessionException.class)
-//    @ResponseBody
-//    public void handleUnknownSessionException(HttpServletRequest request, HttpServletResponse response) {
-//        CookieUtil.set(response, "sid", null, 0);
-//    }
+    @ExceptionHandler(UnknownSessionException.class)
+    public void handleUnknownSessionException(HttpServletResponse response) {
+        CookieUtil.set(response, "sid", null, 0);
+    }
 
     /**
      * 捕捉其他所有异常

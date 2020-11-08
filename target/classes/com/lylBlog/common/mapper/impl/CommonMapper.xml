@@ -10,7 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             SELECT
                     roleid AS dictvalue,
                     rolename AS dictlabel,
-                    (case when rolekey = 'common' then 'Y' else 'N' end) as isdefault
+                    (case when rolekey = 'common' then 'Y' else 'N' end) as isdefault,
+					orderBy
             FROM
                     ( SELECT t.*, 'role' AS dict_type FROM m_role t ) AS m_role
             WHERE dict_type = #{dictType} AND valid = '1'
@@ -18,10 +19,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             SELECT
                     dict_value AS dictvalue,
                     dict_label AS dictlabel,
-                    is_default as isdefault
+                    is_default as isdefault,
+					dict_sort as orderBy
             FROM
                     sys_dict_data
             WHERE dict_type = #{dictType} AND valid = '1'
-        ) aa ORDER BY isdefault
+        ) aa ORDER BY orderBy
     </select>
 </mapper>

@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -13,7 +12,6 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
     <style>
-        /*.department_main{padding: 10px 10px 0 10px}*/
         .department_main label{width: 10%;text-align: right;font-size: 12px}
         .department_main input, .department_main select{margin-right: 1%;height: 32px;border: 1px #ccc solid;background-color: #fff;border-radius: 4px;padding-left: 6px;}
         .department_main textarea{resize: none;border: 1px #ccc solid;height: 50px;background-color: #fff;border-radius: 4px;padding-left: 6px;padding-top: 5px;}
@@ -34,13 +32,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label" style="font-weight: bold;width: 88px;vertical-align: middle">类别编码:</label>
                     <div class="layui-input-inline" style="width:120px;">
-                        <input type="text" class="layui-input" name="codeData" id = 'codeData' style="height:30px;width:120px;">
+                        <input type="text" class="layui-input" name="codeData" id = 'codeData' style="width:120px;">
                     </div>
                     <label class="layui-form-label" style="font-weight: bold;width: 88px;vertical-align: middle">类别名称:</label>
                     <div class="layui-input-inline" style="width:120px;">
-                        <input type="text" class="layui-input" name="codeValue" id = 'codeValue' style="height:30px;width:120px;">
+                        <input type="text" class="layui-input" name="codeValue" id = 'codeValue' style="width:120px;">
                     </div>
-                    <button type="button" id="query" class="btn btn-primary" style="height:30px">查询</button>
+                    <a class="btn btn-primary btn-rounded btn-sm"><i class="fa fa-search"></i>&nbsp;搜索</a>
                 </div>
             </div>
             <div class="ui divider" style="margin-top: -18px;"></div>
@@ -121,7 +119,7 @@
 <script type="text/javascript" src="../js/ztree/jquery.ztree.all-3.5.js"></script>
 <script inline="javascript" src="/semantic-ui/dist/semantic.min.js"></script>
 <script type="text/javascript" src="../js/ztree/jquery.ztree.exedit-3.5.js"></script>
-<script src="/layui/layui.all.js"></script>
+<script src="../layuiTablePlug/layui/src/layui.js"></script>
 <script type="text/javascript" src="../dict/js/dictData.js"></script>
 </body>
 </html>
