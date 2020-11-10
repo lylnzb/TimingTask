@@ -8,6 +8,8 @@ lylblog:
   copyrightYear: 2020
   #头像上传路径
   profile: E:/profile/
+  #音乐上传路径
+  musicfile: E:/musicfile/
   # 获取ip地址开关
   addressEnabled: false
 server:

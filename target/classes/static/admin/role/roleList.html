@@ -14,25 +14,12 @@
     <style>
         .layui-table-cell .layui-form-checkbox[lay-skin="primary"]{top: 48%;transform: translateY(-48%);}
         .layui-table-fixed.layui-table-fixed-r .layui-table-body tr{background-color: white}
+        .table-striped {height: 95%;}
     </style>
 </head>
 <body style="background-color: #ecf0f5;font-family: 微软雅黑;color: #475059;min-width: 1000px;overflow: auto">
 <div class="container-div">
     <div class="row">
-        <div class="col-sm-12 select-info">
-            <form id="layui-form">
-                <div class="select-list">
-                    <ul>
-                        <li>
-                            角色名称：<input type="text" name="rolename" style="width: 200px;"/>
-                        </li>
-                        <li>
-                            <a class="btn btn-primary btn-rounded btn-sm"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                        </li>
-                    </ul>
-                </div>
-            </form>
-        </div>
         <div class="col-sm-12 select-table table-striped">
             <div class="btn-group hidden-xs" role="group" style="margin-top: 10px">
                 <a class="btn btn-success" id="addRole" onclick="addOrUpdateRole('add')"><i class="fa fa-plus"></i> 新增</a>

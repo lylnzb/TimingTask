@@ -35,6 +35,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         /** 头像上传路径 */
         registry.addResourceHandler("/profile/**").addResourceLocations("file:" + LylBlogConfig.getProfile());
 
+        /** 音乐上传路径 */
+        registry.addResourceHandler("/musicfile/**").addResourceLocations("file:" + LylBlogConfig.getMusicfile());
+
         /** swagger配置 */
         registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");

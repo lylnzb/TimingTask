@@ -121,7 +121,6 @@ layui.use(['form', 'layer'], function(){
             title: '选择图标',
             shadeClose: true,
             shade: 0.5,
-            skin: 'layui-layer-rim',
             closeBtn:1,
             maxmin: true,
             area: ['100%', '100%'],

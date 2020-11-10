@@ -75,7 +75,7 @@ function loadSelect(ele,code,form){
  * @param code
  * @param form
  */
-function loadRadio(ele,code,form){
+function loadRadio(ele,code,form,filter){
     $.ajax({
         url:basePath+'/common/queryCodeValue',
         type:"POST",
@@ -84,10 +84,14 @@ function loadRadio(ele,code,form){
         success:function(data){
             for(var i = 0; i<data.data.length;i++){
                 var checked = "";
+                var layFilter = "";
                 if(data.data[i].isDefault == 'Y'){
                     checked = "checked=''";
                 }
-                $(ele).append("<input type=\"radio\" name=\""+code+"\" value=\""+data.data[i].dictValue+"\" title=\""+data.data[i].dictLabel+"\" "+checked+"\">");
+                if(filter != null && filter != null){
+                    layFilter = "lay-filter='"+filter+"'";
+                }
+                $(ele).append("<input type=\"radio\" name=\""+code+"\" value=\""+data.data[i].dictValue+"\" "+layFilter+" title=\""+data.data[i].dictLabel+"\" "+checked+"\">");
                 //下拉菜单渲染 把内容加载进去
                 form.render();
             }

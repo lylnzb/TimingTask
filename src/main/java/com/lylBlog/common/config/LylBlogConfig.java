@@ -16,8 +16,10 @@ public class LylBlogConfig {
     private String version;
     /** 版权年份 */
     private String copyrightYear;
-    /** 上传路径 */
+    /** 头像上传路径 */
     private static String profile;
+    /** 音乐上传路径 */
+    private static String musicfile;
     /** 获取地址开关 */
     private static boolean addressEnabled;
 
@@ -54,6 +56,14 @@ public class LylBlogConfig {
     public static String getProfile()
     {
         return profile;
+    }
+
+    public static String getMusicfile() {
+        return musicfile;
+    }
+
+    public static void setMusicfile(String musicfile) {
+        LylBlogConfig.musicfile = musicfile;
     }
 
     public void setProfile(String profile)

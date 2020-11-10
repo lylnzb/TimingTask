@@ -24,6 +24,8 @@ public class WebColumnBean  extends ParaBean {
     private String updateBy;//更新者
     private String updateTime;//更新时间
 
+    private String attributeName;//栏目属性名称
+    private String typeName;//栏目状态名称
     private String isMenu;//是否为菜单
     private String orderBy;//排序
 
@@ -137,5 +139,37 @@ public class WebColumnBean  extends ParaBean {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getAttributeName() {
+        return attributeName;
+    }
+
+    public void setAttributeName(String attributeName) {
+        this.attributeName = attributeName;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public String getIsMenu() {
+        return isMenu;
+    }
+
+    public void setIsMenu(String isMenu) {
+        this.isMenu = isMenu;
+    }
+
+    public String getOrderBy() {
+        return orderBy;
+    }
+
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
     }
 }
