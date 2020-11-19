@@ -6,7 +6,6 @@ import com.lylBlog.common.bean.ParaBean;
  * 用户角色信息实体类
  */
 public class RoleBean extends ParaBean {
-    private String rk;//序号
 
     private String roleid;//角色id
     private String rolename;//角色名称
@@ -18,14 +17,6 @@ public class RoleBean extends ParaBean {
     private String modifytime;//修改时间
 
     private String treeList;//权限树
-
-    public String getRk() {
-        return rk;
-    }
-
-    public void setRk(String rk) {
-        this.rk = rk;
-    }
 
     public String getTreeList() {
         return treeList;

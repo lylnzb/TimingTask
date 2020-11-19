@@ -99,8 +99,7 @@ public class FileUploadUtil {
      * @throws IOException 比如读写文件出错时
      */
     public static final String upload(String baseDir, MultipartFile file, String extension)
-            throws FileSizeLimitExceededException, IOException, FileNameLengthLimitExceededException
-    {
+            throws FileSizeLimitExceededException, IOException, FileNameLengthLimitExceededException {
 
         int fileNamelength = file.getOriginalFilename().length();
         if (fileNamelength > FileUploadUtil.DEFAULT_FILE_NAME_LENGTH)
@@ -116,6 +115,37 @@ public class FileUploadUtil {
         File desc = getAbsoluteFile(baseDir, baseDir + fileName);
         file.transferTo(desc);
         return fileName;
+    }
+
+    /**
+     * 文件上传
+     *
+     * @param baseDir 相对应用的基目录
+     * @param file 上传的文件
+     * @param folder 所属文件夹
+     * @param extension 上传文件类型
+     * @return 返回上传成功的文件名
+     * @throws FileSizeLimitExceededException 如果超出最大大小
+     * @throws FileNameLengthLimitExceededException 文件名太长
+     * @throws IOException 比如读写文件出错时
+     */
+    public static final String upload(String baseDir, MultipartFile file, String folder, String extension)
+            throws FileSizeLimitExceededException, IOException, FileNameLengthLimitExceededException {
+
+        int fileNamelength = file.getOriginalFilename().length();
+        if (fileNamelength > FileUploadUtil.DEFAULT_FILE_NAME_LENGTH)
+        {
+            throw new FileNameLengthLimitExceededException(file.getOriginalFilename(), fileNamelength,
+                    FileUploadUtil.DEFAULT_FILE_NAME_LENGTH);
+        }
+
+        assertAllowed(file);
+
+        String fileName = encodingFilename(file.getOriginalFilename(), extension);
+
+        File desc = getAbsoluteFile(baseDir, baseDir + folder + "/" + fileName);
+        file.transferTo(desc);
+        return folder + "/" +fileName;
     }
 
     private static final File getAbsoluteFile(String uploadDir, String filename) throws IOException

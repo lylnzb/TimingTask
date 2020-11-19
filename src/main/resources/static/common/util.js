@@ -59,7 +59,7 @@ function loadSelect(ele,code,form){
         async:false,
         success:function(data){
             for(var i = 0; i<data.data.length;i++){
-                $(ele).append(new Option(data.data[i].dictlabel , data.data[i].dictvalue));
+                $(ele).append(new Option(data.data[i].dictLabel , data.data[i].dictValue));
                 //下拉菜单渲染 把内容加载进去
                 form.render();
             }
@@ -100,6 +100,12 @@ function loadRadio(ele,code,form,filter){
             alert("初始化选项失败");
         }
     });
+}
+
+function download(url) {
+    var a = document.createElement('a');
+    a.href=basePath + "/"+ url;
+    a.click();
 }
 
 function Cancel() {

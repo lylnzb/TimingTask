@@ -20,6 +20,8 @@ public class LylBlogConfig {
     private static String profile;
     /** 音乐上传路径 */
     private static String musicfile;
+    /** 项目基础路径*/
+    private static String basePath;
     /** 获取地址开关 */
     private static boolean addressEnabled;
 
@@ -58,17 +60,17 @@ public class LylBlogConfig {
         return profile;
     }
 
+    public void setProfile(String profile)
+    {
+        LylBlogConfig.profile = profile;
+    }
+
     public static String getMusicfile() {
         return musicfile;
     }
 
-    public static void setMusicfile(String musicfile) {
+    public void setMusicfile(String musicfile) {
         LylBlogConfig.musicfile = musicfile;
-    }
-
-    public void setProfile(String profile)
-    {
-        LylBlogConfig.profile = profile;
     }
 
     public static boolean isAddressEnabled()
@@ -81,4 +83,11 @@ public class LylBlogConfig {
         LylBlogConfig.addressEnabled = addressEnabled;
     }
 
+    public static String getBasePath() {
+        return basePath;
+    }
+
+    public void setBasePath(String basePath) {
+        LylBlogConfig.basePath = basePath;
+    }
 }

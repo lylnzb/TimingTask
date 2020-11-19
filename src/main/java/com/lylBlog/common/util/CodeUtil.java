@@ -1,4 +1,5 @@
 package com.lylBlog.common.util;
+import java.util.UUID;
 
 /**
  * 验证码生成工具类

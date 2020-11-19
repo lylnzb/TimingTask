@@ -15,7 +15,6 @@ public class RoleBean extends ParaBean implements Serializable {
     private String roleid;//角色id
     private String rolename;//角色名称
     private String rolekey;//权限字符
-    private String orderBy;//显示顺序
     private String roledesc;//角色描述
     private String valid;//有效标志[1:有效,0:无效]
     private String createperson;//创建人ID
@@ -65,14 +64,6 @@ public class RoleBean extends ParaBean implements Serializable {
 
     public void setRolekey(String rolekey) {
         this.rolekey = rolekey;
-    }
-
-    public String getOrderBy() {
-        return orderBy;
-    }
-
-    public void setOrderBy(String orderBy) {
-        this.orderBy = orderBy;
     }
 
     public String getRoledesc() {

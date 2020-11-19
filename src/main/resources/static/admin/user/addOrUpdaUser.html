@@ -176,12 +176,9 @@
     var id = GetQueryString("userId");
 
     layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
-        var table = layui.table,
-            form = layui.form
+        var form = layui.form
             ,layer = layui.layer
             ,$ = layui.jquery
-            ,laydate = layui.laydate
-            ,element = layui.element
             ,upload = layui.upload;
 
         findCodeValue(form);

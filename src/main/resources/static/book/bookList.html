@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <!-- saved from url=(0072)https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html# -->
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>书籍列表 -羅氏博客</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="../semantic-ui/dist/semantic.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tx.css">
     <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../login/css/login.css">
+    <link rel="stylesheet" href="/css/mplayer.css">
     <style>
         .right.aligned.column{
             margin-top: 10px;
@@ -18,42 +22,22 @@
     </style>
 </head>
 <body style="margin:10px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<!-- 遮盖层 -->
+<div id="bg" class="bg"></div>
+
+<!-- 登录框 -->
+<div class="login">
+    <div th:replace="login/login :: loginBox"></div>
+</div>
+
 <!--导航-->
 <div id="header">
-    <!--<iframe src="../include/header.html"width="100%" height="75px"></iframe>-->
-    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
-        <div class="ui container">
-            <div class="ui inverted secondary stackable menu">
-                <h2 class="ui teal header item">羅氏博客</h2>
-                <a href="../home.html" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
-                <div class="ui dropdown item">
-                    <i class="idea icon"></i>学无止境<i class="dropdown icon"></i>
-                    <div class="menu" data-filtered="filtered">
-                        <div class="item" data-filtered="filtered">博客日记</div>
-                        <div class="item" data-filtered="filtered">文学摘录</div>
-                        <div class="item" data-filtered="filtered">程序人生</div>
-                    </div>
-                </div>
-                <a href="" class="m-item item m-mobile-hide"><i class="book icon"></i>电子书籍</a>
-                <a href="../message/message.html" class="m-item item m-mobile-hide"><i class="envelope icon"></i>留言反馈</a>
-                <a href="" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
-                <div class="m-item right item m-mobile-hide">
-                    <div class="item">
-                        <a href="" class="m-mobile-hide">登录</a>&nbsp;/&nbsp;<a href="" class="m-mobile-hide">注册</a>
-                    </div>
-                    <div class="item">
-                        <div class="ui icon input">
-                            <input type="text" placeholder="搜索...">
-                            <i class="search link icon"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="ui menu toggle black icon button m-top-right m-hide">
-            <i class="sidebar icon"></i>
-        </a>
-    </nav>
+    <div th:replace="include/header :: myHeader"></div>
+</div>
+
+<!--音乐-->
+<div id="music">
+    <div th:replace="include/music :: myMusic"></div>
 </div>
 
 <!--中间-->
@@ -320,48 +304,22 @@
 </div>
 
 <!--底部-->
-<!--        <iframe src="../include/footer.html"width="100%" height="227px"></iframe>-->
-<footer class="ui inverted vertical segment m-padded-tb-max">
-    <div class="ui center aligned container">
-        <div class="ui inverted divided stackable grid">
-            <div class="three wide column">
-                <div class="ui inverted link list">
-                    <div class="item">
-                        <img src="img/wechat.jpg" class="ui rounded image" alt="" style="width: 100px;">
-                    </div>
-                </div>
-            </div>
-            <div class="four wide column">
-                <h5 class="ui inverted header m-text-thin m-text-spaced ">最新博客</h5>
-                <div class="ui inverted link list">
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">人生导师(my story)</a>
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">心灵鸡汤(my video)</a>
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">自我认知(my feel)</a>
-                </div>
-            </div>
-            <div class="four wide column">
-                <h5 class="ui inverted header m-text-thin m-text-spaced ">个人信息</h5>
-                <div class="ui inverted link list">
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">WeChat:Yi-0802</a>
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">QQ:1692774581</a>
-                </div>
-            </div>
-            <div class="five wide column">
-                <h5 class="ui inverted header m-text-thin m-text-spaced ">博客</h5>
-                <p class="m-text-thin m-text-spaced m-opacity-tiny">这是我的个人博客，会定期分享我的故事,我对于自身的认识，希望可以给看我博客的人带来快乐</p>
-            </div>
-        </div>
-        <div class="ui inverted section divider"></div>
-        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 - 2020 Rownn Designed by Rownn</p>
-    </div>
-</footer>
+<div id="footer">
+    <div th:replace="include/footer :: myFooter"></div>
+</div>
 </body>
 </html>
 <script src="../common/jquery/jquery-1.11.1.js"></script>
+<script src="../common/util.js"></script>
 <script src="../semantic-ui/dist/semantic.min.js"></script>
-<script src='../js/snowflakes.min.js'></script>
-<script src="../js"></script>
+<script src='/common/snowflakes.min.js'></script>
+<script src="../login/js/login.js"></script>
 <script src="../layui/layui.all.js"></script>
+<script src="/common/mPlayer/mplayer.js"></script>
+<script src="/common/mPlayer/mplayer-list.js"></script>
+<script src="/common/mPlayer/mplayer-functions.js"></script>
+<script src="http://cdn.bootcss.com/jquery-nstslider/1.0.13/jquery.nstSlider.min.js"></script>
+<script type="text/javascript" src="/common/player.js"></script>
 <script>
     $(document).ready(function(){
         $('.pointing.menu .item').tab();

@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     @RequestMapping("/index")
-    public String index(Model model){
-        boolean flag = ShiroUtils.isAuthenticated();
-        if(flag){
-            model.addAttribute("isAuthenticated",true);
-        }else{
-            model.addAttribute("isAuthenticated",false);
-        }
+    public String index(){
         return "index";
+    }
+
+    @RequestMapping("/about/aboutMe")
+    public String aboutMe(){
+        return "/about/aboutMe";
     }
 }

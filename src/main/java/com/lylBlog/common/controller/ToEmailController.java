@@ -4,14 +4,12 @@ import com.lylBlog.common.bean.ResultObj;
 import com.lylBlog.common.bean.ToEmailBean;
 import com.lylBlog.common.util.CodeUtil;
 import com.lylBlog.common.util.RedisUtil;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
-@Service
-@RequestMapping("/commom")
+@Controller
+@RequestMapping("/")
 public class ToEmailController {
 
     @Autowired

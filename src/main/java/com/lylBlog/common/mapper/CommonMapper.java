@@ -1,6 +1,7 @@
 package com.lylBlog.common.mapper;
 
 import com.lylBlog.admin.bean.DictDataBean;
+import com.lylBlog.common.bean.MusicBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,4 +16,10 @@ public interface CommonMapper {
      * @return
      */
     List<DictDataBean> queryCodeValue(@Param("dictType") String dictType);
+
+    /**
+     * 查询音乐列表
+     * @return
+     */
+    List<MusicBean> queryMusicList();
 }

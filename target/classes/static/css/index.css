@@ -1,9 +1,44 @@
+html,body{
+    cursor: url('../img/cur/default.cur'),auto;
+}
+
+
+a:hover, a:focus, a:active, a.active {
+    cursor: url('../img/cur/link.cur'), pointer;
+}
+
 body{
     z-index:-1;
     margin:10px 0;
     font:normal 14px/24px 'MicroSoft YaHei';
     background-image: url('../img/moroccan-flower.png');
     background-attachment: fixed;
+}
+.image img{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+}
+a.userIcon {
+    display: block;
+    position: absolute;
+    top: -18px;
+    /* left: 50%; */
+    margin-left: -20px;
+    padding: 6px;
+    background-color: transparent;
+    border-radius: 100%;
+}
+a.userIcon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.from-box .error {
+    position: absolute;
+    z-index: 10;
+    display: none;
 }
 .ztpic {
     width: 100%;
@@ -326,7 +361,7 @@ a.widget_avatar img {
     font-size: 12px;
 }
 a {
-    cursor:pointer;
+    cursor: url('../img/cur/link.cur'), pointer;
     text-decoration: none;
     color: #333;
 }
@@ -379,11 +414,6 @@ ul.divTags {
 .leave_position a {
     font-size: 12px;
 }
-a {
-    cursor:pointer;
-    text-decoration: none;
-    color: #333;
-}
 .app {
     padding-top:10px;
 }
@@ -435,7 +465,7 @@ a {
     top: 5px;
     font-size: 14px;
     color: #666;
-    cursor: pointer;
+    cursor: url('../img/cur/link.cur'), pointer;
 }
 .caret.up {
     position: absolute;
@@ -467,7 +497,7 @@ a {
     color: green;
 }
 .thumbs.up.icon {
-    cursor: pointer;
+    cursor: url('../img/cur/link.cur'), pointer;
 }
 em {
     font-style: italic;
@@ -477,7 +507,7 @@ em {
     color: #333;
 }
 .blogbox h3 {
-    cursor: pointer;
+    cursor: url('../img/cur/link.cur'), pointer;
     font-size: 18px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -488,5 +518,30 @@ em {
 }
 .qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid;}
 .qqFace table td{padding:0px;}
-.qqFace table td img{cursor:pointer;border:1px #fff solid;}
+.qqFace table td img{cursor: url('../img/cur/link.cur'), pointer;border:1px #fff solid;}
 .qqFace table td img:hover{border:1px #0066cc solid;}
+
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    border: 5px solid transparent;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: 1px 1px 5px rgba(0,0,0,.2) inset;
+}
+
+::-webkit-scrollbar-thumb {
+    min-height: 20px;
+    background-clip: content-box;
+    box-shadow: 0 0 0 5px rgba(0,0,0,.2) inset;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

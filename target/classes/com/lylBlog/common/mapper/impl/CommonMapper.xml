@@ -26,4 +26,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             WHERE dict_type = #{dictType} AND valid = '1'
         ) aa ORDER BY orderBy
     </select>
+
+    <!-- 查询音乐列表 -->
+    <select id="queryMusicList" resultType="com.lylBlog.common.bean.MusicBean">
+        SELECT
+            'true' AS basic,
+            '我的歌单' AS NAME,
+            '' AS singer,
+            '' AS img,
+            '' AS src,
+            '' AS lrc,
+            '' AS time
+        FROM DUAL
+        UNION ALL
+        SELECT
+            'false' AS basic,
+            musicName AS NAME,
+            singer,
+            ( SELECT fileUrl FROM sys_music_file WHERE musicId = t.musicId AND fileType = 'image' AND valid = '1' ) AS img,
+            ( SELECT fileUrl FROM sys_music_file WHERE musicId = t.musicId AND fileType = 'audio' AND valid = '1' ) AS src,
+            lyrics AS lrc,
+            length AS time
+        FROM sys_music AS t where valid = '1'
+    </select>
 </mapper>

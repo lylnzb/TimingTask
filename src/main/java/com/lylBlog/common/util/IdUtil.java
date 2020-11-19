@@ -2,6 +2,7 @@ package com.lylBlog.common.util;
 
 import java.security.SecureRandom;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * 主键生成工具类
@@ -38,5 +39,26 @@ public class IdUtil {
         return uid.toString();
     }
 
+    /**
+     *
+     * 功能描述: <br>
+     * 主键生成器32位
+     *
+     * @return
+     */
+    public static final synchronized String getUUID() {
+        String uuid = UUID.randomUUID().toString();
+        StringBuilder sb = new StringBuilder(32);
+        sb.append(uuid.substring(0, 8));
+        sb.append(uuid.substring(9, 13));
+        sb.append(uuid.substring(14, 18));
+        sb.append(uuid.substring(19, 23));
+        sb.append(uuid.substring(24, 36));
+        return sb.toString();
+    }
+
+    public static void main(String[] args){
+        System.out.println(getUUID());
+    }
 }
 

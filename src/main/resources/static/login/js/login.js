@@ -1,3 +1,5 @@
+var isLogin=$("#isAuthenticated").val();
+var is = GetQueryString("isLogin");
 $(function(){
     /**
      * 如果用户未登录，则弹出登录框
@@ -33,7 +35,7 @@ function sendemail() {
     var obj = new Object();
     obj.tos = $(".email").val();
     $.ajax({
-        url: 'http://127.0.0.1/commom/toEmail',
+        url: basePath + 'toEmail',
         type: "POST",
         data: JSON.stringify(obj),
         dataType: "json",
@@ -79,7 +81,7 @@ $("#register").click(function(){
     obj.password = $("#password").val();
     obj.vCode = $("#code").val();
     $.ajax({
-        url: 'http://127.0.0.1/registerUser',
+        url: basePath + 'registerUser',
         type: "POST",
         data: JSON.stringify(obj),
         dataType: "json",
@@ -146,7 +148,7 @@ $("#login").click(function(){
     });
     if(traverse == 0){
         $.ajax({
-            url: 'http://127.0.0.1/login',
+            url: basePath + 'login',
             type: "POST",
             data: JSON.stringify(obj),
             dataType: "json",
@@ -168,7 +170,7 @@ $("#login").click(function(){
 
 $(".loginOut").click(function(){
     $.ajax({
-        url: 'http://127.0.0.1/loginOut',
+        url: basePath + 'loginOut',
         type: "POST",
         dataType: "json",
         contentType: 'application/json;charset=utf-8',

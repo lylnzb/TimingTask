@@ -10,4 +10,10 @@ public interface CommonServer {
      * @return
      */
     ResultObj queryCodeValue(String dictType);
+
+    /**
+     * 查询音乐列表
+     * @return
+     */
+    Object[][] queryMusicList();
 }

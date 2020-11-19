@@ -1,3 +1,7 @@
+a:hover, a:focus, a:active, a.active {
+    cursor: url('/img/cur/link.cur'), pointer;
+}
+
 /* 遮盖层 */
 .bg{
     background-color: #000;
@@ -134,7 +138,7 @@ login-wrap-box .password, .login-wrap-box .username {
 .login-wrap-box .list-item {
     display: inline-block;
     padding: 0 15px;
-    cursor: pointer;
+    cursor: url('/img/cur/link.cur'), pointer;
 }
 .login-wrap-box .list-item .qq {
     color: #1a98fc;
@@ -147,7 +151,7 @@ login-wrap-box .password, .login-wrap-box .username {
 .login-wrap-box .list-item {
     display: inline-block;
     padding: 0 15px;
-    cursor: pointer;
+    cursor: url('/img/cur/link.cur'), pointer;
 }
 .login-wrap-box .list-item .weibo {
     color: #e93847;
@@ -157,7 +161,7 @@ login-wrap-box .password, .login-wrap-box .username {
 }
 .login-wrap-box .loginBtn,.login-wrap-box .registerBtn,.login-wrap-box .forgotPasBtn {
     color: #2a8bec;
-    cursor: pointer;
+    cursor: url('/img/cur/link.cur'), pointer;
 }
 .fr {
     float: right;

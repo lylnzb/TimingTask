@@ -7,7 +7,7 @@ import com.lylBlog.common.bean.ParaBean;
  * @Author: lyl
  * @Date: 2020/11/8 14:47
  */
-public class WebColumnBean  extends ParaBean {
+public class WebColumnBean extends ParaBean{
     private int rk;//序号
 
     private String columnId;//栏目编号
@@ -19,15 +19,10 @@ public class WebColumnBean  extends ParaBean {
     private String isHidden;//是否隐藏栏目
     private String keywords;//栏目关键字
     private String description;//栏目说明
-    private String createBy;//创建者
-    private String createTime;//创建时间
-    private String updateBy;//更新者
-    private String updateTime;//更新时间
 
     private String attributeName;//栏目属性名称
     private String typeName;//栏目状态名称
     private String isMenu;//是否为菜单
-    private String orderBy;//排序
 
     public int getRk() {
         return rk;
@@ -109,38 +104,6 @@ public class WebColumnBean  extends ParaBean {
         this.description = description;
     }
 
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
     public String getAttributeName() {
         return attributeName;
     }
@@ -163,13 +126,5 @@ public class WebColumnBean  extends ParaBean {
 
     public void setIsMenu(String isMenu) {
         this.isMenu = isMenu;
-    }
-
-    public String getOrderBy() {
-        return orderBy;
-    }
-
-    public void setOrderBy(String orderBy) {
-        this.orderBy = orderBy;
     }
 }

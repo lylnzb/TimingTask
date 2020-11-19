@@ -40,4 +40,15 @@ public class CommonController {
         }
         return ResultObj.fail();
     }
+
+    @RequestMapping(value="/queryMusicList")
+    @ResponseBody
+    public Object[][] queryMusicList(){
+        try {
+            return commonServer.queryMusicList();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

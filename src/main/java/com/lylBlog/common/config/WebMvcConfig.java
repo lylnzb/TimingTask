@@ -1,9 +1,14 @@
 package com.lylBlog.common.config;
+import com.lylBlog.common.interceptor.LoginInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import javax.annotation.Resource;
 
 /**
  * 过滤器
@@ -37,10 +42,17 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
         /** 音乐上传路径 */
         registry.addResourceHandler("/musicfile/**").addResourceLocations("file:" + LylBlogConfig.getMusicfile());
-
         /** swagger配置 */
         registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loginInterceptor()).addPathPatterns("/**").excludePathPatterns("/admin/**");
+    }
+
+    @Bean
+    public LoginInterceptor loginInterceptor(){return new LoginInterceptor();}
 
 }

@@ -12,40 +12,23 @@
     <link rel="stylesheet" href="css/tx.css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="login/css/login.css">
+    <link rel="stylesheet" href="/login/css/login.css">
+    <link rel="stylesheet" href="/css/mplayer.css">
     <style>
+        a:hover, a:focus, a:active, a.active {
+            cursor: url('/img/cur/link.cur'), pointer;
+        }
         .image img{
             display: inline-block;
             height: 100%;
             width: 100%;
             max-width: 100%;
         }
-        a.widget_avatar_header {
-            display: block;
-            position: absolute;
-            top: -18px;
-            /* left: 50%; */
-            margin-left: -20px;
-            padding: 6px;
-            background-color: transparent;
-            border-radius: 100%;
-        }
-        a.widget_avatar_header img {
-            width: 50px;
-            height: 50px;
-            border-radius: 100%;
-        }
         .from-box .error {
             position: absolute;
             z-index: 10;
             display: none;
         }
-        /*body{font-size: 0.625em}*/
-        /*body {*/
-        /*    zoom: 0.8;*/
-        /*    -moz-transform: scale(0.8);*/
-        /*    -moz-transform-origin: 0 0;*/
-        /*}*/
     </style>
 </head>
 <body>
@@ -60,6 +43,11 @@
 <!--导航-->
 <div id="header">
     <div th:replace="include/header :: myHeader"></div>
+</div>
+
+<!--音乐-->
+<div id="music">
+    <div th:replace="include/music :: myMusic"></div>
 </div>
 
 <!--中间-->
@@ -602,66 +590,24 @@
 </div>
 
 <!--底部-->
-<footer class="ui inverted vertical segment m-padded-tb-max">
-    <div class="ui center aligned container">
-        <div class="ui inverted divided stackable grid">
-            <div class="three wide column">
-                <div class="ui inverted link list">
-                    <div class="item">
-                        <img src="img/wechat.jpg" class="ui rounded image" alt="" style="width: 100px;">
-                    </div>
-                </div>
-            </div>
-            <div class="four wide column">
-                <h5 class="ui inverted header m-text-thin m-text-spaced ">最新博客</h5>
-                <div class="ui inverted link list">
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">人生导师(my story)</a>
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">心灵鸡汤(my video)</a>
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">自我认知(my feel)</a>
-                </div>
-            </div>
-            <div class="four wide column">
-                <h5 class="ui inverted header m-text-thin m-text-spaced ">个人信息</h5>
-                <div class="ui inverted link list">
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">WeChat:Yi-0802</a>
-                    <a href="https://www.17sucai.com/preview/2137395/2020-07-07/templates/index.html#" class="item">QQ:1692774581</a>
-                </div>
-            </div>
-            <div class="five wide column">
-                <h5 class="ui inverted header m-text-thin m-text-spaced ">博客</h5>
-                <p class="m-text-thin m-text-spaced m-opacity-tiny">这是我的个人博客，会定期分享我的故事,我对于自身的认识，希望可以给看我博客的人带来快乐</p>
-            </div>
-        </div>
-        <div class="ui inverted section divider"></div>
-        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 - 2020 Rownn Designed by Rownn</p>
-    </div>
-</footer>
+<div id="footer">
+    <div th:replace="include/footer :: myFooter"></div>
+</div>
 </body>
 <script th:inline="javascript" th:src="@{/common/jquery/jquery-1.11.1.js}"></script>
+<script th:inline="javascript" th:src="@{/common/util.js}"></script>
 <script th:inline="javascript" th:src="@{/semantic-ui/dist/semantic.min.js}"></script>
 <script th:inline="javascript" th:src="@{/login/js/login.js}"></script>
-<script th:inline="javascript" th:src="@{/common/util.js}"></script>
 <!--<script src='js/snowflakes.min.js'></script>-->
 <script th:inline="javascript" th:src="@{/layui/layui.all.js}"></script>
-<!--<script src="js/index.js"></script>-->
+<script src="/common/mPlayer/mplayer.js"></script>
+<script src="/common/mPlayer/mplayer-list.js"></script>
+<script src="/common/mPlayer/mplayer-functions.js"></script>
+<script src="http://cdn.bootcss.com/jquery-nstslider/1.0.13/jquery.nstSlider.min.js"></script>
+<script type="text/javascript" src="/common/player.js"></script>
+<script type="text/javascript" src="/common/mymouse.js" id="mymouse"></script>
 <script>
-    var isLogin='[[${isAuthenticated}]]';
-    var is = GetQueryString("isLogin");
-
     $(document).ready(function(){
-        var is360 = false;
-        var isIE = false;
-        if (window.navigator.appName.indexOf("Microsoft") != -1){
-            isIE= true;
-        }
-        if(isIE&&(window.navigator.userProfile+'')=='null'){
-            is360 = true;
-        }
-        if(is360){
-            console.log('360浏览器');
-        }else if(isIE){
-            console.log('IE浏览器');
-        }
 
         $('.pointing.menu .item').tab();
 
@@ -678,5 +624,10 @@
         });
     });
     $('#hybrid select').dropdown({on: 'hover'});
+
+    window.onunload = function() {
+        alert("这是知道吗？");
+    };
 </script>
+
 </html>

@@ -9,8 +9,6 @@
 package com.lylBlog.common.bean;
 
 
-import com.lylBlog.common.util.FunctionUtil;
-
 /**
  * @author YShuai
  *
@@ -20,8 +18,13 @@ public class ParaBean {
 	protected int page=1; //页码
 	protected int limit=10; //每页记录数
 	//操作选项
-	protected String operator; //操作人员
-	protected String operaterTime; //操作时间
+	protected int rk;             //    序号
+	protected String nickName;    //    用户昵称
+	protected String orderBy;     //	排序
+	protected String createBy;    //	创建者
+	protected String createTime;  //	创建时间
+	protected String updateBy;    //	更新者
+	protected String updateTime;  //	更新时间
 	protected String t1; //参数1
 	protected String t2; //参数2
 	protected String t3; //参数3
@@ -41,18 +44,63 @@ public class ParaBean {
 	public void setLimit(int limit) {
 		this.limit = limit;
 	}
-	public String getOperator() {
-		return operator;
+
+	public int getRk() {
+		return rk;
 	}
-	public void setOperator(String operator) {
-		this.operator = operator;
+
+	public void setRk(int rk) {
+		this.rk = rk;
 	}
-	public String getOperaterTime() {
-		return operaterTime;
+
+	public String getNickName() {
+		return nickName;
 	}
-	public void setOperaterTime(String operaterTime) {
-		this.operaterTime = operaterTime;
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
+
+	public String getOrderBy() {
+		return orderBy;
+	}
+
+	public void setOrderBy(String orderBy) {
+		this.orderBy = orderBy;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getUpdateBy() {
+		return updateBy;
+	}
+
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
+	}
+
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
+
 	public String getT1() {
 		return t1;
 	}
@@ -91,15 +139,7 @@ public class ParaBean {
 	public int getEnd() {
 		return page * limit;
 	}
-	
-	/**
-	 * 设置操作信息
-	 * @param operator
-	 */
-	public void setOperationInfo(String operator) {
-		this.operator = operator;
-		this.operaterTime = FunctionUtil.getCurrentTimeStr();
-	}
+
 	public String getUserId() {
 		return userId;
 	}
