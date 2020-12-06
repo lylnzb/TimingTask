@@ -42,14 +42,14 @@ layui.use(['form', 'table','tree'], function(){
 });
 
 $("#releaseArticle").click(function(){
-    top.layer.open({
+    layer.open({
         type: 2,
         title: "文章发布",
         shadeClose: true,
         shade: 0.5,
         closeBtn:1,
-        area: ['806px', '730px'],
-        content: basePath + '/admin/article/releaseArticle.html',
+        area: ['100%', '100%'],
+        content: basePath + '/article/releaseArticle',
         end: function () {//层消失回调
             //layReload1();
         }

@@ -21,5 +21,5 @@ public interface CommonMapper {
      * 查询音乐列表
      * @return
      */
-    List<MusicBean> queryMusicList();
+    List<MusicBean> queryMusicList(@Param("gedan") String gedan);
 }

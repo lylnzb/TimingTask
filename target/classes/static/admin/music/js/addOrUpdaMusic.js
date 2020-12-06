@@ -56,7 +56,8 @@ layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
                 return "audio";
             }
         }
-        ,accept: 'audio' //音频
+        ,accept: 'file' //音频
+        ,exts: 'mp3|m4a'
         ,done: function(res){
             var data = res.data[0];
             //如果上传成功
@@ -95,6 +96,7 @@ layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
             }
         }
         ,accept: 'file' //文件
+        ,exts: 'lrc'
         ,done: function(res){
             var data = res.data[0];
             //如果上传成功
@@ -150,6 +152,11 @@ layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
             if (value.length < 1) {
                 return '歌曲风格不能为空！';
             }
+        },
+        gedan:function(value) {
+            if (value.length < 1) {
+                return '请选择所属歌单！';
+            }
         }
     });
 
@@ -176,6 +183,7 @@ layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
                 $("#description").val(data.description);
                 $("#languages").siblings("div.layui-form-select").find('dl').find('dd[lay-value=' + data.languages + ']').click();
                 $("#style").siblings("div.layui-form-select").find('dl').find('dd[lay-value=' + data.style + ']').click();
+                $("#gedan").siblings("div.layui-form-select").find('dl').find('dd[lay-value=' + data.gedan + ']').click();
                 $('#downloadMusic').show();
                 $('#downloadMusic').click(function () {
                     download('webMusic/downloadMusicFile?musicId='+data.musicId+'&fileType=audio');
@@ -196,6 +204,7 @@ layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
         var singer = data.field.singer;//歌手
         var languages = data.field.languages;//语种
         var style = data.field.style;//风格
+        var gedan = data.field.gedan;//所属工单
         var length = data.field.length;//时长
         var lyrics = data.field.lyrics;//歌词
         var description = data.field.description;//歌曲说明
@@ -206,6 +215,7 @@ layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
             singer : singer,
             languages : languages,
             style : style,
+            gedan : gedan,
             length : length,
             lyrics : lyrics,
             description : description,
@@ -234,5 +244,6 @@ layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
 function findCodeValue(form){
     loadSelect("#languages","web_music_language", form);
     loadSelect("#style","web_music_style", form);
+    loadSelect("#gedan","web_music_gedan", form);
     loadRadio("#valid", "sys_normal_disable", form);
 }

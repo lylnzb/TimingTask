@@ -9,7 +9,7 @@ function change(){
     })
 }
 
-layui.config({base: '../layuiTablePlug/test/js/'}).use(['testTablePlug'], function () {
+layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], function () {
     var table = layui.table,
         form = layui.form;
 
@@ -24,7 +24,7 @@ layui.config({base: '../layuiTablePlug/test/js/'}).use(['testTablePlug'], functi
                 shade: 0.5,
                 closeBtn:1,
                 area: ['790px', '680px'],
-                content: '../admin/role/addRole.html?type=update&roleId='+data.roleid,
+                content: basePath + '/role/addOrUpdaRole?type=update&roleId='+data.roleid,
                 end: function () {//层消失回调
                     layReload();
                 }
@@ -81,7 +81,7 @@ layui.config({base: '../layuiTablePlug/test/js/'}).use(['testTablePlug'], functi
             ,{field:'rolekey', title:'权限字符', width:'10%', align:'center'}
             ,{field:'orderBy', title:'显示顺序', width:'10%', align:'center'}
             ,{field:'valid', title:'状态', width:'18%', align:'center', templet : '#valId'}
-            ,{field:'createtime', title:'创建时间', width:'20%', align:'center'}
+            ,{field:'createTime', title:'创建时间', width:'20%', align:'center'}
             ,{field:'toolses', title:'操作', width:'23%', align:'center', toolbar: '#barDemo'}
         ]]
         ,id:"idTest"
@@ -123,7 +123,7 @@ function addOrUpdateRole(type){
         shade: 0.5,
         closeBtn:1,
         area: ['790px', '750px'],
-        content: '../admin/role/addRole.html?type='+type+param,
+        content: basePath + '/role/addOrUpdaRole?type='+type+param,
         end: function () {//层消失回调
             layReload();
         }

@@ -115,7 +115,7 @@
                     <label class="layui-form-label" style = 'width: 189px;font-weight: bold'><font color='red'>*</font>&nbsp;上传歌词：</label>
                     <div class="layui-input-inline"  style="width: 500px;" id="lyricsFile">
                         <input type="hidden" id="lyrics" name="lyrics" lay-verify="lyrics">
-                        <button type="button" class="layui-btn layui-btn-primary" id="uploadLyrics"><i class="upload icon"></i>请选择上传歌词文件</button>
+                        <button type="button" class="layui-btn layui-btn-primary" id="uploadLyrics"><i class="upload icon"></i>请选择上传歌词(lrc)文件</button>
                         <button type="button" class="layui-btn layui-btn-primary" id="downloadLyrics" style="display: none"><i class="download icon"></i>下载歌词文件</button>
                     </div>
                 </div>
@@ -139,6 +139,18 @@
                     <label class="layui-form-label" style = 'width: 189px;font-weight: bold'><font color='red'>*</font>&nbsp;风格：</label>
                     <div class="layui-input-inline">
                         <select id="style" name="style" lay-verify="style" style="width: 100%">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="department_main">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" style = 'width: 189px;font-weight: bold'><font color='red'>*</font>&nbsp;所属歌单：</label>
+                    <div class="layui-input-inline">
+                        <select id="gedan" name="gedan" lay-verify="gedan" style="width: 100%">
                             <option value=""></option>
                         </select>
                     </div>

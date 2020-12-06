@@ -17,6 +17,7 @@ public class WebMusicBean extends ParaBean {
     private String lyrics;      //  歌词内容
     private String languages;   //	语种
     private String style;       //	风格
+    private String gedan;       //  所属歌单
     private String description; //	歌曲描述
 
     private String fileId;      //	文件编号
@@ -27,6 +28,7 @@ public class WebMusicBean extends ParaBean {
 
     private String languageName;//  语种名称
     private String styleName;   //  风格名称
+    private String gedanName;   //  所属歌单名称
 
 
     public String getMusicId() {
@@ -75,6 +77,14 @@ public class WebMusicBean extends ParaBean {
 
     public void setLyricsUrl(String lyricsUrl) {
         this.lyricsUrl = lyricsUrl;
+    }
+
+    public String getGedan() {
+        return gedan;
+    }
+
+    public void setGedan(String gedan) {
+        this.gedan = gedan;
     }
 
     public String getLength() {
@@ -171,5 +181,13 @@ public class WebMusicBean extends ParaBean {
 
     public void setStyleName(String styleName) {
         this.styleName = styleName;
+    }
+
+    public String getGedanName() {
+        return gedanName;
+    }
+
+    public void setGedanName(String gedanName) {
+        this.gedanName = gedanName;
     }
 }

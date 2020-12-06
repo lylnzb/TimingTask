@@ -1,15 +1,12 @@
 package com.lylBlog.admin.controller;
 
-import com.lylBlog.admin.bean.UserIconBean;
 import com.lylBlog.admin.bean.WebMusicBean;
 import com.lylBlog.admin.server.WebMusicServer;
 import com.lylBlog.common.bean.ResultObj;
 import com.lylBlog.common.config.LylBlogConfig;
 import com.lylBlog.common.util.IdUtil;
-import com.lylBlog.common.util.ShiroUtils;
 import com.lylBlog.common.util.file.FileDownloadUtil;
 import com.lylBlog.common.util.file.FileUploadUtil;
-import com.lylBlog.login.bean.UserBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

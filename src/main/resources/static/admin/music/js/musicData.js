@@ -1,6 +1,6 @@
 var nowPage;
 
-layui.use(['form', 'table','tree'], function(){
+layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], function () {
     var table = layui.table,
         form = layui.form;
 
@@ -70,14 +70,18 @@ layui.use(['form', 'table','tree'], function(){
         ,cols: [[
             {checkbox: true, id:"idTest", width:'2%'}
             ,{field:'rk', title:'序号', width:'6%', align:'center'}
-            ,{field:'musicName', title:'音乐名称', width:'20%', align:'center'}
-            ,{field:'singer', title:'歌手', width:'13%', align:'center'}
+            ,{field:'musicName', title:'音乐名称', width:'13%', align:'center'}
+            ,{field:'singer', title:'歌手', width:'10%', align:'center'}
+            ,{field:'gedanName', title:'所属歌单', width:'13%', align:'center',templet: function(data){
+                    return "《" + data.gedanName + "》";
+                }
+             }
             ,{field:'languageName', title:'语种', width:'6%', align:'center'}
             ,{field:'styleName', title:'风格', width:'6%', align:'center'}
             ,{field:'valid', title:'状态', width:'7%', align:'center', templet : '#valId'}
             ,{field:'nickName', title:'发布人', width:'10%', align:'center'}
-            ,{field:'createTime', title:'发布时间', width:'15%', align:'center'}
-            ,{field:'right', title:'操作', width:'15.4%', align:'center', toolbar: '#barDemo'},
+            ,{field:'createTime', title:'发布时间', width:'14.6%', align:'center'}
+            ,{field:'right', title:'操作', width:'12.4%', align:'center', toolbar: '#barDemo'},
         ]]
         ,id:"idTest"
         ,done:function(res,curr,count){
@@ -89,7 +93,13 @@ layui.use(['form', 'table','tree'], function(){
             $(".layui-form-checkbox").css("style","margin-top: 5px;");
         }
         ,height : "full-195"
-        ,page: false
+        ,page: {
+            layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+            //,curr: 5 //设定初始在第 5 页
+            ,groups: 1 //只显示 1 个连续页码
+            ,first: false //不显示首页
+            ,last: false //不显示尾页
+        }
     });
 
 });

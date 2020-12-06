@@ -183,7 +183,8 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label" style="width: 100px">文章标签：</label>
                     <div class="layui-input-block">
-                        <input type="text" name="title"  lay-verify="required" placeholder="多个标签用英文符,(逗号) 隔开..." autocomplete="off" class="layui-input" style="width: 450px">
+                        <!--<input type="text" name="title"  lay-verify="required" placeholder="多个标签用英文符,(逗号) 隔开..." autocomplete="off" class="layui-input" style="width: 450px">-->
+                        <select name="label" lay-verify="required" xm-select="select1" style="width: 450px"></select>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -228,11 +229,25 @@
 <script src="../ueditor1_4_3_3/ueditor.all.js" type="text/javascript" charset="utf-8"></script> <!--ueditor核心文件-->
 <script src="../ueditor1_4_3_3/lang/zh-cn/zh-cn.js" type="text/javascript" charset="utf-8"></script> <!--ueditor语言文件-->
 <script>
-    layui.use(['laypage', 'layer', 'upload'], function() {
+    layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug', 'layer', 'upload', 'formSelects'], function () {
         var $ = layui.jquery
             , upload = layui.upload
             , laypage = layui.laypage
-            , layer = layui.layer;
+            , layer = layui.layer
+            ,formSelects = layui.formSelects;
+
+        //local模式
+        formSelects.data('select1', 'local', {
+            arr: [
+                {"name": "分组-1", "type": "optgroup"},
+                {"name": "北京", "value": 1},
+                {"name": "上海", "value": 2},
+                {"name": "分组-2", "type": "optgroup"},
+                {"name": "广州", "value": 3},
+                {"name": "深圳", "value": 4},
+                {"name": "天津", "value": 5}
+            ]
+        });
 
         //百度富文本框初始化
         var ue = UE.getEditor('edit', {zIndex: 10});

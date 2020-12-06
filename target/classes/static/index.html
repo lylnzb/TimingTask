@@ -11,13 +11,24 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tx.css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/login/css/login.css">
     <link rel="stylesheet" href="/css/mplayer.css">
     <style>
+
         a:hover, a:focus, a:active, a.active {
             cursor: url('/img/cur/link.cur'), pointer;
         }
+
+        button:hover, button:focus, button:active, button.active {
+            cursor: url('/img/cur/link.cur'), pointer;
+        }
+
+        li:hover, li:focus, li:active, li.active {
+            cursor: url('/img/cur/link.cur'), pointer;
+        }
+
         .image img{
             display: inline-block;
             height: 100%;
@@ -28,6 +39,147 @@
             position: absolute;
             z-index: 10;
             display: none;
+        }
+        h3.slide-title {
+            padding-right: 50px;
+            position: absolute;
+            z-index: 1;
+            bottom: 0px;
+            left: 0;
+            padding: 0 10px;
+            margin: 0;
+            font-size: 16px;
+            line-height: 35px;
+            font-weight: 500;
+            color: #ffffff;
+            cursor: url('/img/cur/link.cur'), pointer;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+            background: hsla(215, 15%, 25%, 0.58);
+        }
+
+        .post_box {
+            padding: 20px 20px 20px 232px;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-img {
+            margin-left: -214px;
+            float: left;
+            overflow: hidden;
+            width: 200px;
+            height: 150px;
+        }
+
+        .post-img img {
+            position: relative;
+            max-width: none;
+            width: calc(100% + 20px);
+            height: 150px;
+            -webkit-transition: opacity .35s,-webkit-transform .45s;
+            transition: opacity .35s,transform .45s;
+            -webkit-transform: translate3d(-20px,0,0);
+            transform: translate3d(-20px,0,0);
+            object-fit: cover;
+        }
+
+        em {
+            font-style: normal;
+        }
+
+        .post-left {
+            min-height: 150px;
+        }
+
+        .post-left h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+            line-height: 36px;
+            font-weight: normal;
+            position: relative;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .post-con {
+            font-weight: 500;
+            line-height: 180%;
+            height: 77px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: block;
+            -webkit-line-clamp: 2;
+            text-overflow: ellipsis;
+            text-align: justify;
+            word-break: break-all;
+        }
+
+        span.title-l {
+            position: absolute;
+            background: #3690cf;
+            top: 21px;
+            left: -1px;
+            width: 5px;
+            height: 28px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+
+        .item-meta {
+            height: min-content;
+            overflow: hidden;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .post_box .news {
+            background: url(http://www.yunyueyi.cn/zb_users/theme/koilee/style/images/new.png);
+            position: absolute;
+            width: 51px;
+            height: 51px;
+            right: 0px;
+            top: 0px;
+            z-index: 9;
+        }
+
+        .post_box.active {
+            width: 100%;
+            height: 100%;
+            background: #f7f7f7;
+        }
+
+        img:hover {
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+        }
+
+        .post-left a::before, .post-left a::after {
+            display: inline-block;
+            opacity: 0;
+            transition: transform 0.3s ease 0s, opacity 0.2s ease 0s;
+        }
+        .post-left a::after {
+            content: "]";
+            margin-left: 2px;
+            transform: translateX(-2px);
+        }
+        .post-left a::before {
+            content: "[";
+            margin-right: 2px;
+            transform: translateX(2px);
+        }
+        .post-left a:hover::before, .post-left a:hover::after, .post-left a:focus::before, .post-left a:focus::after {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+        .post-left a:hover, .post-left a:hover {
+            color: #47aa42;
         }
     </style>
 </head>
@@ -58,6 +210,30 @@
                 <!--左边-->
                 <div class="eleven wide column">
                     <!--header-->
+                    <div class="layui-carousel" id="test10" style="margin-top: 3px;">
+                        <div carousel-item="">
+                            <div>
+                                <a><img src="img/blogOnline.jpg" style="width: 100%;height: 100%"></a>
+                                <h3 class="slide-title">羅氏博客上线啦!</h3>
+                            </div>
+                            <div>
+                                <a><img src="http://127.0.0.1/profile/2.png" style="width: 100%;height: 100%"></a>
+                                <h3 class="slide-title">分享一篇好的文章</h3>
+                            </div>
+                            <div>
+                                <a><img src="http://127.0.0.1/profile/3.png" style="width: 100%;height: 100%"></a>
+                                <h3 class="slide-title">分享一篇好的文章</h3>
+                            </div>
+                            <div>
+                                <a><img src="http://127.0.0.1/profile/4.png" style="width: 100%;height: 100%"></a>
+                                <h3 class="slide-title">分享一篇好的文章</h3>
+                            </div>
+                            <div>
+                                <a><img src="http://127.0.0.1/profile/5.png" style="width: 100%;height: 100%"></a>
+                                <h3 class="slide-title">分享一篇好的文章</h3>
+                            </div>
+                        </div>
+                    </div>
                     <div class="ui top segment">
                         <div class="ui secondary pointing menu">
                             <a class="item active" data-tab="tab-name1">博客日记</a>
@@ -258,192 +434,102 @@
                             <a class="item active" data-tab="tab-name3">最新博文</a>
                         </div>
                         <div class="ui tab active" data-tab="tab-name3">
-                            <div class="ui m-padded-tb-max vertical segment " style="height: 160px;">
-                                <div class="ui mobile reversed stackable grid">
-                                    <div class="five wide column">
-                                        <a href="http://127.0.0.1/blog/details.html" target="_blank">
-                                            <img src="img/pic2.jpg" alt="" class="ui rounded image image-size">
-                                        </a>
+                            <article class="post_box" style="margin-top: -14px">
+                                <div class="post-img col-xs-4 backc2">
+                                    <a>
+                                        <img class="img-responsive img-rounded imgs" src="http://www.yunyueyi.cn/zb_users/theme/koilee/style/noimg/7.jpg" style="display: block;">
+                                        <em></em>
+                                    </a>
+                                </div>
+                                <div class="post-left">
+                                    <h3><a>zblogasp版两套程序同时使用一个数据库怎么设置？</a></h3>
+                                    <div class="post-con">
+                                        <span class="title-l"></span>
+                                        因为zblog不依赖于独立的数据库运行，在网站整站迁移过程中，只需要使用FTP直接下载，到另外一个主机上传，即可完成了迁移，整个迁移过程非常简单;WordPress、Emlog依赖独立的数据库，在网站迁移过程中都需要正确的备份好网站程序及数据库，迁移完成后，还要重新配置网站数据连接等等，整个过程就比...
                                     </div>
-                                    <div class="eleven wide column">
-                                        <div class="blogbox"><h3><a href="blog/details.html" target="_blank">你了解什么是自我嘛</a></h3></div>
-                                        <p>怎样才算是认清了自己，了解了自我？可能是一个人对于自己是一个怎样的人、将要去向何方、以及自己与社会的关系都有了一种相对稳定且连续的认知。这种状态也叫做——完成了“自我认同”。</p>
-                                        <div class="ui grid">
-                                            <div class="right aligned column" style="margin-right: 10px;">
-                                                <div class="ui horizontal link list">
-                                                    <div class="item">
-                                                        <i class="user icon"></i>回忆里依稀
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="calendar icon"></i>2020-6-20
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="eye icon"></i> 浏览(10)
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="comment icon"></i> 评论(10)
-                                                    </div>
-                                                </div>
+                                    <aside class="item-meta" style="margin-right: 10px;">
+                                        <div class="ui horizontal link list">
+                                            <div class="item">
+                                                <i class="user icon"></i>回忆里依稀
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-6-20
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i> 浏览(10)
+                                            </div>
+                                            <div class="item">
+                                                <i class="comment icon"></i> 评论(10)
                                             </div>
                                         </div>
-                                    </div>
+                                    </aside>
                                 </div>
-                            </div>
-                            <div class="ui m-padded-tb-max vertical segment " style="height: 160px;">
-                                <div class="ui mobile reversed stackable grid">
-                                    <div class="five wide column">
-                                        <a href="http://127.0.0.1/blog/details.html" target="_blank">
-                                            <img src="img/pic2.jpg" alt="" class="ui rounded image image-size">
-                                        </a>
+                                <div class="news"></div>
+                            </article>
+                            <article class="post_box">
+                                <div class="post-img col-xs-4 backc2">
+                                    <a>
+                                        <img class="img-responsive img-rounded imgs" src="http://www.yunyueyi.cn/zb_users/theme/koilee/style/noimg/7.jpg" style="display: block;">
+                                        <em></em>
+                                    </a>
+                                </div>
+                                <div class="post-left">
+                                    <h3><a>zblogasp版两套程序同时使用一个数据库怎么设置？</a></h3>
+                                    <div class="post-con">
+                                        <span class="title-l"></span>
+                                        因为zblog不依赖于独立的数据库运行，在网站整站迁移过程中，只需要使用FTP直接下载，到另外一个主机上传，即可完成了迁移，整个迁移过程非常简单;WordPress、Emlog依赖独立的数据库，在网站迁移过程中都需要正确的备份好网站程序及数据库，迁移完成后，还要重新配置网站数据连接等等，整个过程就比...
                                     </div>
-                                    <div class="eleven wide column">
-                                        <div class="blogbox"><h3><a href="blog/details.html" target="_blank">你了解什么是自我嘛</a></h3></div>
-                                        <p>怎样才算是认清了自己，了解了自我？可能是一个人对于自己是一个怎样的人、将要去向何方、以及自己与社会的关系都有了一种相对稳定且连续的认知。这种状态也叫做——完成了“自我认同”。</p>
-                                        <div class="ui grid">
-                                            <div class="right aligned column" style="margin-right: 10px;">
-                                                <div class="ui horizontal link list">
-                                                    <div class="item">
-                                                        <i class="user icon"></i>回忆里依稀
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="calendar icon"></i>2020-6-20
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="eye icon"></i> 浏览(10)
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="comment icon"></i> 评论(10)
-                                                    </div>
-                                                </div>
+                                    <aside class="item-meta" style="margin-right: 10px;">
+                                        <div class="ui horizontal link list">
+                                            <div class="item">
+                                                <i class="user icon"></i>回忆里依稀
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-6-20
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i> 浏览(10)
+                                            </div>
+                                            <div class="item">
+                                                <i class="comment icon"></i> 评论(10)
                                             </div>
                                         </div>
-                                    </div>
+                                    </aside>
                                 </div>
-                            </div>
-                            <div class="ui m-padded-tb-max vertical segment " style="height: 160px;">
-                                <div class="ui mobile reversed stackable grid">
-                                    <div class="five wide column">
-                                        <a href="http://127.0.0.1/blog/details.html" target="_blank">
-                                            <img src="img/pic2.jpg" alt="" class="ui rounded image image-size">
-                                        </a>
+                                <div class="news"></div>
+                            </article>
+                            <article class="post_box">
+                                <div class="post-img col-xs-4 backc2">
+                                    <a>
+                                        <img class="img-responsive img-rounded imgs" src="http://www.yunyueyi.cn/zb_users/theme/koilee/style/noimg/7.jpg" style="display: block;">
+                                        <em></em>
+                                    </a>
+                                </div>
+                                <div class="post-left">
+                                    <h3><a>zblogasp版两套程序同时使用一个数据库怎么设置？</a></h3>
+                                    <div class="post-con">
+                                        <span class="title-l"></span>
+                                        因为zblog不依赖于独立的数据库运行，在网站整站迁移过程中，只需要使用FTP直接下载，到另外一个主机上传，即可完成了迁移，整个迁移过程非常简单;WordPress、Emlog依赖独立的数据库，在网站迁移过程中都需要正确的备份好网站程序及数据库，迁移完成后，还要重新配置网站数据连接等等，整个过程就比...
                                     </div>
-                                    <div class="eleven wide column">
-                                        <div class="blogbox"><h3><a href="blog/details.html" target="_blank">你了解什么是自我嘛</a></h3></div>
-                                        <p>怎样才算是认清了自己，了解了自我？可能是一个人对于自己是一个怎样的人、将要去向何方、以及自己与社会的关系都有了一种相对稳定且连续的认知。这种状态也叫做——完成了“自我认同”。</p>
-                                        <div class="ui grid">
-                                            <div class="right aligned column" style="margin-right: 10px;">
-                                                <div class="ui horizontal link list">
-                                                    <div class="item">
-                                                        <i class="user icon"></i>回忆里依稀
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="calendar icon"></i>2020-6-20
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="eye icon"></i> 浏览(10)
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="comment icon"></i> 评论(10)
-                                                    </div>
-                                                </div>
+                                    <aside class="item-meta" style="margin-right: 10px;">
+                                        <div class="ui horizontal link list">
+                                            <div class="item">
+                                                <i class="user icon"></i>回忆里依稀
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-6-20
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i> 浏览(10)
+                                            </div>
+                                            <div class="item">
+                                                <i class="comment icon"></i> 评论(10)
                                             </div>
                                         </div>
-                                    </div>
+                                    </aside>
                                 </div>
-                            </div>
-                            <div class="ui m-padded-tb-max vertical segment " style="height: 160px;">
-                                <div class="ui mobile reversed stackable grid">
-                                    <div class="five wide column">
-                                        <a href="http://127.0.0.1/blog/details.html" target="_blank">
-                                            <img src="img/pic2.jpg" alt="" class="ui rounded image image-size">
-                                        </a>
-                                    </div>
-                                    <div class="eleven wide column">
-                                        <div class="blogbox"><h3><a href="blog/details.html" target="_blank">你了解什么是自我嘛</a></h3></div>
-                                        <p>怎样才算是认清了自己，了解了自我？可能是一个人对于自己是一个怎样的人、将要去向何方、以及自己与社会的关系都有了一种相对稳定且连续的认知。这种状态也叫做——完成了“自我认同”。</p>
-                                        <div class="ui grid">
-                                            <div class="right aligned column" style="margin-right: 10px;">
-                                                <div class="ui horizontal link list">
-                                                    <div class="item">
-                                                        <i class="user icon"></i>回忆里依稀
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="calendar icon"></i>2020-6-20
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="eye icon"></i> 浏览(10)
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="comment icon"></i> 评论(10)
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ui m-padded-tb-max vertical segment " style="height: 160px;">
-                                <div class="ui mobile reversed stackable grid">
-                                    <div class="five wide column">
-                                        <a href="http://127.0.0.1/blog/details.html" target="_blank">
-                                            <img src="img/pic2.jpg" alt="" class="ui rounded image image-size">
-                                        </a>
-                                    </div>
-                                    <div class="eleven wide column">
-                                        <div class="blogbox"><h3><a href="blog/details.html" target="_blank">你了解什么是自我嘛</a></h3></div>
-                                        <p>怎样才算是认清了自己，了解了自我？可能是一个人对于自己是一个怎样的人、将要去向何方、以及自己与社会的关系都有了一种相对稳定且连续的认知。这种状态也叫做——完成了“自我认同”。</p>
-                                        <div class="ui grid">
-                                            <div class="right aligned column" style="margin-right: 10px;">
-                                                <div class="ui horizontal link list">
-                                                    <div class="item">
-                                                        <i class="user icon"></i>回忆里依稀
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="calendar icon"></i>2020-6-20
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="eye icon"></i> 浏览(10)
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="comment icon"></i> 评论(10)
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ui m-padded-tb-max vertical segment " style="height: 160px;">
-                                <div class="ui mobile reversed stackable grid">
-                                    <div class="five wide column">
-                                        <a href="http://127.0.0.1/blog/details.html" target="_blank">
-                                            <img src="img/pic2.jpg" alt="" class="ui rounded image image-size">
-                                        </a>
-                                    </div>
-                                    <div class="eleven wide column">
-                                        <div class="blogbox"><h3><a href="blog/details.html" target="_blank">你了解什么是自我嘛</a></h3></div>
-                                        <p>怎样才算是认清了自己，了解了自我？可能是一个人对于自己是一个怎样的人、将要去向何方、以及自己与社会的关系都有了一种相对稳定且连续的认知。这种状态也叫做——完成了“自我认同”。</p>
-                                        <div class="ui grid">
-                                            <div class="right aligned column" style="margin-right: 10px;">
-                                                <div class="ui horizontal link list">
-                                                    <div class="item">
-                                                        <i class="user icon"></i>回忆里依稀
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="calendar icon"></i>2020-6-20
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="eye icon"></i> 浏览(10)
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="comment icon"></i> 评论(10)
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <div class="news"></div>
+                            </article>
                         </div>
                     </div>
                 </div>
@@ -598,14 +684,14 @@
 <script th:inline="javascript" th:src="@{/common/util.js}"></script>
 <script th:inline="javascript" th:src="@{/semantic-ui/dist/semantic.min.js}"></script>
 <script th:inline="javascript" th:src="@{/login/js/login.js}"></script>
-<!--<script src='js/snowflakes.min.js'></script>-->
 <script th:inline="javascript" th:src="@{/layui/layui.all.js}"></script>
 <script src="/common/mPlayer/mplayer.js"></script>
 <script src="/common/mPlayer/mplayer-list.js"></script>
 <script src="/common/mPlayer/mplayer-functions.js"></script>
 <script src="http://cdn.bootcss.com/jquery-nstslider/1.0.13/jquery.nstSlider.min.js"></script>
 <script type="text/javascript" src="/common/player.js"></script>
-<script type="text/javascript" src="/common/mymouse.js" id="mymouse"></script>
+<!-- 鼠标拖尾特效插件 -->
+<!--<script type="text/javascript" src="/common/mymouse.js" id="mymouse"></script>-->
 <script>
     $(document).ready(function(){
 
@@ -622,8 +708,31 @@
             $(this).removeClass("active");
             $('.newslist li:first-child').addClass("active");
         });
+
+        //悬浮变色事件
+        $('.post_box').mouseover(function(){
+            $(this).addClass("active");
+            $(this).find("img").attr("style", "-webkit-transform: scale(1.1);-moz-transform: scale(1.1);-o-transform: scale(1.1);-ms-transform: scale(1.1);");
+        });
+        $('.post_box').mouseout(function(){
+            $(this).removeClass("active");
+            $(this).find("img").attr("style", "");
+        });
     });
     $('#hybrid select').dropdown({on: 'hover'});
+
+    layui.use(['carousel', 'form'], function(){
+        var carousel = layui.carousel
+            ,form = layui.form;
+
+        //图片轮播
+        carousel.render({
+            elem: '#test10'
+            ,width: '100%'
+            ,height: '320px'
+            ,interval: 4000
+        });
+    });
 
     window.onunload = function() {
         alert("这是知道吗？");

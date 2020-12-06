@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CommonServerImpl implements CommonServer {
@@ -35,13 +37,20 @@ public class CommonServerImpl implements CommonServer {
      * @return
      */
     public Object[][] queryMusicList(){
-        List<MusicBean> musicList = commonMapper.queryMusicList();
+        //查询音乐歌单数据
+        List<DictDataBean> dictDataList = commonMapper.queryCodeValue("web_music_gedan");
 
-        for(MusicBean music : musicList){
-            music.setImg(LylBlogConfig.getBasePath() + "musicfile/" + music.getImg());
-            music.setSrc(LylBlogConfig.getBasePath() + "musicfile/" + music.getSrc());
+        Map<Integer, Object> musicMap = new HashMap<Integer, Object>();
+        Integer i = 1;
+        for(DictDataBean dict : dictDataList) {
+            List<MusicBean> musicList = commonMapper.queryMusicList(dict.getDictValue());
+            for(MusicBean music : musicList){
+                music.setImg(LylBlogConfig.getBasePath() + "musicfile/" + music.getImg());
+                music.setSrc(LylBlogConfig.getBasePath() + "musicfile/" + music.getSrc());
+            }
+            musicMap.put(i, musicList);
+            i++;
         }
-        System.out.println(EntityToArrayUtil.toArray(musicList).toString());
-        return EntityToArrayUtil.toArray(musicList);
+        return EntityToArrayUtil.toArray(musicMap);
     }
 }

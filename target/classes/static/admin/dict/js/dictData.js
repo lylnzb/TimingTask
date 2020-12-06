@@ -1,7 +1,7 @@
 var tableIns;
 var tableIns1;
 var nowPage;
-layui.config({base: '../layuiTablePlug/test/js/'}).use(['testTablePlug'], function () {
+layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], function () {
     var table = layui.table,
         form = layui.form;
 
@@ -146,10 +146,9 @@ layui.config({base: '../layuiTablePlug/test/js/'}).use(['testTablePlug'], functi
                 title: "编辑字典数据",
                 shadeClose: true,
                 shade: 0.5,
-                skin: 'layui-layer-rim',
                 closeBtn:1,
                 area: ['800px', '600px'],
-                content: '../admin/dict/saveOrEditDictData.html?type=update&dictType='+$("#dictType").val()+'&dictCode='+data.dictCode,
+                content: basePath + '/dict/saveOrEditDictData?type=update&dictType='+$("#dictType").val()+'&dictCode='+data.dictCode,
                 end: function () {//层消失回调
                     layReload1();
                 }
@@ -253,10 +252,9 @@ $("#addDictType").click(function(){
         title: "新增字典类型",
         shadeClose: true,
         shade: 0.5,
-        skin: 'layui-layer-rim',
         closeBtn:1,
         area: ['800px', '500px'],
-        content: '../admin/dict/saveOrEditDictType.html',
+        content: basePath + '/dict/saveOrEditDictType',
         end: function () {//层消失回调
             layReload(1);
         }
@@ -272,10 +270,9 @@ $("#addDictData").click(function(){
             title: "新增字典数据",
             shadeClose: true,
             shade: 0.5,
-            skin: 'layui-layer-rim',
             closeBtn:1,
             area: ['800px', '600px'],
-            content: '../admin/dict/saveOrEditDictData.html?type=add&dictType='+$("#dictType").val(),
+            content: basePath + '/dict/saveOrEditDictData?type=add&dictType='+$("#dictType").val(),
             end: function () {//层消失回调
                 layReload1();
             }

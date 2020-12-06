@@ -263,7 +263,6 @@ $("#iconUrl").on("click", function () {
         title: '选择图标',
         shadeClose: true,
         shade: 0.5,
-        skin: 'layui-layer-rim',
         closeBtn:1,
         maxmin: true,
         area: ['100%', '100%'],
@@ -281,10 +280,9 @@ $("#addPerm").click(function(){
             title: '新增权限',
             shadeClose: true,
             shade: 0.5,
-            skin: 'layui-layer-rim',
             closeBtn:1,
             area: ['700px', '400px'],
-            content: '../admin/permission/addPermission.html?parentName='+$("#dropdown_select").val()+'&parentId=' + $('#permId').val(),
+            content: basePath + '/perm/addOrUpdaPermission?parentName='+$("#dropdown_select").val()+'&parentId=' + $('#permId').val(),
             end: function () {//层消失回调
                 init();
                 layReload($('#permId').val());

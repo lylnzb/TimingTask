@@ -14,11 +14,45 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
 
     @Resource
     private UserServer userServer;
+
+    private static String USERBASEPATH = "admin/user";
+    private static String ROLEBASEPATH = "admin/role";
+    private static String PERMBASEPATH = "admin/permission";
+
+    @RequestMapping("/user/userList")
+    public String userList(Model model){
+        return USERBASEPATH + "/userList";
+    }
+
+    @RequestMapping("/user/addOrUpdaUser")
+    public String addOrUpdaUser(Model model){
+        return USERBASEPATH + "/addOrUpdaUser";
+    }
+
+    @RequestMapping("/role/roleList")
+    public String roleList(Model model){
+        return ROLEBASEPATH + "/roleList";
+    }
+
+    @RequestMapping("/role/addOrUpdaRole")
+    public String addOrUpdaRole(Model model){
+        return ROLEBASEPATH + "/addRole";
+    }
+
+    @RequestMapping("/perm/permissionList")
+    public String permissionList(Model model){
+        return PERMBASEPATH + "/permissionList";
+    }
+
+    @RequestMapping("/perm/addOrUpdaPermission")
+    public String addOrUpdaPermission(Model model){
+        return PERMBASEPATH + "/addPermission";
+    }
 
     @RequestMapping("/userCenter")
     public String userCenter(Model model){
@@ -30,7 +64,7 @@ public class UserController {
      * @param userBean
      * @return
      */
-    @RequestMapping("/queryUserList")
+    @RequestMapping("/user/queryUserList")
     @ResponseBody
     public ResultObj queryUserList(@RequestBody UserBean userBean){
         try {
@@ -46,7 +80,7 @@ public class UserController {
      * @param roleBean
      * @return
      */
-    @RequestMapping("/queryRoleList")
+    @RequestMapping("/user/queryRoleList")
     @ResponseBody
     public ResultObj queryRoleList(@RequestBody RoleBean roleBean){
         try {
@@ -62,7 +96,7 @@ public class UserController {
      * @param roleBean
      * @return
      */
-    @RequestMapping("/addRoleInfo")
+    @RequestMapping("/user/addRoleInfo")
     @ResponseBody
     public ResultObj addRoleInfo(@RequestBody RoleBean roleBean){
         try {
@@ -78,7 +112,7 @@ public class UserController {
      * @param permissionBean
      * @return
      */
-    @RequestMapping("/queryPermInfo")
+    @RequestMapping("/user/queryPermInfo")
     @ResponseBody
     public ResultObj queryPermInfo(@RequestBody PermissionBean permissionBean){
         try {
@@ -94,7 +128,7 @@ public class UserController {
      * @param permissionBean
      * @return
      */
-    @RequestMapping("/addPermInfo")
+    @RequestMapping("/user/addPermInfo")
     @ResponseBody
     public ResultObj addPermInfo(@RequestBody PermissionBean permissionBean){
         try {

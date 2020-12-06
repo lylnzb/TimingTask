@@ -28,17 +28,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
     <!-- 查询音乐列表 -->
-    <select id="queryMusicList" resultType="com.lylBlog.common.bean.MusicBean">
+    <select id="queryMusicList" resultType="com.lylBlog.common.bean.MusicBean" parameterType="String">
         SELECT
             'true' AS basic,
-            '我的歌单' AS NAME,
+            dict_label AS NAME,
             '' AS singer,
             '' AS img,
             '' AS src,
             '' AS lrc,
             '' AS time
-        FROM DUAL
-        UNION ALL
+        FROM sys_dict_data WHERE dict_type = 'web_music_gedan' and dict_value = #{gedan} AND valid = '1'
+        union all
         SELECT
             'false' AS basic,
             musicName AS NAME,
@@ -47,6 +47,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             ( SELECT fileUrl FROM sys_music_file WHERE musicId = t.musicId AND fileType = 'audio' AND valid = '1' ) AS src,
             lyrics AS lrc,
             length AS time
-        FROM sys_music AS t where valid = '1'
+        FROM sys_music AS t where valid = '1' and gedan = #{gedan}
     </select>
 </mapper>

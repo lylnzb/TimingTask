@@ -27,7 +27,7 @@ public class FileUtil {
             int len = -1;
             StringBuffer lyrics = new StringBuffer();
             while ((len = in.read(b, 0, b.length)) != -1) {
-                String str = new String(b, 0, len, "GBK");
+                String str = new String(b, 0, len, "UTF-8");
                 lyrics.append(str);
             }
             return lyrics.toString();

@@ -5,11 +5,9 @@
  @License：MIT
 
  */
-layui.config({base: '../layuiTablePlug/layui/plug/'})
-// layui.config({base: 'download/tablePlug/'})
-//   .extend({tablePlug: 'tablePlug.min'})
+layui.config({base: '../admin/layuiTablePlug/layui/plug/'})
   .extend({tablePlug: 'tablePlug/tablePlug'})
-  .extend({formSelects: 'formSelects/formSelects-v4', renderFormSelectsIn: 'renderFormSelectsIn'})
+  .extend({formSelects: 'formSelects/dist/formSelects-v4', renderFormSelectsIn: 'renderFormSelectsIn'})
   .define(['tablePlug', 'laydate', 'renderFormSelectsIn'], function (exports) {
     "use strict";
     var $ = layui.$,

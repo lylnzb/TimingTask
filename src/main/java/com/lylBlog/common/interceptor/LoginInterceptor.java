@@ -16,19 +16,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginInterceptor implements HandlerInterceptor {
 
-    @Resource
-    private LylBlogConfig blogConfig;
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         boolean flag = false;
         try{
             flag = ShiroUtils.isAuthenticated();
+            request.setAttribute("isAuthenticated", flag);//判断用户是否登录
+            request.setAttribute("basePath", LylBlogConfig.getBasePath());//项目基础路径
         }catch (Exception e){
             System.out.println("我要忽略你。。。");
         }
-        request.setAttribute("isAuthenticated", flag);//判断用户是否登录
-        request.setAttribute("basePath", blogConfig.getBasePath());
         return true;
     }
 

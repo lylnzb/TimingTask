@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="/qqFace/css/reset.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/admin/layuiTablePlug/layui/plug/formSelects/dist/formSelects-v4.css"/>
 
-    <link href="../css/tail.css" rel="stylesheet" type="text/css">
-    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
-    <link href="../css/table.css" rel="stylesheet" type="text/css" />
-    <link href="../css/animate.css" rel="stylesheet"/>
+
+    <link href="/admin/css/tail.css" rel="stylesheet" type="text/css">
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/css/table.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/css/animate.css" rel="stylesheet"/>
+
     <style>
         .leave_position a {
             font-size: 12px;
@@ -137,6 +140,9 @@
         #fl .layui-form-select {
             width:450px;
         }
+        .xm-input.xm-select{width: 450px;border-color: #C0C4CC;}
+
+        .xm-select-dl{width: 450px}
 
         .department_main label{width: 10%;text-align: right;font-size: 12px}
         .department_main input, .department_main select{margin-right: 1%;height: 32px;border: 1px #ccc solid;background-color: #fff;border-radius: 4px;padding-left: 6px;}
@@ -183,7 +189,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 100px">文章标签：</label>
                         <div class="layui-input-block">
-                            <input type="text" name="title"  lay-verify="required" placeholder="多个标签用英文符,(逗号) 隔开..." autocomplete="off" class="layui-input" style="width: 450px">
+                            <select id="articleLabel" name="articleLabel" xm-select="select1"></select>
                         </div>
                     </div>
                 </div>
@@ -199,7 +205,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 100px">来源方式：</label>
                         <div class="layui-input-block">
-                            <div class="layui-input-inline" style="width: 30%">
+                            <div class="layui-input-inline" style="width: 205px;">
                                 <select name="city" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">原创</option>
@@ -240,12 +246,29 @@
 <script src="/ueditor1_4_3_3/ueditor.all.js" type="text/javascript" charset="utf-8"></script> <!--ueditor核心文件-->
 <script src="/ueditor1_4_3_3/lang/zh-cn/zh-cn.js" type="text/javascript" charset="utf-8"></script> <!--ueditor语言文件-->
 <script>
-    layui.use(['laypage', 'layer', 'upload'], function() {
-        var $ = layui.jquery
-            , upload = layui.upload
-            , laypage = layui.laypage
-            , layer = layui.layer;
+    //全局定义一次, 加载formSelects
+    layui.config({
+        base: '../admin/layuiTablePlug/layui/plug/formSelects/dist/' //此处路径请自行处理, 可以使用绝对路径
+    }).extend({
+        formSelects: 'formSelects-v4'
+    });
+    //加载模块
+    layui.use(['jquery', 'formSelects'], function(){
+            var $ = layui.jquery
+                ,formSelects = layui.formSelects;
 
+        //local模式
+        formSelects.data('select1', 'local', {
+            arr: [
+                {"name": "分组-1", "type": "optgroup"},
+                {"name": "北京", "value": 1},
+                {"name": "上海", "value": 2},
+                {"name": "分组-2", "type": "optgroup"},
+                {"name": "广州", "value": 3},
+                {"name": "深圳", "value": 4},
+                {"name": "天津", "value": 5}
+            ]
+        });
         //百度富文本框初始化
         var ue = UE.getEditor('edit', {zIndex: 10});
     });

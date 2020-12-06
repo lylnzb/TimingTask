@@ -1,6 +1,7 @@
 package com.lylBlog.common.util;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @description: list对象转二维数组 工具类
@@ -10,18 +11,25 @@ import java.util.List;
 public class EntityToArrayUtil {
 
     /**
-     * 集合转二维数组
-     * @param list
+     * 转二维数组
+     * @param map
      * @param <T>
      * @return
      */
-    public static <T> Object[][] toArray(List<T> list){
-        Object[][] result = new Object[1][list.size()];
+    public static <T> Object[][] toArray(Map<Integer, T> map){
+        Object[][] result = new Object[map.size()][];
 
-        for(int i = 0;i < result.length;i++){
-            for(int j = 0;j < result[i].length;j++){
+        Integer i = 0;
+        //keySet获取map集合key的集合
+        for(Integer key:map.keySet()){
+            List list = (List) map.get(key);
+
+            //定义一个Object类型的不规则数组
+            result[i] = new Object[list.size()];
+            for(int j = 0;j < list.size();j++){
                 result[i][j] = list.get(j);
             }
+            i++;
         }
         return result;
     }
