@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="columnUrl != null and columnUrl != ''">columnUrl,</if>
             <if test="isDefault != null and isDefault != ''">isDefault,</if>
             <if test="isHidden != null and isHidden != ''">isHidden,</if>
+            <if test="isAllow != null and isAllow != ''">isAllow,</if>
             <if test="keywords != null and keywords != ''">keywords,</if>
             <if test="description != null and description != ''">description,</if>
             <if test="orderBy != null and orderBy != ''">orderBy,</if>
@@ -25,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="columnUrl != null and columnUrl != ''">#{columnUrl},</if>
             <if test="isDefault != null and isDefault != ''">#{isDefault},</if>
             <if test="isHidden != null and isHidden != ''">#{isHidden},</if>
+            <if test="isAllow != null and isAllow != ''">#{isAllow},</if>
             <if test="keywords != null and keywords != ''">#{keywords},</if>
             <if test="description != null and description != ''">#{description},</if>
             <if test="orderBy != null and orderBy != ''">#{orderBy},</if>
@@ -42,6 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="columnUrl != null and columnUrl != ''">columnUrl = #{columnUrl},</if>
             <if test="isDefault != null and isDefault != ''">isDefault = #{isDefault},</if>
             <if test="isHidden != null and isHidden != ''">isHidden = #{isHidden},</if>
+            <if test="isAllow != null and isAllow != ''">isAllow = #{isAllow},</if>
             <if test="keywords != null and keywords != ''">keywords = #{keywords},</if>
             <if test="description != null and description != ''">description = #{description},</if>
             <if test="orderBy != null and orderBy != ''">orderBy = #{orderBy},</if>
@@ -58,6 +61,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             ( SELECT dict_label FROM sys_dict_data WHERE dict_type = 'sys_hide_show' AND dict_value = t.isHidden ) AS typeName
         FROM
             `sys_column` AS t order by orderBy
+    </select>
+
+    <!-- 查询允许发布文章的专栏信息 -->
+    <select id="queryWebColumnByAllow" resultType="com.lylBlog.admin.bean.WebColumnBean">
+        select * from sys_column where isAllow = 'Y'
     </select>
 
     <!-- 根据id查询网站栏目信息 -->

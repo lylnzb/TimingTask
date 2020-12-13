@@ -5,7 +5,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人中心 -羅氏博客</title>
     <link rel="stylesheet" href="/semantic-ui/dist/semantic.min.css">
     <link rel="stylesheet" href="/qqFace/css/reset.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -103,10 +102,9 @@
             height: 40px;
         }
         #uplodeFile {
-            float: right;
-            width: 200px;
-            top: 197px;
-            height: 195px;
+            width: 300px;
+            height: 200px;
+            background-color: rgba(210, 191, 191, 0.15);
         }
         #uplodeFile img{
             max-width: 166px;
@@ -138,13 +136,14 @@
         }
 
         #fl .layui-form-select {
-            width:450px;
+            width:100%;
         }
-        .xm-input.xm-select{width: 450px;border-color: #C0C4CC;}
+        .xm-input.xm-select{margin-right: 1%;min-height: 32px;border: 1px #ccc solid;background-color: #fff;border-radius: 4px;padding-left: 6px;}
 
-        .xm-select-dl{width: 450px}
+        .layui-form-item .layui-input-inline {float: left;width: 35%;margin-right: 0;}
+        .layui-form-switch {height: 24.4px;margin-top: 6px;}
 
-        .department_main label{width: 10%;text-align: right;font-size: 12px}
+        .department_main label{width: 150px;text-align: right;font-size: 12px;font-weight: bold}
         .department_main input, .department_main select{margin-right: 1%;height: 32px;border: 1px #ccc solid;background-color: #fff;border-radius: 4px;padding-left: 6px;}
         .department_main textarea{resize: none;border: 1px #ccc solid;height: 50px;background-color: #fff;border-radius: 4px;padding-left: 6px;padding-top: 5px;}
     </style>
@@ -154,28 +153,15 @@
 <div id="tools-box" align="left" style = 'width: 100%;padding-top: 10px;margin-bottom: 60px;'>
     <form id="frm" class="layui-form" action="">
         <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-            <div class="layui-upload-drag" id="uplodeFile">
-                <div id="upload">
-                    <i class="layui-icon"></i>
-                    <p>点击上传，或将文件拖拽到此处</p>
-                </div>
-                <div class="layui-hide" id="uploadDemoView">
-                    <img src="" alt="上传成功后渲染">
-                </div>
-            </div>
-            <div class="releaseArticle" style="margin-top: -193px;">
-                <div class="department_main">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 100px">文章标题：</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="title"  lay-verify="required" placeholder="请输入文章标题..." autocomplete="off" class="layui-input" style="width: 450px">
-                        </div>
-                    </div>
-                </div>
+            <div class="releaseArticle">
                 <div class="department_main">
                     <div class="layui-form-item" id="fl">
-                        <label class="layui-form-label" style="width: 100px">文章分类：</label>
-                        <div class="layui-input-block">
+                        <label class="layui-form-label">文章标题：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="title"  lay-verify="required" placeholder="请输入文章标题..." autocomplete="off" class="layui-input" style="width: 100%">
+                        </div>
+                        <label class="layui-form-label">文章分类：</label>
+                        <div class="layui-input-inline">
                             <select name="city" lay-verify="required" style="width: 450px">
                                 <option value=""></option>
                                 <option value="0">博客日记</option>
@@ -187,41 +173,90 @@
                 </div>
                 <div class="department_main">
                     <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 100px">文章标签：</label>
-                        <div class="layui-input-block">
-                            <select id="articleLabel" name="articleLabel" xm-select="select1"></select>
+                        <label class="layui-form-label">来源名称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="title"  lay-verify="required" placeholder="请输入来源名称..." autocomplete="off" class="layui-input" style="width: 100%">
+                        </div>
+                        <label class="layui-form-label">所属专栏：</label>
+                        <div class="layui-input-inline">
+                            <select id="zl" name="articleLabel" xm-select="select1"></select>
                         </div>
                     </div>
                 </div>
                 <div class="department_main">
                     <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 100px">来源名称：</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="title"  lay-verify="required" placeholder="请输入来源名称..." autocomplete="off" class="layui-input" style="width: 450px">
-                        </div>
-                    </div>
-                </div>
-                <div class="department_main">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 100px">来源方式：</label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline" style="width: 205px;">
+                        <label class="layui-form-label">来源方式：</label>
+                        <div class="layui-input-inline">
+                            <div class="layui-input-inline" style="width: 30%;">
                                 <select name="city" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">原创</option>
                                     <option value="1">转载</option>
                                 </select>
                             </div>
-                            <div class="layui-input-inline">
-                                <input type="text" name="title"  lay-verify="required" placeholder="请输入来源网站..." autocomplete="off" class="layui-input" style="width: 466px;">
+                            <div class="layui-input-inline" style="width: 70%;">
+                                <input type="text" name="title"  lay-verify="required" placeholder="请输入来源网站..." autocomplete="off" class="layui-input" style="width: 100%">
+                            </div>
+                        </div>
+                        <label class="layui-form-label">文章标签：</label>
+                        <div class="layui-input-inline">
+                            <select id="articleLabel" name="articleLabel" xm-select="select1"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="department_main">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">文章封面：</label>
+                        <div class="layui-input-inline" style="width: 81.8%">
+                            <div class="layui-upload-drag" id="uplodeFile">
+                                <div id="upload">
+                                    <!--<i class="layui-icon"></i>-->
+                                    <img src="http://127.0.0.1/profile/timg.jpg"/>
+                                    <p style="margin-top: 7px;">点击上传，或将图片拖拽到此处...</p>
+                                </div>
+                                <div class="layui-hide" id="uploadDemoView">
+                                    <img src="" alt="上传成功后渲染">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="department_main">
                     <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 100px">文章正文：</label>
-                        <div class="layui-input-block">
+                        <label class="layui-form-label">是否置顶：</label>
+                        <div class="layui-input-inline" style="width: 9%">
+                            <input type="checkbox" name="switch" lay-skin="switch" lay-text="ON|OFF" style="height: 24.4px">
+                        </div>
+                        <label class="layui-form-label">是否推荐：</label>
+                        <div class="layui-input-inline" style="width: 7%">
+                            <input type="checkbox" name="switch" lay-skin="switch" lay-text="ON|OFF" style="height: 24.4px">
+                        </div>
+                        <label class="layui-form-label">开启简介：</label>
+                        <div class="layui-input-inline" style="width: 7%">
+                            <input type="checkbox" name="switch" lay-skin="switch" lay-text="ON|OFF" style="height: 24.4px">
+                        </div>
+                        <label class="layui-form-label">允许评论：</label>
+                        <div class="layui-input-inline" style="width: 7%">
+                            <input type="checkbox" name="switch" lay-skin="switch" lay-text="ON|OFF" style="height: 24.4px">
+                        </div>
+                        <label class="layui-form-label">允许转载：</label>
+                        <div class="layui-input-inline" style="width: 7%">
+                            <input type="checkbox" name="switch" lay-skin="switch" lay-text="ON|OFF" style="height: 24.4px">
+                        </div>
+                    </div>
+                </div>
+                <div class="department_main">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">简介：</label>
+                        <div class="layui-input-inline" style="width: 81.8%">
+                            <textarea name="signature" id="signature" class="layui-textarea" style="width: 100%" placeholder="如果开启简介且没有书写简介内容，则截取文章首段内容"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="department_main">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">文章正文：</label>
+                        <div class="layui-input-inline" style="width: 81.8%">
                             <script id="edit" type="text/plain" style="width:100%;height:500px;"></script>
                         </div>
                     </div>

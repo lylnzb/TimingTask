@@ -62,6 +62,15 @@ public class WebColumnServerImpl implements WebColumnServer {
     }
 
     /**
+     * 查询允许发布文章的专栏信息
+     * @return
+     */
+    public ResultObj queryWebColumnByAllow(){
+        List<WebColumnBean> webColumnBeanList = webColumnMapper.queryWebColumnByAllow();
+        return ResultObj.ok(webColumnBeanList.size(), webColumnBeanList);
+    }
+
+    /**
      * 根据id查询网站栏目信息
      * @param columnId
      * @return

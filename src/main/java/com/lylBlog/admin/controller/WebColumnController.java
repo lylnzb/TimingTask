@@ -57,6 +57,21 @@ public class WebColumnController {
     }
 
     /**
+     * 查询允许发布文章的专栏信息
+     * @return
+     */
+    @RequestMapping("/queryWebColumnByAllow")
+    @ResponseBody
+    public ResultObj queryWebColumnByAllow(){
+        try {
+            return webColumnServer.queryWebColumnByAllow();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResultObj.fail();
+    }
+
+    /**
      * 根据id查询网站栏目信息
      * @param columnId
      * @return

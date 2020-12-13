@@ -8,8 +8,6 @@ import com.lylBlog.common.bean.ParaBean;
  * @Date: 2020/11/8 14:47
  */
 public class WebColumnBean extends ParaBean{
-    private int rk;//序号
-
     private String columnId;//栏目编号
     private String parentId;//父栏目编号
     private String columnName;//栏目名称
@@ -23,14 +21,7 @@ public class WebColumnBean extends ParaBean{
     private String attributeName;//栏目属性名称
     private String typeName;//栏目状态名称
     private String isMenu;//是否为菜单
-
-    public int getRk() {
-        return rk;
-    }
-
-    public void setRk(int rk) {
-        this.rk = rk;
-    }
+    private String isAllow;//是否允许发布文章
 
     public String getColumnId() {
         return columnId;
@@ -126,5 +117,13 @@ public class WebColumnBean extends ParaBean{
 
     public void setIsMenu(String isMenu) {
         this.isMenu = isMenu;
+    }
+
+    public String getIsAllow() {
+        return isAllow;
+    }
+
+    public void setIsAllow(String isAllow) {
+        this.isAllow = isAllow;
     }
 }

@@ -25,8 +25,7 @@ $.ajax({
 	async:false,
 	contentType: 'application/json;charset=utf-8',
 	success: function (resultData) {
-		mplayer_song = eval(resultData)
-		console.log(mplayer_song);
+		mplayer_song = eval(resultData);
 	},
 	error: function () {
 

@@ -25,6 +25,7 @@ var MPlayer = (function () {
 		// 自动播放
 		if ($this.settings.autoPlay) {
 			$this.play($this.settings.playList,$this.settings.playSong);
+			$this.pause();
 		} else {
 			$this._setInfo($this.settings.playList,$this.settings.playSong);
 		}
@@ -37,7 +38,7 @@ var MPlayer = (function () {
 				playMode:3,
 				playList:0,
 				playSong:0,
-				autoPlay:false,
+				autoPlay:true,
 				lrcTopPos:0,
 				defaultVolume:100
 			};

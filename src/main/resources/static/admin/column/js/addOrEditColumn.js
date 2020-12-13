@@ -71,6 +71,7 @@ layui.use(['form', 'layer'], function(){
                 $("#orderBy").val(data.orderBy);
                 $("#isDefault").find('input[value=' + data.isDefault + ']').prop("checked",true);
                 $("#isHidden").find('input[value=' + data.isHidden + ']').prop("checked",true);
+                $("#isAllow").find('input[value=' + data.isAllow + ']').prop("checked",true);
                 $("#description").val(data.description);
                 form.render();
             }
@@ -87,6 +88,7 @@ layui.use(['form', 'layer'], function(){
         var orderBy = data.field.orderBy;//排列顺序
         var isDefault = data.field.web_column_attribute;//栏目属性
         var isHidden = data.field.sys_hide_show;//栏目状态
+        var isAllow = data.field.sys_column_yes_no;//是否允许发布文章
         var description = data.field.description;//栏目说明
         var paramData = {
             columnId : null == columnId ? "" : columnId,
@@ -98,6 +100,7 @@ layui.use(['form', 'layer'], function(){
             orderBy : orderBy,
             isDefault : isDefault,
             isHidden : isHidden,
+            isAllow : isAllow,
             description : description
         }
         $.ajax({
@@ -130,6 +133,8 @@ layui.use(['form', 'layer'], function(){
 function findCodeValue(form){
     loadRadio("#isDefault", "web_column_attribute", form, "judgeM");
     loadRadio("#isHidden", "sys_hide_show", form);
+    loadRadio("#isAllow", "sys_column_yes_no", form);
+
     $.ajax({
         url:basePath+'/webColumn/queryParentColumn',
         type:"POST",

@@ -4,4 +4,77 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lylBlog.admin.mapper.ArticleMapper">
 
+    <!-- 查询标签信息 -->
+    <select id="queryLabelInfo" parameterType="com.lylBlog.admin.bean.LabelBean" resultType="com.lylBlog.admin.bean.LabelBean">
+        SELECT
+            *
+        FROM
+            (
+        SELECT
+            ( @i := @i + 1 ) rk,
+            t.*,
+            (SELECT columnName FROM sys_column WHERE columnId = t.columnId ) AS columnName,
+            (SELECT nickname FROM m_user WHERE id = t.createBy AND valid = '1') as nickName,
+            (SELECT dict_label FROM sys_dict_data WHERE dict_type = 'sys_label_status' AND dict_value = t.valid ) AS isAvailable
+        FROM
+            sys_label t,
+            ( SELECT @i := 0 ) rk
+            where 1 = 1
+            <if test="labelId != null and labelId != ''">
+                and labelId = #{labelId}
+            </if>
+            ) AS label
+        where rk between (#{page}-1)*#{limit} + 1 and #{page}*#{limit} ORDER BY rk
+    </select>
+
+    <!-- 查询标签信息总数 -->
+    <select id="queryLabelInfoCount" parameterType="com.lylBlog.admin.bean.LabelBean" resultType="int">
+        select count(1) from sys_label
+        where 1 = 1
+        <if test="labelId != null and labelId != ''">
+            and labelId = #{labelId}
+        </if>
+    </select>
+
+    <!-- 新增标签 -->
+    <insert id="addLabelInfo" parameterType="com.lylBlog.admin.bean.LabelBean">
+        insert into sys_label(
+            <if test="labelName != null and labelName != ''">labelName,</if>
+            <if test="columnId != null and columnId != ''">columnId,</if>
+            <if test="labelRemarks != null and labelRemarks != ''">labelRemarks,</if>
+            <if test="description != null and description != ''">description,</if>
+            <if test="valid != null and valid != ''">valid,</if>
+            <if test="createBy != null and createBy != ''">createBy,</if>
+            createTime
+        )values(
+            <if test="labelName != null and labelName != ''">#{labelName},</if>
+            <if test="columnId != null and columnId != ''">#{columnId},</if>
+            <if test="labelRemarks != null and labelRemarks != ''">#{labelRemarks},</if>
+            <if test="description != null and description != ''">#{description},</if>
+            <if test="valid != null and valid != ''">#{valid},</if>
+            <if test="createBy != null and createBy != ''">#{createBy},</if>
+            sysdate()
+        )
+    </insert>
+
+    <!-- 修改标签 -->
+    <update id="updateLabelInfo" parameterType="com.lylBlog.admin.bean.LabelBean">
+        update sys_label set
+            <if test="labelName != null and labelName != ''">labelName = #{labelName},</if>
+            <if test="columnId != null and columnId != ''">columnId = #{columnId},</if>
+            <if test="labelRemarks != null and labelRemarks != ''">labelRemarks = #{labelRemarks},</if>
+            <if test="description != null and description != ''">description = #{description},</if>
+            <if test="valid != null and valid != ''">valid = #{valid},</if>
+            <if test="updateBy != null and updateBy != ''">updateBy = #{updateBy},</if>
+            updateTime = sysdate()
+        where labelId = #{labelId}
+    </update>
+
+    <!-- 删除标签 -->
+    <delete id="deleteLabelInfo">
+        delete from sys_label where labelId in
+        <foreach collection="deleteIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

@@ -34,6 +34,12 @@ public interface WebColumnMapper {
     List<WebColumnBean> queryWebColumnInfo();
 
     /**
+     * 查询允许发布文章的专栏信息
+     * @return
+     */
+    List<WebColumnBean> queryWebColumnByAllow();
+
+    /**
      * 根据id查询网站栏目信息
      * @param columnId
      * @return
