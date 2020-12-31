@@ -9,46 +9,46 @@
     <link th:href="@{${basePath}+'/admin/css/animate.css'}" rel="stylesheet"/>
     <link th:href="@{${basePath}+'/admin/css/bootstrap.min.css'}" rel="stylesheet" type="text/css">
     <link th:href="@{${basePath}+'/admin/css/font-awesome.min.css'}" rel="stylesheet"/>
-    <link th:href="@{${basePath}+'/admin/css/style.css'}" rel="stylesheet"/>
     <link href="/admin/css/ry-ui.css" rel="stylesheet"/>
     <style>
+        .layui-table-cell .layui-form-checkbox[lay-skin="primary"]{top: 48%;transform: translateY(-48%);}
         .layui-table-fixed.layui-table-fixed-r .layui-table-body tr{background-color: white}
+        .department_main label{width: 10%;text-align: right;font-size: 12px}
+        .department_main input, .department_main select{margin-right: 1%;height: 30px;border: 1px #ccc solid;background-color: #fff;border-radius: 4px;padding-left: 6px;}
+        .layui-form-radio {line-height: 28px;margin: 6px 10px 0 0;padding-right: 1px;cursor: pointer;font-size: 0;}
+        .layui-form-select {width:150px;}
+        .layui-input.layui-unselect{height:30px;}
     </style>
 </head>
-<body>
+<body style="margin: 0px 10px 0px;padding: 0;">
 <div class="container-div">
     <div class="row">
         <div class="col-sm-12 select-info">
-            <form id="layui-form">
-                <div class="select-list">
-                    <ul>
-                        <li>
-                            音乐名称：<input type="text" id="musicName" name="musicName" style="width: 150px"/>
-                        </li>
-                        <li>
-                            语种：
-                            <select id="languages" name="languages" style="width: 150px">
-                                <option value=""></option>
-                            </select>
-                        </li>
-                        <li>
-                            风格：
-                            <select id="style" name="style" style="width: 150px">
-                                <option value=""></option>
-                            </select>
-                        </li>
-                        <li>
-                            状态：
-                            <select id="valids" name="valids" style="width: 150px">
-                                <option value=""></option>
-                            </select>
-                        </li>
-                        <li>
-                            <a class="btn btn-primary btn-rounded btn-sm" onclick="layReload(1)"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                            <!--<a class="btn btn-success btn-rounded btn-sm"><i class="fa fa-download"></i>&nbsp;导出</a>-->
-                        </li>
-                    </ul>
-                </div>
+            <form id="frm" class="layui-form" style="margin-top: 10px;">
+                <div class="layui-input-inline" style="font-weight: bold">音乐名称：</div>
+                <div class="layui-input-inline">
+                    <input type="text" name="musicName" id="musicName" style="height:30px;width:150px;" autocomplete="off" class="layui-input">
+                </div>&nbsp;&nbsp;
+                <div class="layui-input-inline" style="font-weight: bold">语种：</div>
+                <div class="layui-input-inline">
+                    <select name="languages" id='languages' placeholder="请选择">
+                        <option value="">请选择</option>
+                    </select>
+                </div>&nbsp;&nbsp;
+                <div class="layui-input-inline" style="font-weight: bold">风格：</div>
+                <div class="layui-input-inline">
+                    <select name="style" id='style' placeholder="请选择">
+                        <option value="">请选择</option>
+                    </select>
+                </div>&nbsp;&nbsp;
+                <div class="layui-input-inline" style="font-weight: bold">状态：</div>
+                <div class="layui-input-inline">
+                    <select name="valids" id='valids' placeholder="请选择">
+                        <option value="">请选择</option>
+                    </select>
+                </div>&nbsp;&nbsp;
+                <a class="btn btn-primary btn-rounded btn-sm" id="seach"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                <a class="btn btn-success btn-rounded btn-sm" id="reset"><i class="fa fa-cog"></i>&nbsp;重置</a>
             </form>
         </div>
         <div class="col-sm-12 select-table table-striped">

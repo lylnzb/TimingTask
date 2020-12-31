@@ -69,6 +69,31 @@ function loadSelect(ele,code,form){
         }
     });
 }
+
+/**
+ * 所属专栏初始化下拉框的方法
+ * @param ele
+ * @param code
+ * @param form
+ */
+function loadSelectAllow(ele,form){
+    $.ajax({
+        url:basePath+'/webColumn/queryWebColumnByAllow',
+        type:"POST",
+        async:false,
+        success:function(data){
+            for(var i = 0; i<data.data.length;i++){
+                $(ele).append(new Option(data.data[i].columnName , data.data[i].columnId));
+                //下拉菜单渲染 把内容加载进去
+                form.render();
+            }
+        },
+        error:function(){
+            alert("初始化选项失败");
+        }
+    });
+}
+
 /**
  * 初始化单选框的方法
  * @param ele
@@ -111,4 +136,34 @@ function download(url) {
 function Cancel() {
     var index = parent.layer.getFrameIndex(window.name);
     parent.layer.close(index);
+}
+
+function menuInit(){
+    $.ajax({
+        url:basePath+'/common/queryMeunInfo',
+        type:"POST",
+        async:false,
+        success:function(data){
+            console.log(data);
+            var htmlStr = '';
+            for(var i = 0; i < data.data.length; i++){
+                if(data.data[i].isDefault == '2'){
+                    htmlStr += '<a href="' + basePath + data.data[i].menuUrl +'" class="m-item item m-mobile-hide" style="float: left"><i class="'+ data.data[i].icon +' icon"></i>'+ data.data[i].menuName +'</a>';
+                }else if(data.data[i].isDefault == '1'){
+                    htmlStr += '<div class="ui dropdown item" style="float: left">';
+                    htmlStr += '    <i class="'+ data.data[i].icon +' icon"></i>'+ data.data[i].menuName +'<i class="dropdown icon"></i>';
+                    htmlStr += '    <div class="menu" data-filtered="filtered">';
+                    for(var j = 0;j < data.data[i].childList.length; j++){
+                        htmlStr += '    <div class="item" data-filtered="filtered"><a href="' + basePath + data.data[i].childList[j].menuUrl +'" style="color: #0C0C0C">'+ data.data[i].childList[j].menuName +'</a></div>';
+                    }
+                    htmlStr += '    </div>';
+                    htmlStr += '</div>';
+                }
+            }
+            $("#menu").html(htmlStr);
+        },
+        error:function(){
+            alert("初始化选项失败");
+        }
+    });
 }

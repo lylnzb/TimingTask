@@ -1,10 +1,12 @@
 package com.lylBlog.admin.controller;
 
+import com.lylBlog.admin.bean.ArticleBean;
 import com.lylBlog.admin.bean.LabelBean;
 import com.lylBlog.admin.server.ArticleServer;
 import com.lylBlog.common.bean.ResultObj;
 import com.lylBlog.common.util.ShiroUtils;
 import com.lylBlog.login.bean.UserBean;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +43,55 @@ public class ArticleController {
     @RequestMapping("/saveOrEditLabelData")
     public String saveOrEditLabelData(Model model){
         return BASEPATH + "/saveOrEditLabel";
+    }
+
+    /**
+     * 查询文章列表信息
+     * @param articleBean
+     * @return
+     */
+    @RequestMapping("/queryArticleInfo")
+    @ResponseBody
+    public ResultObj queryArticleInfo(@RequestBody ArticleBean articleBean){
+        try{
+            return articleServer.queryArticleInfo(articleBean);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResultObj.fail();
+    }
+
+    /**
+     * 新增或修改文章信息
+     * @param articleBean
+     * @return
+     */
+    @RequestMapping("/addOrUpdaArticleInfo")
+    @ResponseBody
+    public ResultObj addOrUpdaArticleInfo(@RequestBody ArticleBean articleBean, String type){
+        try{
+            return articleServer.addOrUpdaArticleInfo(articleBean, type);
+            //return ResultObj.ok();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResultObj.fail();
+    }
+
+    /**
+     * 删除文章信息
+     * @param deleteIds
+     * @return
+     */
+    @RequestMapping("/deleteArticleInfo")
+    @ResponseBody
+    public ResultObj deleteArticleInfo(@RequestBody List<String> deleteIds){
+        try{
+            return  articleServer.deleteArticleInfo(deleteIds);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResultObj.fail();
     }
 
     /**

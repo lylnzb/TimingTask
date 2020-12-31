@@ -10,6 +10,10 @@ lylblog:
   profile: E:/profile/
   # 音乐上传路径
   musicfile: E:/musicfile/
+  # 文章上传路径
+  articlefile: E:/articlefile/
+  # 百度编辑器文件保存路径
+  ueditorfile: E:/ueditorfile/
   # 获取ip地址开关
   addressEnabled: false
   # 项目域名

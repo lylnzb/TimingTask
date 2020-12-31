@@ -1,6 +1,8 @@
 package com.lylBlog.admin.mapper;
 
+import com.lylBlog.admin.bean.ArticleBean;
 import com.lylBlog.admin.bean.LabelBean;
+import com.lylBlog.admin.bean.LabelSelectBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,11 +15,53 @@ import java.util.List;
 public interface ArticleMapper {
 
     /**
+     * 查询文章列表信息
+     * @param articleBean
+     * @return
+     */
+    List<ArticleBean> queryArticleInfo(ArticleBean articleBean);
+
+    /**
+     * 查询文章列表信息
+     * @param articleBean
+     * @return
+     */
+    int queryArticleInfoCount(ArticleBean articleBean);
+
+    /**
+     * 新增文章信息
+     * @param articleBean
+     * @return
+     */
+    int addArticleInfo(ArticleBean articleBean);
+
+    /**
+     * 修改文章信息
+     * @param articleBean
+     * @return
+     */
+    int updateArticleInfo(ArticleBean articleBean);
+
+    /**
+     * 删除文章信息
+     * @param deleteIds
+     * @return
+     */
+    int deleteArticleInfo(@Param("deleteIds") List<String> deleteIds);
+
+    /**
      * 查询标签信息
      * @param label
      * @return
      */
     List<LabelBean> queryLabelInfo(LabelBean label);
+
+    /**
+     * 多选框标签回显
+     * @param labelIds
+     * @return
+     */
+    List<LabelSelectBean> queryLabelSelect(@Param("labelIds") String labelIds);
 
     /**
      * 查询标签信息总数

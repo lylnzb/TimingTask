@@ -20,6 +20,10 @@ public class LylBlogConfig {
     private static String profile;
     /** 音乐上传路径 */
     private static String musicfile;
+    /** 文章上传路径 */
+    private static String articlefile;
+    /** 百度编辑器文件保存路径 */
+    private static String ueditorfile;
     /** 项目基础路径*/
     private static String basePath;
     /** 获取地址开关 */
@@ -71,6 +75,22 @@ public class LylBlogConfig {
 
     public void setMusicfile(String musicfile) {
         LylBlogConfig.musicfile = musicfile;
+    }
+
+    public static String getArticlefile() {
+        return articlefile;
+    }
+
+    public void setArticlefile(String articlefile) {
+        LylBlogConfig.articlefile = articlefile;
+    }
+
+    public static String getUeditorfile() {
+        return ueditorfile;
+    }
+
+    public void setUeditorfile(String ueditorfile) {
+        LylBlogConfig.ueditorfile = ueditorfile;
     }
 
     public static boolean isAddressEnabled()

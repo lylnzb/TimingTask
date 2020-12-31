@@ -2,6 +2,7 @@ package com.lylBlog.common.server.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.lylBlog.admin.bean.DictDataBean;
+import com.lylBlog.common.bean.MenuBean;
 import com.lylBlog.common.bean.MusicBean;
 import com.lylBlog.common.bean.ResultObj;
 import com.lylBlog.common.config.LylBlogConfig;
@@ -53,4 +54,19 @@ public class CommonServerImpl implements CommonServer {
         }
         return EntityToArrayUtil.toArray(musicMap);
     }
+
+    /**
+     * 导航栏初始化
+     * @return
+     */
+    public ResultObj queryMeunInfo(){
+        List<MenuBean> menuList = commonMapper.queryMeunInfo("2",null);
+        for(MenuBean menu : menuList){
+            if("1".equals(menu.getIsDefault())){
+                menu.setChildList(commonMapper.queryMeunInfo("1", menu.getId()));
+            }
+        }
+        return ResultObj.ok(menuList.size(), menuList);
+    }
+
 }

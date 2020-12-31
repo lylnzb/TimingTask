@@ -1,22 +1,17 @@
 package com.lylBlog.common.controller;
 
+import com.baidu.ueditor.ActionEnter;
+import com.lylBlog.common.bean.MenuBean;
 import com.lylBlog.common.bean.ResultObj;
 import com.lylBlog.common.server.CommonServer;
-import com.lylBlog.common.util.file.FileUtil;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.util.List;
 
 @Controller
 @RequestMapping("/common")
@@ -41,11 +36,30 @@ public class CommonController {
         return ResultObj.fail();
     }
 
+    /**
+     * 查询音乐列表
+     * @return
+     */
     @RequestMapping(value="/queryMusicList")
     @ResponseBody
     public Object[][] queryMusicList(){
         try {
             return commonServer.queryMusicList();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 导航栏初始化
+     * @return
+     */
+    @RequestMapping(value="/queryMeunInfo")
+    @ResponseBody
+    public ResultObj queryMeunInfo(){
+        try {
+            return commonServer.queryMeunInfo();
         } catch (Exception e){
             e.printStackTrace();
         }

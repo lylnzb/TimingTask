@@ -92,7 +92,7 @@ layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], 
             $(".layui-table-body tr").css("height","25px");
             $(".layui-form-checkbox").css("style","margin-top: 5px;");
         }
-        ,height : "full-195"
+        ,height : "full-165"
         ,page: {
             layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
             //,curr: 5 //设定初始在第 5 页
@@ -157,6 +157,17 @@ function deleteMusic(){
 
     });
 }
+
+$("#seach").click(function(){
+    layReload(1);
+});
+
+$("#reset").click(function(){
+    $("#musicName").val("");
+    $("#languages").siblings("div.layui-form-select").find('dl').find("dd[lay-value='']").click();
+    $("#style").siblings("div.layui-form-select").find('dl').find("dd[lay-value='']").click();
+    $("#valids").siblings("div.layui-form-select").find('dl').find("dd[lay-value='']").click();
+});
 
 //查询条件
 function layReload(page){

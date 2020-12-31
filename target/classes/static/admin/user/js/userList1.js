@@ -14,6 +14,8 @@ layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], 
     var table = layui.table,
         form = layui.form;
 
+    findCodeValue(form);
+
     //监听工具条
     table.on('tool(tableEvent)', function(obj){
         var data = obj.data;
@@ -230,12 +232,23 @@ function reset_password(){
     });
 }
 
+$("#seach").click(function(){
+    layReload(1);
+});
+
+$("#reset").click(function(){
+    $("#nickname").val("");
+    $("#roleid").siblings("div.layui-form-select").find('dl').find("dd[lay-value='']").click();
+});
+
 //查询条件
 function layReload(page){
     /*  */
     tableIns.reload({
         where: { //设定异步数据接口的额外参数，任意设
-            id:"",
+            roleId:$('#roleid option:selected').val(),
+            nickname:$("#nickname").val(),
+            valid:$('#accountType option:selected').val()
         }
         ,page: {
             layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
@@ -245,4 +258,10 @@ function layReload(page){
             ,last: false //不显示尾页
         }
     });
+}
+
+//字典初始化
+function findCodeValue(form){
+    loadSelect("#roleid", "role", form);
+    loadSelect("#accountType", "sys_account_status", form);
 }

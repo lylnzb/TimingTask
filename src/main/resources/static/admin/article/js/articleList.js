@@ -1,12 +1,64 @@
 var ind;
+var nowPage;
 
 layui.use(['form', 'table','tree'], function(){
     var table = layui.table,
         form = layui.form;
 
+    findCodeValue(form);
+
+    //监听工具条
+    table.on('tool(tableEvent)', function(obj){
+        var data = obj.data;
+        if(obj.event == 'edit'){
+            layer.open({
+                type: 2,
+                title: "文章发布",
+                shadeClose: true,
+                shade: 0.5,
+                closeBtn:1,
+                area: ['100%', '100%'],
+                content: basePath + '/article/releaseArticle?type=update&articleId=' + data.articleId,
+                end: function () {//层消失回调
+                    layReload(1);
+                }
+            });
+        }else if(obj.event == 'delete'){
+            var lock = false; //默认未锁定
+            top.layer.confirm("确定要删除该条数据吗？", {
+                btn: ["确定","取消"], //按钮
+                title: "提示",
+                icon: 3
+            }, function(index){
+                if(!lock) {
+                    lock = true;
+                    var deleteIds = [];
+                    deleteIds.push(data.articleId);
+                    $.ajax({
+                        url:basePath + "article/deleteArticleInfo",
+                        type:"POST",
+                        data:JSON.stringify(deleteIds),
+                        dataType:"json",
+                        contentType : 'application/json;charset=utf-8',
+                        success:function(resultData){
+                            if(resultData.code==0){
+                                parent.layer.alert(resultData.msg);
+                                layReload(1);
+                            }else{
+                                parent.layer.alert(resultData.msg);
+                            }
+                        }
+                    });
+                }
+            }, function(){
+
+            });
+        }
+    });
+
     tableIns = table.render({
         elem: '#table'
-        ,url: basePath + 'admin/queryRoleList'
+        ,url: basePath + 'article/queryArticleInfo'
         ,method: 'post'
         ,contentType: "application/json; charset=utf-8"
         ,dataType:"json"
@@ -19,12 +71,13 @@ layui.use(['form', 'table','tree'], function(){
         ,cols: [[
             {checkbox: true, id:"idTest", width:'2%'}
             ,{field:'rk', title:'序号', width:'6%', align:'center'}
-            ,{field:'rolename', title:'文章名称', width:'20%', align:'center'}
-            ,{field:'valid', title:'文章分类', width:'13%', align:'center'}
-            ,{field:'valid', title:'来源方式', width:'13%', align:'center'}
-            ,{field:'founder', title:'发布人', width:'16%', align:'center'}
-            ,{field:'createtime', title:'发布时间', width:'15%', align:'center'}
-            ,{field:'right', title:'操作', width:'15.4%', align:'center', toolbar: '#barDemo'},
+            ,{field:'articleTitle', title:'文章名称', width:'20%', align:'center'}
+            ,{field:'columnName', title:'所属专栏', width:'13%', align:'center'}
+            ,{field:'fromWayName', title:'来源方式', width:'13%', align:'center'}
+            ,{field:'articleStatusName', title:'文章状态', width:'13%', align:'center'}
+            ,{field:'nickName', title:'发布人', width:'16%', align:'center'}
+            ,{field:'createTime', title:'发布时间', width:'15%', align:'center'}
+            ,{fixed:'right', title:'操作', width:'15.4%', align:'center', toolbar: '#barDemo'},
         ]]
         ,id:"idTest"
         ,done:function(res,curr,count){
@@ -36,7 +89,13 @@ layui.use(['form', 'table','tree'], function(){
             $(".layui-form-checkbox").css("style","margin-top: 5px;");
         }
         ,height : "full-195"
-        ,page: false
+        ,page: {
+            layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+            //,curr: 5 //设定初始在第 5 页
+            ,groups: 1 //只显示 1 个连续页码
+            ,first: false //不显示首页
+            ,last: false //不显示尾页
+        }
     });
 
 });
@@ -49,9 +108,73 @@ $("#releaseArticle").click(function(){
         shade: 0.5,
         closeBtn:1,
         area: ['100%', '100%'],
-        content: basePath + '/article/releaseArticle',
+        content: basePath + '/article/releaseArticle?type=add',
         end: function () {//层消失回调
-            //layReload1();
+            layReload(1);
         }
     });
 });
+
+function deleteArticle(){
+    var checkedObjs = layui.table.checkStatus('idTest');//获取所有选中的节点
+    if(checkedObjs.data.length < 1){
+        top.layer.msg("请选择要删除的数据！");
+        return false;
+    }
+    var lock = false; //默认未锁定
+    top.layer.confirm("确定要批量删除数据吗？", {
+        btn: ["确定","取消"], //按钮
+        title: "提示",
+        icon: 3
+    }, function(index){
+        if(!lock) {
+            lock = true;
+            var deleteIds = [];
+            for(var i = 0;i < checkedObjs.data.length;i++){
+                deleteIds.push(checkedObjs.data[i].articleId);
+            }
+            $.ajax({
+                url:basePath + "article/deleteArticleInfo",
+                type:"POST",
+                data:JSON.stringify(deleteIds),
+                dataType:"json",
+                contentType : 'application/json;charset=utf-8',
+                success:function(resultData){
+                    if(resultData.code==0){
+                        parent.layer.alert(resultData.msg);
+                        layReload(1);
+                    }else{
+                        parent.layer.alert(resultData.msg);
+                    }
+                }
+            });
+        }
+    }, function(){
+
+    });
+}
+
+//查询条件
+function layReload(page){
+    /*  */
+    tableIns.reload({
+        where: {
+            articleTitle : $("#articleTitle").val(),
+            columnId : $("#columnId").val(),
+            articleStatus : $("#articleStatus").val()
+        },
+        page: {
+            layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+            ,curr: (!!page?page:nowPage) //重新从第 1 页开始
+            ,groups: 1 //只显示 1 个连续页码
+            ,first: false //不显示首页
+            ,last: false //不显示尾页
+        }
+    });
+}
+
+//字典初始化
+function findCodeValue(form){
+    loadSelect("#articleStatus","sys_article_status", form);
+    loadSelectAllow("#columnId", form);
+}

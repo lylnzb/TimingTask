@@ -49,4 +49,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             length AS time
         FROM sys_music AS t where valid = '1' and gedan = #{gedan}
     </select>
+
+    <!-- 导航栏初始化 -->
+    <select id="queryMeunInfo" resultType="com.lylBlog.common.bean.MenuBean" parameterType="String">
+        SELECT
+            columnId AS id,
+            columnName AS menuName,
+            columnIcon AS icon,
+            columnUrl AS menuUrl,
+            isDefault
+        FROM
+            sys_column
+        WHERE isHidden = '0'
+        <if test="isDefault != null and isDefault == 1">
+            and parentId = #{columnId}
+        </if>
+        <if test="isDefault != null and isDefault == 2">
+            and parentId = '0'
+        </if>
+        order by orderBy
+    </select>
 </mapper>

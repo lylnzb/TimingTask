@@ -122,7 +122,7 @@ function addOrUpdateRole(type){
         shadeClose: true,
         shade: 0.5,
         closeBtn:1,
-        area: ['790px', '750px'],
+        area: ['790px', '680px'],
         content: basePath + '/role/addOrUpdaRole?type='+type+param,
         end: function () {//层消失回调
             layReload();

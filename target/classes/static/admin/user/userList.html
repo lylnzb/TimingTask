@@ -12,33 +12,36 @@
     <style>
         .layui-table-cell .layui-form-checkbox[lay-skin="primary"]{top: 48%;transform: translateY(-48%);}
         .layui-table-fixed.layui-table-fixed-r .layui-table-body tr{background-color: white}
+        .department_main label{width: 10%;text-align: right;font-size: 12px}
+        .department_main input, .department_main select{margin-right: 1%;height: 30px;border: 1px #ccc solid;background-color: #fff;border-radius: 4px;padding-left: 6px;}
+        .layui-form-radio {line-height: 28px;margin: 6px 10px 0 0;padding-right: 1px;cursor: pointer;font-size: 0;}
+        .layui-form-select {width:150px;}
+        .layui-input.layui-unselect{height:30px;}
     </style>
 </head>
-<body style="background-color: #ecf0f5;font-family: 微软雅黑;color: #475059;min-width: 1000px;overflow: auto">
+<body style="margin: 0px 10px 0px;padding: 0;background-color: #ecf0f5;font-family: 微软雅黑;color: #475059;min-width: 1000px;overflow: auto">
 <div class="container-div">
     <div class="row">
         <div class="col-sm-12 select-info">
-            <form id="layui-form">
-                <div class="select-list">
-                    <ul>
-                        <li>
-                            邮箱：<input type="text" name="dictLabel" style="width: 200px;"/>
-                        </li>
-                        <li>
-                            所属角色：
-                            <select id="permType" name="permType" lay-verify="permType" style="width: 200px">
-                                <option value=""></option>
-                                <option value="0">博主</option>
-                                <option value="1">管理员</option>
-                                <option value="2">普通用户</option>
-                            </select>
-                        </li>
-                        <li>
-                            <a class="btn btn-primary btn-rounded btn-sm"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                            <a class="btn btn-success btn-rounded btn-sm"><i class="fa fa-download"></i>&nbsp;导出</a>
-                        </li>
-                    </ul>
-                </div>
+            <form id="frm" class="layui-form" style="margin-top: 10px;">
+                <div class="layui-input-inline" style="font-weight: bold">用户昵称：</div>
+                <div class="layui-input-inline">
+                    <input type="text" name="nickname" id="nickname" style="height:30px;width:150px;" autocomplete="off" class="layui-input">
+                </div>&nbsp;&nbsp;
+                <div class="layui-input-inline" style="font-weight: bold">所属角色：</div>
+                <div class="layui-input-inline">
+                    <select name="roleid" id='roleid' placeholder="请选择">
+                        <option value="">请选择</option>
+                    </select>
+                </div>&nbsp;&nbsp;
+                <div class="layui-input-inline" style="font-weight: bold">账号状态：</div>
+                <div class="layui-input-inline">
+                    <select name="accountType" id='accountType' placeholder="请选择">
+                        <option value="">请选择</option>
+                    </select>
+                </div>&nbsp;&nbsp;
+                <a class="btn btn-primary btn-rounded btn-sm" id="seach"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                <a class="btn btn-success btn-rounded btn-sm" id="reset"><i class="fa fa-cog"></i>&nbsp;重置</a>
             </form>
         </div>
         <div class="col-sm-12 select-table table-striped">
@@ -72,6 +75,6 @@
 <script type="text/javascript" src="/admin/js/bstable/js/bootstrap-table-zh-CN.min.js"></script>
 <script src="/admin/layuiTablePlug/layui/src/layui.js"></script>
 <script type="text/javascript" src="/common/util.js"></script>
-<script type="text/javascript" src="/admin/user/js/userList.js"></script>
+<script type="text/javascript" src="/admin/user/js/userList1.js"></script>
 </body>
 </html>

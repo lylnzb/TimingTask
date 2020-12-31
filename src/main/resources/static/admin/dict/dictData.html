@@ -10,7 +10,7 @@
     <link href="../admin/css/animate.css" rel="stylesheet"/>
     <link href="../admin/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../admin/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="../admin/css/style.css" rel="stylesheet"/>
+<!--    <link href="../admin/css/style.css" rel="stylesheet"/>-->
     <style>
         .department_main label{width: 10%;text-align: right;font-size: 12px}
         .department_main input, .department_main select{margin-right: 1%;height: 30px;border: 1px #ccc solid;background-color: #fff;border-radius: 4px;padding-left: 6px;}
@@ -23,28 +23,27 @@
         .news_bottom{width: 53.5%;height: 61.5%;border: 1px #ccc solid;background-color: #fff;}
     </style>
 </head>
-<body style="background-color: #ecf0f5;font-family: 微软雅黑;color: #475059;min-width: 1150px;overflow: auto">
+<body style="margin-left: 10px; padding-top: 10px;background-color: #ecf0f5;font-family: 微软雅黑;color: #475059;min-width: 1150px;overflow: auto">
 <div class="news_main">
     <div class="l_left news_left">
         <h6>类别列表</h6>
         <form id="fr" class="layui-form" action="">
             <div class="department_main">
-                <div class="layui-form-item">
-                    <label class="layui-form-label" style="font-weight: bold;width: 88px;vertical-align: middle">类别编码:</label>
-                    <div class="layui-input-inline" style="width:120px;">
-                        <input type="text" class="layui-input" name="codeData" id = 'codeData' style="width:120px;">
-                    </div>
-                    <label class="layui-form-label" style="font-weight: bold;width: 88px;vertical-align: middle">类别名称:</label>
-                    <div class="layui-input-inline" style="width:120px;">
-                        <input type="text" class="layui-input" name="codeValue" id = 'codeValue' style="width:120px;">
-                    </div>
-                    <a class="btn btn-primary btn-rounded btn-sm" id="query"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                </div>
+                &nbsp;&nbsp;
+                <div class="layui-input-inline" style="font-size: 12px;font-weight: bold">类别编码：</div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" name="codeData" id = 'codeData' style="width:120px;">
+                </div>&nbsp;&nbsp;
+                <div class="layui-input-inline" style="font-size: 12px;font-weight: bold">类别名称：</div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" name="codeValue" id = 'codeValue' style="width:120px;">
+                </div>&nbsp;&nbsp;
+                <a class="btn btn-primary btn-rounded btn-sm" id="seach"><i class="fa fa-search"></i>&nbsp;搜索</a>
             </div>
-            <div class="ui divider" style="margin-top: -10px;"></div>
+            <div class="ui divider" style="margin-top: 10px;"></div>
             <div class="department_main" style="margin-left: 15px;margin-bottom: 6px;">
 <!--                <button type="button" id="addDictType" class="btn btn-primary"><i class="layui-icon">&#xe654;</i>新增</button>-->
-                <a class="btn btn-success" id="addDictType"><i class="fa fa-plus"></i> 新增</a>
+                <a class="btn btn-primary" id="addDictType"><i class="fa fa-plus"></i> 新增</a>
             </div>
             <table id="table" class="layui-hide" lay-filter="tableEvent" style="margin: 0 auto"></table>
         </form>
@@ -88,7 +87,7 @@
                 <div class="layui-form-item" style="margin-bottom: 0;">
                     <label class="layui-form-label" style="font-weight: bold;width: 88px;"></label>
                     <div class="layui-input-inline">
-                        <a class="btn btn-success" id="update" lay-filter="save" lay-submit="">修改</a>
+                        <a class="btn btn-primary" id="update" lay-filter="save" lay-submit="">修改</a>
                     </div>
                 </div>
             </div>
@@ -98,9 +97,9 @@
         <h6>代码值列表</h6>
         <div style="height: 88%;overflow: auto">
             <div class="button" style="margin-left: 10px;margin-bottom: 10px;">
-                <a class="btn btn-success" id="addDictData"><i class="fa fa-plus"></i> 新增代码值</a>
+                <a class="btn btn-primary" id="addDictData"><i class="fa fa-plus"></i> 新增代码值</a>
             </div>
-            <table id="table1" class="layui-hide" lay-filter="tableEvent1" style="margin: 0 auto"></table>
+            <table id="table1"  class="layui-hide" lay-filter="tableEvent1" style="margin: 0 auto"></table>
         </div>
     </div>
     <div class="clear"></div>
@@ -108,7 +107,7 @@
         <a class="btn btn-danger btn-xs" lay-event="deleteCode"><i class="fa fa-remove"></i> 删除</a>
     </div>
     <div id="barDemo1" style="display:none;">
-        <a class="btn btn-success btn-xs" lay-event="edit"><i class="fa fa-edit"></i> 编辑</a>
+        <a class="btn btn-primary btn-xs" lay-event="edit"><i class="fa fa-edit"></i> 编辑</a>
         <a class="btn btn-danger btn-xs" lay-event="delete"><i class="fa fa-remove"></i> 删除</a>
     </div>
 </div>

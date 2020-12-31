@@ -3,8 +3,10 @@ package com.lylBlog.common.util.file;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3AudioHeader;
 import org.jaudiotagger.audio.mp3.MP3File;
+import sun.misc.BASE64Decoder;
 
 import java.io.*;
+import java.util.Base64;
 
 /**
  * 文件处理工具类
@@ -12,6 +14,66 @@ import java.io.*;
  * @author ruoyi
  */
 public class FileUtil {
+
+    /**
+     * base64字符串转化成图片
+     * @param imgStr
+     * @param filePath
+     * @return
+     */
+    public static boolean GenerateImage(String imgStr,String filePath) {   //对字节数组字符串进行Base64解码并生成图片
+        if (imgStr == null){ //图像数据为空
+            return false;
+        }
+        imgStr = imgStr.split(",")[1];
+        BASE64Decoder decoder = new BASE64Decoder();
+        try {
+            //Base64解码
+            byte[] b = decoder.decodeBuffer(imgStr);
+            for(int i=0;i<b.length;++i) {
+                if(b[i]<0) {//调整异常数据
+                    b[i]+=256;
+                }
+            }
+            File file = new File(filePath);
+            //判断目标文件所在的目录是否存在
+            if(!file.getParentFile().exists()) {
+                //如果目标文件所在的目录不存在，则创建父目录
+                System.out.println("目标文件所在目录不存在，准备创建它！");
+                if(!file.getParentFile().mkdirs()) {
+                    System.out.println("创建目标文件所在目录失败！");
+                    return false;
+                }
+            }
+            OutputStream out = new FileOutputStream(filePath);
+            out.write(b);
+            out.flush();
+            out.close();
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
+
+    /**
+     * 判断图片base64字符串的文件格式
+     * @param base64ImgData
+     * @return
+     */
+    public static String checkImageBase64Format(String base64ImgData) {
+        String imgStr = base64ImgData.substring(0, 25);
+        String type = "";
+        if (imgStr.contains("bmp")) {
+            type = "bmp";
+        } else if (imgStr.contains("png")) {
+            type = "png";
+        } else if (imgStr.contains("jpg") || imgStr.contains("jpeg")) {
+            type = "jpg";
+        }
+        return type;
+    }
 
     /**
      * 获取文件内容信息

@@ -82,30 +82,6 @@ layui.use(['form', 'layer'], function(){
         loadSelectAllow("#columnId", form);
     }
 
-    /**
-     * 初始化下拉框的方法
-     * @param ele
-     * @param code
-     * @param form
-     */
-    function loadSelectAllow(ele,form){
-        $.ajax({
-            url:basePath+'/webColumn/queryWebColumnByAllow',
-            type:"POST",
-            async:false,
-            success:function(data){
-                for(var i = 0; i<data.data.length;i++){
-                    $(ele).append(new Option(data.data[i].columnName , data.data[i].columnId));
-                    //下拉菜单渲染 把内容加载进去
-                    form.render();
-                }
-            },
-            error:function(){
-                alert("初始化选项失败");
-            }
-        });
-    }
-
     $("#close").on("click", function () {
         var index = parent.layer.getFrameIndex(window.name);
         parent.layer.close(index);//关闭当前页

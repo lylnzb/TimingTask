@@ -45,6 +45,7 @@ public class ToEmailController {
         //邮件内容
         message.setText("您的验证码为：" + code + "。若非本人操作，请忽略此邮件。");
         try {
+            //邮件发送
             mailSender.send(message);
             //判断是否缓存该账号验证码
             boolean isExist = redisUtil.hasKey(toEmail.getTos() + "_lylyzm");

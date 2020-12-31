@@ -739,7 +739,7 @@ th{background-color: #e7f0f6 !important;}
 .nav_active{;background-image: url(../img/ccc_03.png);background-repeat: no-repeat;background-position: top left;background-color: #f5f5f5}
 .news_main{height: 98%;width: 100%}
 /*.layui-layer-title{background-color: #5cb85c !important;font-weight:bold;color:#fff !important; border:none !important;height: 33px;line-height: 33px;}*/
-.news_main h6{font-weight: bold;padding-left: 10px;line-height: 31px;border-bottom: 1px #ccc solid}
+.news_main h6{font-weight: bold;padding-left: 10px;line-height: 31px;border-bottom: 1px #ccc solid;margin-top: 0px;}
 .news_left{width: 19%;height: 100%;border: 1px #ccc solid;margin-right: 0.5%;background-color: #fff}
 .news_right{width: 80.5%;height: 47.7%;border: 1px #ccc solid;background-color: #fff;}
 .news_bottom{width: 80.5%;height: 51.5%;border: 1px #ccc solid;background-color: #fff;}

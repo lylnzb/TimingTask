@@ -1,6 +1,10 @@
 package com.lylBlog.common.server;
 
+import com.lylBlog.common.bean.MusicBean;
 import com.lylBlog.common.bean.ResultObj;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CommonServer {
 
@@ -16,4 +20,10 @@ public interface CommonServer {
      * @return
      */
     Object[][] queryMusicList();
+
+    /**
+     * 导航栏初始化
+     * @return
+     */
+    ResultObj queryMeunInfo();
 }

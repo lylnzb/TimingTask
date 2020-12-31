@@ -82,7 +82,7 @@ layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
                 if(null != data.iconUrl && '' != data.iconUrl){
                     $("#icon").attr("src",basePath + "/profile/"+data.iconUrl);
                 }
-                $("#nickname").val(data.nickname);
+                $("#nickname").val(data.nickName);
                 $("#email").val(data.email);
                 $("#signature").val(data.signature);
                 $("#sex").find('input[value=' + resultData.data[0].sex + ']').prop("checked",true);
