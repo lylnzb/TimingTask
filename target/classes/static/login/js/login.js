@@ -227,4 +227,8 @@ $(".close.icon").click(function(){
     $(".login").hide();
 });
 
+$(function(){
+    menuInit();
+});
+
 

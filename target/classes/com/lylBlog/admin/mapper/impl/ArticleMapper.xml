@@ -23,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE
             1 = 1
             <if test="articleId != null and articleId != ''"> and articleId = #{articleId}</if>
+            <if test="wznm != null and wznm != ''"> and wznm = #{wznm}</if>
             ) AS article
         WHERE rk BETWEEN (#{page}-1)*#{limit} + 1 AND #{page}*#{limit} ORDER BY rk
     </select>
@@ -31,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="queryArticleInfoCount" parameterType="com.lylBlog.admin.bean.ArticleBean" resultType="int">
         SELECT count(1) FROM sys_article WHERE 1 = 1
         <if test="articleId != null and articleId != ''"> and articleId = #{articleId}</if>
+        <if test="wznm != null and wznm != ''"> and wznm = #{wznm}</if>
     </select>
 
     <!-- 新增文章信息 -->

@@ -228,4 +228,34 @@ public class ArticleBean extends ParaBean {
     public void setLabel(List<LabelSelectBean> label) {
         this.label = label;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "'articleId':'" + articleId + '\'' +
+                ", 'wznm':'" + wznm + '\'' +
+                ", 'columnId':'" + columnId + '\'' +
+                ", 'articleTitle':'" + articleTitle + '\'' +
+                ", 'abstracts':'" + abstracts + '\'' +
+                ", 'content':'" + content + '\'' +
+                ", 'copyFrom':'" + copyFrom + '\'' +
+                ", 'fromWay':'" + fromWay + '\'' +
+                ", 'fromUrl':'" + fromUrl + '\'' +
+                ", 'articleLabel':'" + articleLabel + '\'' +
+                ", 'hits':'" + hits + '\'' +
+                ", 'postNum':'" + postNum + '\'' +
+                ", 'onTop':'" + onTop + '\'' +
+                ", 'iselite':'" + iselite + '\'' +
+                ", 'openIntroduce':'" + openIntroduce + '\'' +
+                ", 'allowComment':'" + allowComment + '\'' +
+                ", 'allowReprinted':'" + allowReprinted + '\'' +
+                ", 'thumb':'" + thumb + '\'' +
+                ", 'articleStatus':'" + articleStatus + '\'' +
+                ", 'file':'" + file + '\'' +
+                ", 'columnName':'" + columnName + '\'' +
+                ", 'articleStatusName':'" + articleStatusName + '\'' +
+                ", 'fromWayName':'" + fromWayName + '\'' +
+                ", 'label':" + label +
+                '}';
+    }
 }

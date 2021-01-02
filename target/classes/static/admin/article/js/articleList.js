@@ -53,6 +53,8 @@ layui.use(['form', 'table','tree'], function(){
             }, function(){
 
             });
+        }else if(obj.event == 'preview'){
+            window.open(basePath + "article/previewArticle/" + data.wznm);
         }
     });
 

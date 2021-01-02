@@ -1,5 +1,6 @@
 package com.lylBlog.admin.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.lylBlog.admin.bean.ArticleBean;
 import com.lylBlog.admin.bean.LabelBean;
 import com.lylBlog.admin.server.ArticleServer;
@@ -9,9 +10,7 @@ import com.lylBlog.login.bean.UserBean;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -43,6 +42,17 @@ public class ArticleController {
     @RequestMapping("/saveOrEditLabelData")
     public String saveOrEditLabelData(Model model){
         return BASEPATH + "/saveOrEditLabel";
+    }
+
+    @RequestMapping("/previewArticle/{wznm}")
+    public String previewArtilce(Model model, @PathVariable String wznm){
+        ArticleBean articleBean = new ArticleBean();
+        articleBean.setWznm(wznm);
+        ResultObj resultObj = articleServer.queryArticleInfo(articleBean);
+        model.addAttribute("type","preview");
+        System.out.println(resultObj.getData().get(0).toString());
+        model.addAttribute("article", resultObj.getData().get(0));
+        return "/blog/details";
     }
 
     /**
