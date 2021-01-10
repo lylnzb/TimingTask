@@ -247,7 +247,7 @@ function layReload(page){
     tableIns.reload({
         where: { //设定异步数据接口的额外参数，任意设
             roleId:$('#roleid option:selected').val(),
-            nickname:$("#nickname").val(),
+            nickName:$("#nickname").val(),
             valid:$('#accountType option:selected').val()
         }
         ,page: {

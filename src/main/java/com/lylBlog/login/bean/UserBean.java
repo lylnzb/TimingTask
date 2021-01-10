@@ -16,7 +16,6 @@ public class UserBean extends ParaBean implements Serializable {
     private int rk;
 
     private String id;//用户id
-    private String nickname;//用户昵称
     private String email;//用户邮箱
     private String sex;//性别
     private String password;//用户密码
@@ -58,14 +57,6 @@ public class UserBean extends ParaBean implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 
     public String getEmail() {
@@ -198,29 +189,5 @@ public class UserBean extends ParaBean implements Serializable {
 
     public static boolean isAdmin(String userId) {
         return userId != null && "41545wBXlg7sjt2f".equals(userId);
-    }
-
-    @Override
-    public String toString() {
-        return "UserBean{" +
-                "rk='" + rk + '\'' +
-                ", id='" + id + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", salt='" + salt + '\'' +
-                ", signature='" + signature + '\'' +
-                ", level='" + level + '\'' +
-                ", regtime='" + regtime + '\'' +
-                ", vCode='" + vCode + '\'' +
-                ", userId='" + userId + '\'' +
-                ", roleId='" + roleId + '\'' +
-                ", rolename='" + rolename + '\'' +
-                ", createperson='" + createperson + '\'' +
-                ", createtime='" + createtime + '\'' +
-                ", valid='" + valid + '\'' +
-                ", roles=" + roles +
-                ", perms=" + perms +
-                '}';
     }
 }

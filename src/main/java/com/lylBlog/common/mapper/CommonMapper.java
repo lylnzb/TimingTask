@@ -1,5 +1,6 @@
 package com.lylBlog.common.mapper;
 
+import com.lylBlog.admin.bean.BlogSetBean;
 import com.lylBlog.admin.bean.DictDataBean;
 import com.lylBlog.common.bean.MenuBean;
 import com.lylBlog.common.bean.MusicBean;
@@ -29,4 +30,10 @@ public interface CommonMapper {
      * @return
      */
     List<MenuBean> queryMeunInfo(@Param("isDefault") String isDefault, @Param("columnId") String columnId);
+
+    /**
+     * 获取博客配置信息
+     * @return
+     */
+    BlogSetBean getBlogConfiguration();
 }

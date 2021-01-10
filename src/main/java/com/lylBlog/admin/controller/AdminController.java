@@ -5,10 +5,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.lylBlog.admin.bean.UserIconBean;
 import com.lylBlog.admin.server.AdminServer;
 import com.lylBlog.common.bean.ResultObj;
+import com.lylBlog.common.config.LylBlogConfig;
+import com.lylBlog.common.util.ShiroUtils;
 import com.lylBlog.common.util.file.FileUploadUtil;
 import com.lylBlog.login.bean.UserBean;
 import com.lylBlog.admin.bean.PermissionBean;
 import com.lylBlog.admin.bean.RoleBean;
+import com.lylBlog.login.server.LoginServer;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -26,8 +30,15 @@ public class AdminController {
     @Resource
     private AdminServer adminServer;
 
+    @Resource
+    private LoginServer loginServer;
+
     @RequestMapping("/index")
-    public String index(){
+    public String index(Model model, HttpServletRequest request){
+        //获取当前用户信息
+        UserBean user = loginServer.findUserByEmail(ShiroUtils.getUserInfo().getEmail());
+        user.setIconUrl("/profile/" + user.getIconUrl());
+        model.addAttribute("userInfo", user);
         return "admin/index";
     }
 

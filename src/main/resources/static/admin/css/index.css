@@ -283,8 +283,8 @@ td{border: none !important;}
 .dropdown_select{border: 1px #ccc solid;width: 247px;height: 28px;border-radius: 4px;position: relative;cursor: pointer;font-size: 12px}
 .caret{position: relative;left: 230px;top:-14px}
 
-.skin-blue .main-header .logo1{background-color: #00a65a;color: #ffffff;border-bottom: 0 solid transparent;}
-.skin-blue .main-header .navbar1{background-color: #00a65a;}
+.skin-blue .main-header .logo1{background-color: #367fa9;color: #ffffff;border-bottom: 0 solid transparent;}
+.skin-blue .main-header .navbar1{background-color: #3c8dbc;}
 .skin-blue .left-side1{background-color: #222d32;}
 .skin-blue .sidebar-menu > li.header1{color: #4b646f;background: #1a2226;}
 .skin-blue .sidebar-menu > li.active > a .a0{color: #ffffff;background: #1e282c;border-left-color: #3c8dbc;}

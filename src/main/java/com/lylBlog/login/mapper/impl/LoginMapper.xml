@@ -26,7 +26,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!--通过邮箱查询用户是否存在-->
 	<select id="findUserByEmail" resultType="com.lylBlog.login.bean.UserBean" parameterType="String">
-		SELECT * FROM m_user where email = #{email}
+		SELECT t.*,
+		       (select iconUrl from m_user_icon where userid = t.id and isActivity = '1') as iconUrl
+		FROM m_user t where email = #{email}
 	</select>
 
 	<!-- 新增角色与用户关联表数据 -->

@@ -99,7 +99,7 @@ layui.use(['form','layer','jquery','table', 'laydate', 'element'], function(){
         var userId = $("#userId").val();
         var email = data.field.email;//用户邮箱
         var sex = data.field.sys_user_sex;//性别
-        var nickname = data.field.nickname;//用户昵称
+        var nickName = data.field.nickname;//用户昵称
         var password = data.field.pwd;//用户密码
         var roleId = data.field.role;//角色id
         var signature = data.field.signature;//个性签名

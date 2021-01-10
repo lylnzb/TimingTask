@@ -151,17 +151,17 @@
                                 </div>
                                 <div class="title" style="margin-left: 74px;">
                                     <h2 class="ui header" style="margin-top: 10px;margin-bottom: 10px;" th:text="${article.articleTitle}">idea 团队成员修改工程后push推送</h2>
-                                    <span><i class="user icon"></i>回忆里依稀</span>&nbsp;&nbsp;
-                                    <span><i class="clock outline icon"></i>2020-07-21 14:20:21</span>&nbsp;&nbsp;
-                                    <span><i class="eye icon"></i>321</span>浏览&nbsp;&nbsp;
-                                    <span><i class="comment icon"></i>0</span>评论&nbsp;&nbsp;
+                                    <span><i class="user icon"></i><label th:text="${article.nickName}">回忆里依稀</label></span>&nbsp;&nbsp;
+                                    <span><i class="clock outline icon"></i><label th:text="${article.createTime}">2020-07-21 14:20:21</label></span>&nbsp;&nbsp;
+                                    <span><i class="eye icon"></i><label th:text="${article.hits}">0</label></span>浏览&nbsp;&nbsp;
+                                    <span><i class="comment icon"></i><label th:text="${article.postNum}">0</label></span>评论&nbsp;&nbsp;
                                 </div>
                             </div>
                         </div>
                         <!--<div class="ui divider"></div>-->
                         <div class="ui m-padded-tb-max vertical segment ">
                             <div class="ui mobile reversed stackable grid">
-                                <div id="content" class="content" style="margin-top: 15px;" th:utext="${article.content}">
+                                <div id="content" class="content" style="margin-top: 15px;width: 100%;background-color: white" th:utext="${article.content}">
                                     <p>idea 团队成员修改工程后push推送</p>
                                     <p><br/></p>
                                     <p>当团队成员修改了工程后，可以进行commit和push操作；</p>
