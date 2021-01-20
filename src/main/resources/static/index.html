@@ -16,164 +16,18 @@
     <link rel="stylesheet" href="/login/css/login.css">
     <link rel="stylesheet" href="/css/mplayer.css">
     <style>
-
-        a:hover, a:focus, a:active, a.active {
-            cursor: url('/img/cur/link.cur'), pointer;
-        }
-
-        button:hover, button:focus, button:active, button.active {
-            cursor: url('/img/cur/link.cur'), pointer;
-        }
-
-        li:hover, li:focus, li:active, li.active {
-            cursor: url('/img/cur/link.cur'), pointer;
-        }
-
-        .from-box .error {
-            position: absolute;
-            z-index: 10;
-            display: none;
-        }
-        h3.slide-title {
-            padding-right: 50px;
-            position: absolute;
-            z-index: 1;
-            bottom: 0px;
-            left: 0;
-            padding: 0 10px;
-            margin: 0;
-            font-size: 16px;
-            line-height: 35px;
-            font-weight: 500;
-            color: #ffffff;
-            cursor: url('/img/cur/link.cur'), pointer;
-            text-overflow: ellipsis;
+        .recommend-flag {
+            padding: 1px 8px 1px 7px;
+            border: 1px solid;
+            border-radius: 3px;
+            font-size: 14px;
+            margin-right: 3px;
+            color: #fb3233;
+            background: rgba(251, 50, 51, 0.01);
+            position: relative;
+            top: -1px;
+            cursor: default;
             white-space: nowrap;
-            overflow: hidden;
-            width: 100%;
-            background: hsla(215, 15%, 25%, 0.58);
-        }
-
-        .post_box {
-            padding: 20px 20px 20px 232px;
-            border-bottom: 1px solid #ddd;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .post-img {
-            margin-left: -214px;
-            float: left;
-            overflow: hidden;
-            width: 200px;
-            height: 150px;
-        }
-
-        .post-img img {
-            position: relative;
-            max-width: none;
-            width: calc(100% + 20px);
-            height: 150px;
-            -webkit-transition: opacity .35s,-webkit-transform .45s;
-            transition: opacity .35s,transform .45s;
-            -webkit-transform: translate3d(-20px,0,0);
-            transform: translate3d(-20px,0,0);
-            object-fit: cover;
-        }
-
-        em {
-            font-style: normal;
-        }
-
-        .post-left {
-            min-height: 150px;
-        }
-
-        .post-left h3 {
-            font-size: 18px;
-            margin-bottom: 4px;
-            line-height: 36px;
-            font-weight: normal;
-            position: relative;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
-
-        .post-con {
-            font-weight: 500;
-            line-height: 180%;
-            height: 77px;
-            margin-bottom: 10px;
-            overflow: hidden;
-            display: block;
-            -webkit-line-clamp: 2;
-            text-overflow: ellipsis;
-            text-align: justify;
-            word-break: break-all;
-        }
-
-        span.title-l {
-            position: absolute;
-            background: #3690cf;
-            top: 21px;
-            left: -1px;
-            width: 5px;
-            height: 28px;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-        }
-
-        .item-meta {
-            height: min-content;
-            overflow: hidden;
-            color: #999;
-            font-size: 12px;
-        }
-
-        .post_box .news {
-            background: url(http://www.yunyueyi.cn/zb_users/theme/koilee/style/images/new.png);
-            position: absolute;
-            width: 51px;
-            height: 51px;
-            right: 0px;
-            top: 0px;
-            z-index: 9;
-        }
-
-        .post_box.active {
-            width: 100%;
-            height: 100%;
-            background: #f7f7f7;
-        }
-
-        img:hover {
-            -webkit-transform: scale(1.1);
-            -moz-transform: scale(1.1);
-            -o-transform: scale(1.1);
-            -ms-transform: scale(1.1);
-        }
-
-        .post-left a::before, .post-left a::after {
-            display: inline-block;
-            opacity: 0;
-            transition: transform 0.3s ease 0s, opacity 0.2s ease 0s;
-        }
-        .post-left a::after {
-            content: "]";
-            margin-left: 2px;
-            transform: translateX(-2px);
-        }
-        .post-left a::before {
-            content: "[";
-            margin-right: 2px;
-            transform: translateX(2px);
-        }
-        .post-left a:hover::before, .post-left a:hover::after, .post-left a:focus::before, .post-left a:focus::after {
-            opacity: 1;
-            transform: translateX(0px);
-        }
-        .post-left a:hover, .post-left a:hover {
-            color: #47aa42;
         }
     </style>
 </head>
@@ -228,303 +82,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui top segment">
-                        <div class="ui secondary pointing menu">
-                            <a class="item active" data-tab="tab-name1">博客日记</a>
-                            <a class="item" data-tab="tab-name2">文章摘录</a>
-                        </div>
-                        <div class="ui tab active" data-tab="tab-name1">
-                            <div class="ui link cards">
-                                <div class="ui card" style="max-width: 235px;height:300px;width: auto">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/laoll.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">当我老了，我仍选择善良</a>
-                                        <div class="description">
-                                            当我老了，我仍选择善良，不是我软弱，因为我明白，因果不空，善恶终有报应;我选择宽...
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="max-width: 235px;height:300px;width: auto">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/jmeter.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">windows下jmeter+php模拟...</a>
-                                        <div class="description">
-                                            windows环境下用jmeter模拟高并发场景
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="max-width: 235px;height:300px;width: auto">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/yixiu.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">这辈子，遇见你真好！</a>
-                                        <div class="description">
-                                            师父说，这世间所有的相遇都不容易。一定是特别的缘分，我才会刚刚好遇见你，不早也...
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="max-width: 235px;height:300px;width: auto">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/mysql.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">站内信的mysql数据库搭建</a>
-                                        <div class="description">
-                                            站内信有两个基本功能。一：点到点的消息传送。用户给用户发送站内信；管理员给用户
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="max-width: 235px;height:300px;width: auto">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/redis.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">PHP操作Redis常用方法</a>
-                                        <div class="description">
-                                            这篇文章主要介绍了PHP操作Redis常用技巧,结合实例形式总结分析了php针对redis的连...
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="max-width: 235px;height:300px;width: auto">
-                                    <div>
-                                        <i class="ztpic"><img src="../img/yezi.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">人这一辈子，无非是个过程</a>
-                                        <div class="description">
-                                            人这一辈子，无非就是个过程，荣华花间露，富贵草上霜，生不带来，死不带去，得...
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui tab" data-tab="tab-name2">
-                            <div class="ui link cards">
-                                <div class="ui card" style="width: 235px;height:300px;">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/laoll.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">当我老了，我仍选择善良</a>
-                                        <div class="description">
-                                            当我老了，我仍选择善良，不是我软弱，因为我明白，因果不空，善恶终有报应;我选择宽...
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="width: 235px;height:300px;">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/jmeter.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">windows下jmeter+php模拟...</a>
-                                        <div class="description">
-                                            windows环境下用jmeter模拟高并发场景
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="width: 235px;height:300px;">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/yixiu.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">这辈子，遇见你真好！</a>
-                                        <div class="description">
-                                            师父说，这世间所有的相遇都不容易。一定是特别的缘分，我才会刚刚好遇见你，不早也...
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="width: 235px;height:300px;">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/mysql.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">站内信的mysql数据库搭建</a>
-                                        <div class="description">
-                                            站内信有两个基本功能。一：点到点的消息传送。用户给用户发送站内信；管理员给用户
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="width: 235px;height:300px;">
-                                    <div class="image">
-                                        <i class="ztpic"><img src="../img/redis.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">PHP操作Redis常用方法</a>
-                                        <div class="description">
-                                            这篇文章主要介绍了PHP操作Redis常用技巧,结合实例形式总结分析了php针对redis的连...
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                                <div class="ui card" style="width: 235px;height:300px;">
-                                    <div>
-                                        <i class="ztpic"><img src="../img/yezi.jpg"></i>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" style="font-size: 14px">人这一辈子，无非是个过程</a>
-                                        <div class="description">
-                                            人这一辈子，无非就是个过程，荣华花间露，富贵草上霜，生不带来，死不带去，得...
-                                        </div>
-                                    </div>
-                                    <div class="extra content" style="font-size: 10px">
-                                        <a><i class="user icon"></i>回忆里依稀</a>
-                                        <spen style="float: right">2020-07-12</spen>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="ui top segment" id="cardTab">
+
                     </div>
                     <!--博客主题-->
                     <div class="ui attached segment">
                         <div class="ui secondary pointing menu">
                             <a class="item active" data-tab="tab-name3">最新博文</a>
                         </div>
-                        <div class="ui tab active" data-tab="tab-name3">
-                            <article class="post_box" style="margin-top: -14px">
-                                <div class="post-img col-xs-4 backc2">
-                                    <a>
-                                        <img class="img-responsive img-rounded imgs" src="http://www.yunyueyi.cn/zb_users/theme/koilee/style/noimg/7.jpg" style="display: block;">
-                                        <em></em>
-                                    </a>
-                                </div>
-                                <div class="post-left">
-                                    <h3><a>zblogasp版两套程序同时使用一个数据库怎么设置？</a></h3>
-                                    <div class="post-con">
-                                        <span class="title-l"></span>
-                                        因为zblog不依赖于独立的数据库运行，在网站整站迁移过程中，只需要使用FTP直接下载，到另外一个主机上传，即可完成了迁移，整个迁移过程非常简单;WordPress、Emlog依赖独立的数据库，在网站迁移过程中都需要正确的备份好网站程序及数据库，迁移完成后，还要重新配置网站数据连接等等，整个过程就比...
-                                    </div>
-                                    <aside class="item-meta" style="margin-right: 10px;">
-                                        <div class="ui horizontal link list">
-                                            <div class="item">
-                                                <i class="user icon"></i>回忆里依稀
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i>2020-6-20
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 浏览(10)
-                                            </div>
-                                            <div class="item">
-                                                <i class="comment icon"></i> 评论(10)
-                                            </div>
-                                        </div>
-                                    </aside>
-                                </div>
-                                <div class="news"></div>
-                            </article>
-                            <article class="post_box">
-                                <div class="post-img col-xs-4 backc2">
-                                    <a>
-                                        <img class="img-responsive img-rounded imgs" src="http://www.yunyueyi.cn/zb_users/theme/koilee/style/noimg/7.jpg" style="display: block;">
-                                        <em></em>
-                                    </a>
-                                </div>
-                                <div class="post-left">
-                                    <h3><a>zblogasp版两套程序同时使用一个数据库怎么设置？</a></h3>
-                                    <div class="post-con">
-                                        <span class="title-l"></span>
-                                        因为zblog不依赖于独立的数据库运行，在网站整站迁移过程中，只需要使用FTP直接下载，到另外一个主机上传，即可完成了迁移，整个迁移过程非常简单;WordPress、Emlog依赖独立的数据库，在网站迁移过程中都需要正确的备份好网站程序及数据库，迁移完成后，还要重新配置网站数据连接等等，整个过程就比...
-                                    </div>
-                                    <aside class="item-meta" style="margin-right: 10px;">
-                                        <div class="ui horizontal link list">
-                                            <div class="item">
-                                                <i class="user icon"></i>回忆里依稀
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i>2020-6-20
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 浏览(10)
-                                            </div>
-                                            <div class="item">
-                                                <i class="comment icon"></i> 评论(10)
-                                            </div>
-                                        </div>
-                                    </aside>
-                                </div>
-                                <div class="news"></div>
-                            </article>
-                            <article class="post_box">
-                                <div class="post-img col-xs-4 backc2">
-                                    <a>
-                                        <img class="img-responsive img-rounded imgs" src="http://www.yunyueyi.cn/zb_users/theme/koilee/style/noimg/7.jpg" style="display: block;">
-                                        <em></em>
-                                    </a>
-                                </div>
-                                <div class="post-left">
-                                    <h3><a>zblogasp版两套程序同时使用一个数据库怎么设置？</a></h3>
-                                    <div class="post-con">
-                                        <span class="title-l"></span>
-                                        因为zblog不依赖于独立的数据库运行，在网站整站迁移过程中，只需要使用FTP直接下载，到另外一个主机上传，即可完成了迁移，整个迁移过程非常简单;WordPress、Emlog依赖独立的数据库，在网站迁移过程中都需要正确的备份好网站程序及数据库，迁移完成后，还要重新配置网站数据连接等等，整个过程就比...
-                                    </div>
-                                    <aside class="item-meta" style="margin-right: 10px;">
-                                        <div class="ui horizontal link list">
-                                            <div class="item">
-                                                <i class="user icon"></i>回忆里依稀
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i>2020-6-20
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 浏览(10)
-                                            </div>
-                                            <div class="item">
-                                                <i class="comment icon"></i> 评论(10)
-                                            </div>
-                                        </div>
-                                    </aside>
-                                </div>
-                                <div class="news"></div>
-                            </article>
-                        </div>
+                        <div class="ui tab active" data-tab="tab-name3" id="new"></div>
                     </div>
                 </div>
                 <!--右边-->
@@ -532,21 +98,23 @@
                     <div class="ui" style="border-radius:5px 0;">
                         <section class="sidebar_widget widget_post_author">
                             <section class="author_info">
-                                <div class="widget_avatar" style="background-image: url(img/background.png);">
+                                <div class="widget_avatar" th:style="'background-image: url(' + ${blogSet.bloggersetBloggerBackroundImg} + ');'"> <!-- style="img/background.png" -->
                                     <a href="http://www.yunyueyi.cn/author-1.html" title="回忆里依稀" class="widget_avatar">
                                         <img class="widget_avatar" src="img/Head.jpg" alt="回忆里依稀">
                                         <div class="widget-cover auvip1 vip3"></div>
                                         <!--<i title="回忆里依稀" class="author-ident author1"></i>-->
                                     </a>
                                 </div>
-                                <h3>回忆里依稀<span class="admin_field">博主</span></h3>
+                                <h3><label th:text="${blogSet.bloggersetBloggerName}">回忆里依稀</label><span class="admin_field">博主</span></h3>
                                 <ul class="linkmore">
                                     <li><a class="fa fa-home isLogin" style="color: #ef5509;font-size: 40px;" title="个人中心"></a></li>
                                     <li><a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=1256699215@qq.com" target="_blank" style="color:#ff991a" class="fa fa-envelope" title="我的邮箱"></a></li>
-                                    <li><a target="_blank" href="https://wpa.qq.com/msgrd?v=3&uin=1279399209&site=qq&menu=yes" class="fa fa-qq" style="color:#1296db" title="QQ联系我"></a></li>
-                                    <li id="weixin"><a href="javascript:void(0)" target="_blank" class="fa fa-weixin" title="关注我的订阅号" style="color:#00c800"></a></li>
+                                    <li><a target="_blank" th:href="'https://wpa.qq.com/msgrd?v=3&uin=' + ${blogSet.bloggersetBloggerQqNumber} + '&site=qq&menu=yes'" href="1279399209" class="fa fa-qq" style="color:#1296db" title="QQ联系我"></a></li>
+                                    <li id="weixin">
+                                        <a href="javascript:void(0)" class="fa fa-weixin" title="关注我的微信" style="color:#00c800" onfocus="$('#imageBox').show();" onblur="$('#imageBox').hide();"></a>
+                                    </li>
                                 </ul>
-                                <p>个性签名：海内存知己，天涯若比邻。</p>
+                                <p>个性签名：<label th:text="${blogSet.bloggersetBloggerDes}">海内存知己，天涯若比邻。</label></p>
                             </section>
                             <section class="author_count">
                                 <ul>
@@ -556,6 +124,11 @@
                                 </ul>
                             </section>
                         </section>
+                        <div id="imageBox" style="display: none;">
+                            <img id="showimg" th:src="${blogSet.bloggersetBloggerWechatOrcode}" src="" alt="" style="display: inline-block;margin-top: 2px;margin-left:3px;width: 110px;height: 110px;"/>
+                            <!--<i id="close" class="close icon" onclick="$('#imageBox').hide();"></i>-->
+                            <i class="caret up"></i>
+                        </div>
                     </div>
                     <!--分类-->
                     <div class="ui segments">
@@ -679,6 +252,7 @@
 <script th:inline="javascript" th:src="@{/semantic-ui/dist/semantic.min.js}"></script>
 <script th:inline="javascript" th:src="@{/login/js/login.js}"></script>
 <script th:inline="javascript" th:src="@{/layui/layui.all.js}"></script>
+<script th:inline="javascript" th:src="@{/common/index.js}"></script>
 <script src="/common/mPlayer/mplayer.js"></script>
 <script src="/common/mPlayer/mplayer-list.js"></script>
 <script src="/common/mPlayer/mplayer-functions.js"></script>
@@ -686,50 +260,4 @@
 <script type="text/javascript" src="/common/player.js"></script>
 <!-- 鼠标拖尾特效插件 -->
 <!--<script type="text/javascript" src="/common/mymouse.js" id="mymouse"></script>-->
-<script>
-    $(document).ready(function(){
-        $('.pointing.menu .item').tab();
-
-        $('.ui.dropdown').dropdown();
-
-        //悬浮变色事件
-        $('.newslist li').mouseover(function(){
-            $(this).addClass("active");
-            $(this).siblings(".active").removeClass("active");
-        });
-        $('.newslist li').mouseout(function(){
-            $(this).removeClass("active");
-            $('.newslist li:first-child').addClass("active");
-        });
-
-        //悬浮变色事件
-        $('.post_box').mouseover(function(){
-            $(this).addClass("active");
-            $(this).find("img").attr("style", "-webkit-transform: scale(1.1);-moz-transform: scale(1.1);-o-transform: scale(1.1);-ms-transform: scale(1.1);");
-        });
-        $('.post_box').mouseout(function(){
-            $(this).removeClass("active");
-            $(this).find("img").attr("style", "");
-        });
-    });
-    $('#hybrid select').dropdown({on: 'hover'});
-
-    layui.use(['carousel', 'form'], function(){
-        var carousel = layui.carousel
-            ,form = layui.form;
-
-        //图片轮播
-        carousel.render({
-            elem: '#test10'
-            ,width: '100%'
-            ,height: '320px'
-            ,interval: 4000
-        });
-    });
-
-    window.onunload = function() {
-
-    };
-</script>
-
 </html>

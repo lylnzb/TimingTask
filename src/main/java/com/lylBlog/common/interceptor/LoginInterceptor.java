@@ -26,6 +26,11 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         boolean flag = false;
         try{
+            StringBuffer url = request.getRequestURL();
+//            if(url.toString().contains(".html")){
+//                response.sendRedirect("/error/404");
+//            }
+
             flag = ShiroUtils.isAuthenticated();
             request.setAttribute("isAuthenticated", flag);//判断用户是否登录
             request.setAttribute("basePath", LylBlogConfig.getBasePath());//项目基础路径

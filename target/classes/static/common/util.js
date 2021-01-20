@@ -161,6 +161,7 @@ function menuInit(){
                 }
             }
             $("#menu").html(htmlStr);
+            $('.ui.dropdown').dropdown();
         },
         error:function(){
             alert("初始化选项失败");

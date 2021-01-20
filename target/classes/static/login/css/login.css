@@ -22,7 +22,7 @@ a:hover, a:focus, a:active, a.active {
     z-index: 99999;
     display: none;
 }
-.close.icon{
+.userLogin .close.icon{
     margin-top: 10px;
 }
 .dialog--400 {

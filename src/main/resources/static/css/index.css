@@ -397,7 +397,7 @@ ul.divTags {
 .sidebar_content {
     padding: 0 15px 15px 15px;
 }
-.imageBox1 img,.imageBox2 img{
+.imageBox img,.imageBox1 img,.imageBox2 img{
     display: inline-block;
     height: auto;
     max-width: 100%;
@@ -429,6 +429,17 @@ ul.divTags {
     position: absolute;
     opacity: 0;
     width: 7.3%;
+}
+#imageBox {
+    position: absolute;
+    margin-top: -95px;
+    margin-left: 240px;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: 44;
 }
 #imageBox1 {
     position: absolute;
@@ -544,4 +555,170 @@ em {
 
 ::-webkit-scrollbar-corner {
     background: transparent;
+}
+
+a:hover, a:focus, a:active, a.active {
+    cursor: url('/img/cur/link.cur'), pointer;
+}
+
+button:hover, button:focus, button:active, button.active {
+    cursor: url('/img/cur/link.cur'), pointer;
+}
+
+li:hover, li:focus, li:active, li.active {
+    cursor: url('/img/cur/link.cur'), pointer;
+}
+
+.from-box .error {
+    position: absolute;
+    z-index: 10;
+    display: none;
+}
+h3.slide-title {
+    padding-right: 50px;
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    left: 0;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 35px;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: url('/img/cur/link.cur'), pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    background: hsla(215, 15%, 25%, 0.58);
+}
+
+.post_box {
+    padding: 20px 20px 20px 232px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-img {
+    margin-left: -214px;
+    float: left;
+    overflow: hidden;
+    width: 200px;
+    height: 150px;
+}
+
+.post-img img {
+    position: relative;
+    max-width: none;
+    width: calc(100% + 20px);
+    height: 150px;
+    -webkit-transition: opacity .35s,-webkit-transform .45s;
+    transition: opacity .35s,transform .45s;
+    -webkit-transform: translate3d(-20px,0,0);
+    transform: translate3d(-20px,0,0);
+    object-fit: cover;
+}
+
+em {
+    font-style: normal;
+}
+
+.post-left {
+    min-height: 150px;
+}
+
+.post-left h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+    line-height: 36px;
+    font-weight: normal;
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.post-con {
+    font-weight: 500;
+    line-height: 180%;
+    height: 77px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: block;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    text-align: justify;
+    word-break: break-all;
+}
+
+span.title-l {
+    position: absolute;
+    background: #3690cf;
+    top: 21px;
+    left: -1px;
+    width: 5px;
+    height: 28px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.item-meta {
+    height: min-content;
+    overflow: hidden;
+    color: #999;
+    font-size: 12px;
+}
+
+.post_box .news {
+    background: url(http://www.yunyueyi.cn/zb_users/theme/koilee/style/images/new.png);
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    right: 0px;
+    top: 0px;
+    z-index: 9;
+}
+
+.post_box.active {
+    width: 100%;
+    height: 100%;
+    background: #f7f7f7;
+}
+
+img:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+}
+
+.post-left a::before, .post-left a::after {
+    display: inline-block;
+    opacity: 0;
+    transition: transform 0.3s ease 0s, opacity 0.2s ease 0s;
+}
+/*.post-left a::after {*/
+/*    content: "]";*/
+/*    margin-left: 2px;*/
+/*    transform: translateX(-2px);*/
+/*}*/
+/*.post-left a::before {*/
+/*    content: "[";*/
+/*    margin-right: 2px;*/
+/*    transform: translateX(2px);*/
+/*}*/
+.post-left a:hover::before, .post-left a:hover::after, .post-left a:focus::before, .post-left a:focus::after {
+    opacity: 1;
+    transform: translateX(0px);
+}
+.post-left a:hover, .post-left a:hover {
+    color: #47aa42;
+}
+.description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /*控制多行的行数*/
+    -webkit-box-orient: vertical;
 }
