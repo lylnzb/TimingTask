@@ -122,6 +122,12 @@
             display: flex;
             vertical-align: middle;
         }
+
+        .layui-form-item {
+            margin-bottom: 2px;
+            clear: both;
+            *zoom: 1;
+        }
     </style>
 </head>
 <body style="margin: 0px 10px 0px;padding: 0;">
@@ -129,12 +135,13 @@
     <input type="hidden" id="setTab" name="setTab" value="0"/>
     <div class="layui-tab" lay-filter="blogSet" style="margin-bottom: 20px;">
         <ul class="layui-tab-title">
-            <li id = 'tzsb' class="layui-this"><i class="cogs icon"></i>基础设置</li>
-            <li id = 'tzsbcx'><i class="user outline icon"></i>博主设置</li>
-            <li id = '11'><i class="pencil alternate icon"></i>博客设置</li>
+            <li id = 'basisSet' class="layui-this"><i class="cogs icon"></i>基础设置</li>
+            <li id = 'blogerSet'><i class="user outline icon"></i>博主设置</li>
+            <li id = 'blogSet'><i class="pencil alternate icon"></i>博客设置</li>
+            <li id = 'emailSet'><i class="envelope square icon"></i>邮箱设置</li>
         </ul>
         <div class="layui-tab-content" style="padding:2px 0px;">
-            <div class="layui-tab-item layui-show" id='tzsbxq' style="padding-top: 15px">
+            <div class="layui-tab-item layui-show" id='basisSetDetail' style="padding-top: 15px">
                 <div class="department_main">
                     <div class="layui-form-item">
                         <label class="layui-form-label" style = 'width: 300px;font-weight: bold'>网站图标：</label>
@@ -286,7 +293,7 @@
                     </div>
                 </div>
             </div>
-            <div class="layui-tab-item" id='tzsbcxxq' style="padding-top: 15px">
+            <div class="layui-tab-item" id='blogerSetDetail' style="padding-top: 15px">
                 <div class="department_main">
                     <div class="layui-form-item">
                         <label class="layui-form-label" style = 'width: 300px;font-weight: bold'><font color='red'>*</font>&nbsp;博主头像：</label>
@@ -386,7 +393,7 @@
                     </div>
                 </div>
             </div>
-            <div class="layui-tab-item" id='tzsbcxxq11'  style="padding-top: 15px">
+            <div class="layui-tab-item" id='blogSetDetail'  style="padding-top: 15px">
                 <div class="department_main">
                     <div class="layui-form-item">
                         <div class="layui-inline">
@@ -492,6 +499,69 @@
                             <div class="layui-input-inline">
                                 <input type="text" name="blogsetFriendLinks" id="blogsetFriendLinks" lay-verify="blogsetFriendLinks" autocomplete="off"
                                        class="layui-input" style="width: 673px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item" id='emailSetDetail'  style="padding-top: 15px">
+                <div class="department_main">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style = 'width: 300px;font-weight: bold'><font color='red'>*</font>&nbsp;发送邮件账户：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="eamilsetUsername" id="eamilsetUsername" lay-verify="eamilsetUsername" autocomplete="off"
+                                       class="layui-input" style="width: 673px;">
+                            </div>
+                            <span class="help-block m-b-none" style="margin-top: 32px;margin-left: 300px;"><i class="fa fa-info-circle"></i> qq邮箱则为smtp.qq.com,163邮箱则为smtp.163.com</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style = 'width: 300px;font-weight: bold'><font color='red'>*</font>&nbsp;邮箱授权码：</label>
+                            <div class="layui-input-inline">
+                                <input type="password" name="eamilsetPassword" id="eamilsetPassword" lay-verify="eamilsetPassword" autocomplete="off"
+                                       class="layui-input" style="width: 673px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style = 'width: 300px;font-weight: bold'><font color='red'>*</font>&nbsp;smtp服务主机：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="eamilsetHost" id="eamilsetHost" lay-verify="eamilsetHost" autocomplete="off"
+                                       class="layui-input" style="width: 673px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style = 'width: 300px;font-weight: bold'><font color='red'>*</font>&nbsp;服务协议：</label>
+                            <div class="layui-input-inline">
+                                <select name="eamilsetProtocol" id='eamilsetProtocol' lay-verify="eamilsetProtocol" placeholder="请选择">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style = 'width: 300px;font-weight: bold'><font color='red'>*</font>&nbsp;编码集：</label>
+                            <div class="layui-input-inline">
+                                <select name="eamilsetDefaultEncoding" id='eamilsetDefaultEncoding' lay-verify="eamilsetDefaultEncoding" placeholder="请选择">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="department_main">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style = 'width: 300px;font-weight: bold'><font color='red'>*</font>&nbsp;发送验证码邮箱内容模板：</label>
+                                <div class="layui-input-inline">
+                                    <textarea name="eamilsetVerificationCode" id="eamilsetVerificationCode" lay-verify="eamilsetVerificationCode" class="layui-textarea" style="width: 673px"></textarea>
+                                </div>
+                                <span class="help-block m-b-none" style="margin-top: 102px;margin-left: 300px;"><i class="fa fa-info-circle"></i> ‘${code}’为邮箱动态验证码，模板中必须包含该值</span>
                             </div>
                         </div>
                     </div>

@@ -1,1 +1,1 @@
-target/class/*         //忽略这个target1·目录
+target/classes/*         //忽略这个target1·目录

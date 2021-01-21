@@ -25,8 +25,6 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
-
-
 /**
  * @author YShuai
  *

@@ -40,6 +40,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="blogsetDefaultPic" column="blogset_default_pic" />
         <result property="blogsetFriendLinks" column="blogset_friend_links" />
 
+        <result property="eamilsetUsername" column="eamilset_username" />
+        <result property="eamilsetPassword" column="eamilset_password" />
+        <result property="eamilsetHost" column="eamilset_host" />
+        <result property="eamilsetProtocol" column="eamilset_protocol" />
+        <result property="eamilsetDefaultEncoding" column="eamilset_defaultEncoding" />
+        <result property="eamilsetVerificationCode" column="eamilset_verificationCode" />
+
         <result property="createBy" column="createBy" />
         <result property="createTime" column="createTime" />
         <result property="updateBy" column="updateBy" />
@@ -84,6 +91,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="blogsetNoCoverpicUseContentpic != null and blogsetNoCoverpicUseContentpic != ''">blogset_no_coverpic_use_contentpic,</if>
             <if test="blogsetDefaultPic != null and blogsetDefaultPic != ''">blogset_default_pic,</if>
             <if test="blogsetFriendLinks != null and blogsetFriendLinks != ''">blogset_friend_links,</if>
+            <if test="eamilsetUsername != null and eamilsetUsername != ''">eamilset_username,</if>
+            <if test="eamilsetPassword != null and eamilsetPassword != ''">eamilset_password,</if>
+            <if test="eamilsetHost != null and eamilsetHost != ''">eamilset_host,</if>
+            <if test="eamilsetProtocol != null and eamilsetProtocol != ''">eamilset_protocol,</if>
+            <if test="eamilsetDefaultEncoding != null and eamilsetDefaultEncoding != ''">eamilset_defaultEncoding,</if>
+            <if test="eamilsetVerificationCode != null and eamilsetVerificationCode != ''">eamilset_verificationCode,</if>
             <if test="createBy != null and createBy != ''">createBy,</if>
             createTime
         )value(
@@ -117,6 +130,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="blogsetNoCoverpicUseContentpic != null and blogsetNoCoverpicUseContentpic != ''">#{blogsetNoCoverpicUseContentpic},</if>
             <if test="blogsetDefaultPic != null and blogsetDefaultPic != ''">#{blogsetDefaultPic},</if>
             <if test="blogsetFriendLinks != null and blogsetFriendLinks != ''">#{blogsetFriendLinks},</if>
+            <if test="eamilsetUsername != null and eamilsetUsername != ''">#{eamilsetUsername},</if>
+            <if test="eamilsetPassword != null and eamilsetPassword != ''">#{eamilsetPassword},</if>
+            <if test="eamilsetHost != null and eamilsetHost != ''">#{eamilsetHost},</if>
+            <if test="eamilsetProtocol != null and eamilsetProtocol != ''">#{eamilsetProtocol},</if>
+            <if test="eamilsetDefaultEncoding != null and eamilsetDefaultEncoding != ''">#{eamilsetDefaultEncoding},</if>
+            <if test="eamilsetVerificationCode != null and eamilsetVerificationCode != ''">#{eamilsetVerificationCode},</if>
             <if test="createBy != null and createBy != ''">#{createBy},</if>
             sysdate()
         )
@@ -155,6 +174,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="blogsetNoCoverpicUseContentpic != null and blogsetNoCoverpicUseContentpic != ''">blogset_no_coverpic_use_contentpic = #{blogsetNoCoverpicUseContentpic},</if>
             <if test="blogsetDefaultPic != null and blogsetDefaultPic != ''">blogset_default_pic = #{blogsetDefaultPic},</if>
             <if test="blogsetFriendLinks != null and blogsetFriendLinks != ''">blogset_friend_links = #{blogsetFriendLinks},</if>
+            <if test="eamilsetUsername != null and eamilsetUsername != ''">eamilset_username = #{eamilsetUsername},</if>
+            <if test="eamilsetPassword != null and eamilsetPassword != ''">eamilset_password = #{eamilsetPassword},</if>
+            <if test="eamilsetHost != null and eamilsetHost != ''">eamilset_host = #{eamilsetHost},</if>
+            <if test="eamilsetProtocol != null and eamilsetProtocol != ''">eamilset_protocol = #{eamilsetProtocol},</if>
+            <if test="eamilsetDefaultEncoding != null and eamilsetDefaultEncoding != ''">eamilset_defaultEncoding = #{eamilsetDefaultEncoding},</if>
+            <if test="eamilsetVerificationCode != null and eamilsetVerificationCode != ''">eamilset_verificationCode = #{eamilsetVerificationCode},</if>
             <if test="updateBy != null and updateBy != ''">updateBy = #{updateBy},</if>
             updateTime = sysdate()
     </update>

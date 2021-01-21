@@ -1,5 +1,6 @@
 package com.lylBlog.common.server;
 
+import com.lylBlog.admin.bean.BlogSetBean;
 import com.lylBlog.common.bean.MusicBean;
 import com.lylBlog.common.bean.ResultObj;
 import org.apache.ibatis.annotations.Param;
@@ -26,4 +27,10 @@ public interface CommonServer {
      * @return
      */
     ResultObj queryMeunInfo();
+
+    /**
+     * 获取博客配置信息
+     * @return
+     */
+    BlogSetBean getBlogConfiguration();
 }

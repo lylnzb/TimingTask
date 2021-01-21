@@ -1,14 +1,15 @@
 package com.lylBlog.common.controller;
 
+import com.lylBlog.admin.bean.BlogSetBean;
 import com.lylBlog.common.bean.ResultObj;
 import com.lylBlog.common.bean.ToEmailBean;
+import com.lylBlog.common.server.CommonServer;
 import com.lylBlog.common.util.CodeUtil;
+import com.lylBlog.common.util.EmailSenderUtil;
 import com.lylBlog.common.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,31 +23,33 @@ import java.util.concurrent.TimeUnit;
 public class ToEmailController {
 
     @Autowired
-    private JavaMailSender mailSender;
-
-    @Value("${spring.mail.username}")
-    private String from;
+    private RedisUtil redisUtil;
 
     @Autowired
-    private RedisUtil redisUtil;
+    private EmailSenderUtil mailSender;
+
+    @Autowired
+    private CommonServer commonServer;
 
     @RequestMapping("/toEmail")
     @ResponseBody
     public ResultObj commonEmail(@RequestBody ToEmailBean toEmail, HttpServletRequest request) {
+        BlogSetBean blogSet = commonServer.getBlogConfiguration();
+
         String code = CodeUtil.getFour();
         //创建简单邮件消息
         SimpleMailMessage message = new SimpleMailMessage();
         //谁发的
-        message.setFrom(from);
+        message.setFrom(blogSet.getEamilsetUsername());
         //谁要接收
         message.setTo(toEmail.getTos());
         //邮件标题
         message.setSubject("邮件验证码");
         //邮件内容
-        message.setText("您的验证码为：" + code + "。若非本人操作，请忽略此邮件。");
+        message.setText(blogSet.getEamilsetVerificationCode().replace("${code}",code));
         try {
             //邮件发送
-            mailSender.send(message);
+            mailSender.getJavaMailSenderImpl(blogSet).send(message);
             //判断是否缓存该账号验证码
             boolean isExist = redisUtil.hasKey(toEmail.getTos() + "_lylyzm");
             if (!isExist) {

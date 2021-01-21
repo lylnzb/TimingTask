@@ -1,10 +1,11 @@
 
 layui.use(['form', 'table','tree'], function(){
-    var table = layui.table,
-        form = layui.form,
+    var form = layui.form,
         element = layui.element;
 
     element.on('tab(blogSet)', function (data) { $("#setTab").val(data.index); });
+
+    findCodeValue(form);
 
     form.verify({
         isUploadWebIcon:function(value) {
@@ -101,6 +102,38 @@ layui.use(['form', 'table','tree'], function(){
             if ('2' == $("#setTab").val() && value.length < 1) {
                 return '侧边栏友情链接不能为空！';
             }
+        },
+        eamilsetUsername:function(value) {
+            if ('3' == $("#setTab").val() && value.length < 1) {
+                return '发送邮件账户不能为空！';
+            }
+        },
+        eamilsetPassword:function(value) {
+            if ('3' == $("#setTab").val() && value.length < 1) {
+                return 'eamilsetPassword不能为空！';
+            }
+        },
+        eamilsetHost:function(value) {
+            if ('3' == $("#setTab").val() && value.length < 1) {
+                return 'smtp服务主机不能为空！';
+            }
+        },
+        eamilsetProtocol:function(value) {
+            if ('3' == $("#setTab").val() && value.length < 1) {
+                return '请选择服务协议！';
+            }
+        },
+        eamilsetDefaultEncoding:function(value) {
+            if ('3' == $("#setTab").val() && value.length < 1) {
+                return '请选择编码集！';
+            }
+        },
+        eamilsetVerificationCode:function(value) {
+            if ('3' == $("#setTab").val() && value.length < 1) {
+                return '发送验证码邮箱内容模板不能为空！';
+            }else if('3' == $("#setTab").val() && value.indexOf("${code}") == -1){
+                return '该模板内未包含${code}';
+            }
         }
     });
 
@@ -182,6 +215,19 @@ layui.use(['form', 'table','tree'], function(){
             /*侧边栏友情链接*/
             $("#blogsetFriendLinks").val(data.blogsetFriendLinks);
 
+            /*发送邮件账户*/
+            $("#eamilsetUsername").val(data.eamilsetUsername);
+            /*邮箱授权码*/
+            $("#eamilsetPassword").val(data.eamilsetPassword);
+            /*smtp服务主机*/
+            $("#eamilsetHost").val(data.eamilsetHost);
+            /*服务协议*/
+            $("#eamilsetProtocol").siblings("div.layui-form-select").find('dl').find("dd[lay-value='" + data.eamilsetProtocol + "']").click();
+            /*编码集*/
+            $("#eamilsetDefaultEncoding").siblings("div.layui-form-select").find('dl').find("dd[lay-value='" + data.eamilsetDefaultEncoding + "']").click();
+            /*发送验证码邮箱内容模板*/
+            $("#eamilsetVerificationCode").val(data.eamilsetVerificationCode);
+
             form.render();
         }
     });
@@ -251,6 +297,19 @@ layui.use(['form', 'table','tree'], function(){
         /*侧边栏友情链接*/
         var blogsetFriendLinks = data.field.blogsetFriendLinks;
 
+        /*发送邮件账户*/
+        var eamilsetUsername = data.field.eamilsetUsername;
+        /*邮箱授权码*/
+        var eamilsetPassword = data.field.eamilsetPassword;
+        /*smtp服务主机*/
+        var eamilsetHost = data.field.eamilsetHost;
+        /*服务协议*/
+        var eamilsetProtocol = data.field.eamilsetProtocol;
+        /*编码集*/
+        var eamilsetDefaultEncoding = data.field.eamilsetDefaultEncoding;
+        /*发送验证码邮箱内容模板*/
+        var eamilsetVerificationCode = data.field.eamilsetVerificationCode;
+
         var setTab = $("#setTab").val();
         var paramData = new Object();
         if(0 == setTab){
@@ -285,7 +344,14 @@ layui.use(['form', 'table','tree'], function(){
             paramData.blogsetNoPicUseDefault = blogsetNoPicUseDefault;
             paramData.blogsetNoCoverpicUseContentpic = blogsetNoCoverpicUseContentpic;
             paramData.blogsetDefaultPic = showDefaultImg;
-            paramData. blogsetFriendLinks= blogsetFriendLinks;
+            paramData.blogsetFriendLinks = blogsetFriendLinks;
+        }else if(3 == setTab){
+            paramData.eamilsetUsername = eamilsetUsername;
+            paramData.eamilsetPassword = eamilsetPassword;
+            paramData.eamilsetHost = eamilsetHost;
+            paramData.eamilsetProtocol = eamilsetProtocol;
+            paramData.eamilsetDefaultEncoding = eamilsetDefaultEncoding;
+            paramData.eamilsetVerificationCode = eamilsetVerificationCode;
         }
         console.log(paramData);
         $.ajax({
@@ -363,5 +429,7 @@ function closeView(type){
 //字典初始化
 function findCodeValue(form){
     loadSelect("#articleStatus","sys_article_status", form);
+    loadSelect("#eamilsetProtocol","sys_email_protocol", form);
+    loadSelect("#eamilsetDefaultEncoding","sys_java_coding", form);
     loadSelectAllow("#columnId", form);
 }

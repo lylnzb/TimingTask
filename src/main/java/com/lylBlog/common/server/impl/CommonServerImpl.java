@@ -1,6 +1,7 @@
 package com.lylBlog.common.server.impl;
 
 import com.alibaba.fastjson.JSONArray;
+import com.lylBlog.admin.bean.BlogSetBean;
 import com.lylBlog.admin.bean.DictDataBean;
 import com.lylBlog.common.bean.MenuBean;
 import com.lylBlog.common.bean.MusicBean;
@@ -69,4 +70,11 @@ public class CommonServerImpl implements CommonServer {
         return ResultObj.ok(menuList.size(), menuList);
     }
 
+    /**
+     * 获取博客配置信息
+     * @return
+     */
+    public BlogSetBean getBlogConfiguration(){
+        return commonMapper.getBlogConfiguration();
+    }
 }

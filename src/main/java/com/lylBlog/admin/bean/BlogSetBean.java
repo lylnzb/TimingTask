@@ -73,6 +73,19 @@ public class BlogSetBean extends ParaBean {
     /** 友情链接 */
     private String blogsetFriendLinks;
 
+    /** 发送邮件账户 */
+    private String eamilsetUsername;
+    /** 邮箱授权码 */
+    private String eamilsetPassword;
+    /** smtp服务主机 */
+    private String eamilsetHost;
+    /** 服务协议 */
+    private String eamilsetProtocol;
+    /** 编码集 */
+    private String eamilsetDefaultEncoding;
+    /** 发送验证码邮箱内容模板 */
+    private String eamilsetVerificationCode;
+
     public Integer getBlogSetId() {
         return blogSetId;
     }
@@ -319,5 +332,53 @@ public class BlogSetBean extends ParaBean {
 
     public void setBlogsetFriendLinks(String blogsetFriendLinks) {
         this.blogsetFriendLinks = blogsetFriendLinks;
+    }
+
+    public String getEamilsetUsername() {
+        return eamilsetUsername;
+    }
+
+    public void setEamilsetUsername(String eamilsetUsername) {
+        this.eamilsetUsername = eamilsetUsername;
+    }
+
+    public String getEamilsetPassword() {
+        return eamilsetPassword;
+    }
+
+    public void setEamilsetPassword(String eamilsetPassword) {
+        this.eamilsetPassword = eamilsetPassword;
+    }
+
+    public String getEamilsetHost() {
+        return eamilsetHost;
+    }
+
+    public void setEamilsetHost(String eamilsetHost) {
+        this.eamilsetHost = eamilsetHost;
+    }
+
+    public String getEamilsetProtocol() {
+        return eamilsetProtocol;
+    }
+
+    public void setEamilsetProtocol(String eamilsetProtocol) {
+        this.eamilsetProtocol = eamilsetProtocol;
+    }
+
+    public String getEamilsetDefaultEncoding() {
+        return eamilsetDefaultEncoding;
+    }
+
+    public void setEamilsetDefaultEncoding(String eamilsetDefaultEncoding) {
+        this.eamilsetDefaultEncoding = eamilsetDefaultEncoding;
+    }
+
+    public String getEamilsetVerificationCode() {
+        return eamilsetVerificationCode;
+    }
+
+    public void setEamilsetVerificationCode(String eamilsetVerificationCode) {
+        this.eamilsetVerificationCode = eamilsetVerificationCode;
     }
 }

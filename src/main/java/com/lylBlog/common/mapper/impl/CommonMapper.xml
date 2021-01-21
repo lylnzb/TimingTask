@@ -41,6 +41,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="blogsetDefaultPic" column="blogset_default_pic" />
         <result property="blogsetFriendLinks" column="blogset_friend_links" />
 
+        <result property="eamilsetUsername" column="eamilset_username" />
+        <result property="eamilsetPassword" column="eamilset_password" />
+        <result property="eamilsetHost" column="eamilset_host" />
+        <result property="eamilsetProtocol" column="eamilset_protocol" />
+        <result property="eamilsetDefaultEncoding" column="eamilset_defaultEncoding" />
+        <result property="eamilsetVerificationCode" column="eamilset_verificationCode" />
+
         <result property="createBy" column="createBy" />
         <result property="createTime" column="createTime" />
         <result property="updateBy" column="updateBy" />
