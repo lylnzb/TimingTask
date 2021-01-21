@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 邮件发送控制层
+ */
 @Controller
 @RequestMapping("/")
 public class ToEmailController {
