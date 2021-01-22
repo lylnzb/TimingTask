@@ -30,13 +30,10 @@ function OnClick(event, treeId, treeNode){
 }
 
 layui.use(['form','table','tree'], function(){
-    var table = layui.table,
-        form = layui.form,
-        tree = layui.tree;
+    var form = layui.form;
 
     findCodeValue(form);
 
-    var data = [];
     //自定义表单认证只需要非空认证可以直接在元素中添加属性lay-verify="required"
     //test指表单元素lay-verify="test"标识
     form.verify({

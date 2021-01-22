@@ -17,8 +17,6 @@ a:hover, a:focus, a:active, a.active {
 }
 .login {
     position:fixed;
-    top:15%;
-    left: 50%;
     z-index: 99999;
     display: none;
 }

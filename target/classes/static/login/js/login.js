@@ -231,4 +231,77 @@ $(function(){
     menuInit();
 });
 
+//登陆页面的拖拽功能实现代码
+window.onload=function() {
+    var dialog = document.getElementById("loginPage");
+    var diatitle1 = document.getElementById("title1");
+    var diatitle2 = document.getElementById("title2");
+    var diatitle3 = document.getElementById("title3");
+    var isDraging = false; //是否可拖拽的标记
+    diatitle1.onmousedown = down;
+    diatitle2.onmousedown = down;
+    diatitle3.onmousedown = down;
+    document.onmousemove = move;
+    document.onmouseup = up;
 
+    //登陆层居中
+    autoCenter();
+
+    function autoCenter() {
+        var bodyW = document.documentElement.clientWidth;
+        var bodyH = document.documentElement.clientHeight;
+        var elW = dialog.offsetWidth;
+        var elH = dialog.offsetHeight;
+        dialog.style.left = ((bodyW - elW) / 2 - 190) + 'px';
+        dialog.style.top = ((bodyH - elH) / 2 - 190) + 'px';
+    }
+
+    //按下
+    function down() {
+        diatitle1.style.cursor = "move";
+        diatitle2.style.cursor = "move";
+        diatitle3.style.cursor = "move";
+        isDraging = true;
+        objleft = dialog.offsetLeft;
+        objtop = dialog.offsetTop;
+        posX = parseInt(mousePosition(event).x)
+        posY = parseInt(mousePosition(event).y);
+        offsetX = posX - objleft;
+        offsetY = posY - objtop;
+    }
+
+    //移动
+    function move(event) {
+        if (isDraging == true) {
+            var x = mousePosition(event).x - offsetX;
+            var y = mousePosition(event).y - offsetY;
+            var w = document.documentElement.clientWidth - dialog.offsetWidth;
+            var h = document.documentElement.clientHeight - dialog.offsetHeight;
+            x = Math.min(w, Math.max(0, x));
+            y = Math.min(h, Math.max(0, y));
+            dialog.style.left = x + 'px';
+            dialog.style.top = y + 'px';
+        }
+    }
+
+    //松开
+    function up() {
+        isDraging = false;
+    }
+
+    function mousePosition(evt) {
+        var xPos, yPos;
+        evt = evt || window.event;
+        if (evt.pageX) {
+            xPos = evt.pageX;
+            yPos = evt.pageY;
+        } else {
+            xPos = evt.clientX + document.body.scrollLeft - document.body.clientLeft;
+            yPos = evt.clientY + document.body.scrollTop - document.body.clientTop;
+        }
+        return {
+            x: xPos,
+            y: yPos
+        }
+    }
+}

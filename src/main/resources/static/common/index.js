@@ -117,7 +117,7 @@ function showArticleInfo(){
                 htmlStr += '    </div>';
                 htmlStr += '    <div class="post-left">';
                 htmlStr += '        <h3>';
-                htmlStr += '           <a href="' + data[i].articleUrl + '" target="_blank">';
+                htmlStr += '           <a class="blogTitle" href="' + data[i].articleUrl + '" target="_blank">';
                 htmlStr += '              <span class="recommend-flag">新</span>';
                 htmlStr += '              ' + data[i].articleTitle;
                 htmlStr += '           </a>';

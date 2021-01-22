@@ -470,10 +470,17 @@ ul.divTags {
     margin: 30px auto;
     cursor: default;
 }
-.close.icon{
+#title1 .close.icon{
     position: absolute;
     right: 5px;
     top: 5px;
+    font-size: 14px;
+    color: #666;
+    cursor: url('../img/cur/link.cur'), pointer;
+}
+#title2 .close.icon, #title3 .close.icon{
+    position: absolute;
+    right: 5px;
     font-size: 14px;
     color: #666;
     cursor: url('../img/cur/link.cur'), pointer;
@@ -680,7 +687,11 @@ span.title-l {
     z-index: 9;
 }
 
-.post_box.active {
+.post_box .blogTitle:hover {
+    margin-left: 8px;
+}
+
+.post_box:hover {
     width: 100%;
     height: 100%;
     background: #f7f7f7;
