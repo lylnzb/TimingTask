@@ -198,6 +198,14 @@
     </dependency>
 
     <!--集成redis-->
+
+    <!-- 解析客户端操作系统、浏览器等 -->
+    <dependency>
+      <groupId>eu.bitwalker</groupId>
+      <artifactId>UserAgentUtils</artifactId>
+      <version>1.19</version>
+    </dependency>
+
     <!-- Spring Boot Redis 依赖 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

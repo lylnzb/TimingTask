@@ -2,9 +2,7 @@ package com.lylBlog.common.controller;
 
 import com.baidu.ueditor.ActionEnter;
 import com.lylBlog.common.config.LylBlogConfig;
-import com.lylBlog.common.util.IdUtil;
 import com.lylBlog.common.util.file.FileUploadUtil;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,7 +34,7 @@ public class UEditorConfigController {
             request.setCharacterEncoding( "utf-8" );
             response.setHeader("Content-Type" , "text/html");
 
-            String filePath = this.getClass().getResource("/static/ueditor1_4_3_3/jsp/common/config.json").getPath();
+            String filePath = this.getClass().getResource("/static/common/ueditor1_4_3_3/jsp/common/config.json").getPath();
             String rootPath = "";
             for(int i = 0;i < filePath.split("/").length;i++){
                 if(i == 0 || i == filePath.split("/").length - 1){

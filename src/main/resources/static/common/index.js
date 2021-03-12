@@ -1,11 +1,12 @@
 layui.use(['carousel', 'form'], function(){
-    var carousel = layui.carousel
-        ,form = layui.form;
+    var carousel = layui.carousel;
 
     //卡片渲染方法
     showCardInfo();
     //最新文章渲染方法
     showArticleInfo();
+    //轮播图渲染方法
+    showBannerInfo(carousel);
 
     //悬浮变色事件
     $('.newslist li').mouseover(function(){
@@ -28,15 +29,39 @@ layui.use(['carousel', 'form'], function(){
     });
 
     $('#hybrid select').dropdown({on: 'hover'});
-
-    //图片轮播
-    carousel.render({
-        elem: '#test10'
-        ,width: '100%'
-        ,height: '320px'
-        ,interval: 4000
-    });
 });
+
+function showBannerInfo(carousel){
+    $.ajax({
+        url: basePath + 'showBannerInfo',
+        type: "POST",
+        //async:false,
+        contentType: 'application/json;charset=utf-8',
+        success: function (resultData) {
+            console.log(resultData);
+            var data = resultData.data;
+            var htmlStr = '<div carousel-item="">';
+            for(var i = 0;i < data.length;i++){
+                htmlStr += "<div>";
+                htmlStr += "    <a href=\"" + data[i].bannerUrl + "\" target='_blank'><img src=\"" + data[i].bannerImg + "\" style=\"width: 100%;height: 100%\"></a>";
+                htmlStr += "    <h3 class=\"slide-title\">" + data[i].bannerTitle + "</h3>";
+                htmlStr += "</div>";
+            }
+            htmlStr += '</div>';
+            $("#bannerData").html(htmlStr);
+            //图片轮播
+            carousel.render({
+                elem: '#bannerData'
+                ,width: '100%'
+                ,height: '320px'
+                ,interval: 4000
+            });
+        },
+        error: function () {
+
+        }
+    });
+}
 
 function showCardInfo(){
     $.ajax({

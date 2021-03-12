@@ -1,5 +1,6 @@
 package com.lylBlog.index.server.impl;
 
+import com.lylBlog.admin.bean.BannerBean;
 import com.lylBlog.admin.bean.BlogSetBean;
 import com.lylBlog.admin.mapper.BlogSetMapper;
 import com.lylBlog.common.bean.ResultObj;
@@ -30,6 +31,21 @@ public class IndexServerImpl implements IndexServer {
 
     @Resource
     private BlogSetMapper blogSetMapper;
+
+    /**
+     * 展示网站首页轮播图信息
+     * @return
+     */
+    public ResultObj showBannerInfo(){
+        String page = "5";
+        List<BlogSetBean> blogSetList = blogSetMapper.viewBlogSetInfo();
+        if(!blogSetList.isEmpty()){
+            page = blogSetList.get(0).getBlogsetScrollRecommendedShowNum().toString();
+        }
+
+        List<BannerBean> bannerList = indexMapper.showBannerInfo(page);
+        return ResultObj.ok(bannerList);
+    }
 
     /**
      * 展示网站首页卡片内容信息

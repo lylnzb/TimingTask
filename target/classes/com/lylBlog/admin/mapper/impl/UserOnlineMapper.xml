@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lylBlog.admin.mapper.UserOnlineMapper">
+
+    <sql id="selectOnlineVo">
+       select * from m_user_online
+    </sql>
+
+    <!--  通过会话序号查询信息  -->
+    <select id="selectOnlineById" parameterType="String" resultType="com.lylBlog.admin.bean.UserOnlineBean">
+        <include refid="selectOnlineVo"/>
+        where sessionid = #{sessionid}
+    </select>
+
+    <!--  保存会话信息  -->
+    <insert id="saveOnline" parameterType="com.lylBlog.admin.bean.UserOnlineBean">
+		insert into m_user_online(
+			sessionId,
+			nickName,
+			onlineIp,
+			loginAddress,
+			browser,
+			onlineSystem,
+			sessionStatus,
+			loginTime,
+			lastAccessTime
+		)values(
+			#{sessionId},
+			#{nickName},
+			#{onlineIp},
+			#{loginAddress},
+			#{browser},
+			#{onlineSystem},
+			#{sessionStatus},
+			#{loginTime},
+			#{lastAccessTime}
+		)
+	</insert>
+
+    <!-- 通过会话序号删除信息 -->
+    <delete id="deleteOnlineById" parameterType="String">
+ 		delete from m_user_online where sessionId = #{sessionId}
+ 	</delete>
+</mapper>

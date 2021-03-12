@@ -1,5 +1,6 @@
 package com.lylBlog.index.server;
 
+import com.lylBlog.admin.bean.BannerBean;
 import com.lylBlog.common.bean.ResultObj;
 import com.lylBlog.index.bean.ArticleListBean;
 import com.lylBlog.index.bean.CardBean;
@@ -12,6 +13,12 @@ import java.util.List;
  * @Date: 2020/11/14 14:58
  */
 public interface IndexServer {
+
+    /**
+     * 展示网站首页轮播图信息
+     * @return
+     */
+    ResultObj showBannerInfo();
 
     /**
      * 展示网站首页卡片内容信息

@@ -4,6 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lylBlog.index.mapper.IndexMapper">
 
+    <!-- 展示网站首页轮播图信息 -->
+    <select id="showBannerInfo" resultType="com.lylBlog.admin.bean.BannerBean" parameterType="String">
+        select * from sys_banner limit 0, ${page}
+    </select>
+
     <!-- 获取选项卡信息 -->
     <select id="getTabInfo" resultType="com.lylBlog.index.bean.TabBean">
         SELECT columnName as tabName,columnId as tabType FROM sys_column where isAllow = 'Y'

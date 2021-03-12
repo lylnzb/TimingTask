@@ -7,9 +7,13 @@ import com.lylBlog.common.bean.ResultObj;
 import com.lylBlog.common.util.ShiroUtils;
 import com.lylBlog.login.bean.UserBean;
 import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.session.Session;
+import org.crazycake.shiro.RedisSessionDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -21,6 +25,9 @@ public class WebColumnServerImpl implements WebColumnServer {
 
     @Resource
     private WebColumnMapper webColumnMapper;
+
+    @Autowired
+    private RedisSessionDAO redisSessionDAO;
 
     /**
      * 添加或编辑网站栏目信息

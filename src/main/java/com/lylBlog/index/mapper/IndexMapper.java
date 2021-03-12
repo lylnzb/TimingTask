@@ -1,5 +1,6 @@
 package com.lylBlog.index.mapper;
 
+import com.lylBlog.admin.bean.BannerBean;
 import com.lylBlog.index.bean.ArticleListBean;
 import com.lylBlog.index.bean.CardBean;
 import com.lylBlog.index.bean.TabBean;
@@ -15,6 +16,12 @@ import java.util.List;
  */
 @Mapper
 public interface IndexMapper {
+
+    /**
+     * 展示网站首页轮播图信息
+     * @return
+     */
+    List<BannerBean> showBannerInfo(@Param("page") String page);
 
     /**
      * 获取选项卡信息

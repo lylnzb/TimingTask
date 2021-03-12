@@ -1,4 +1,6 @@
 package com.lylBlog.common.listener;
+import com.lylBlog.common.util.ShiroUtils;
+import com.lylBlog.login.bean.UserBean;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.SessionListener;
 
@@ -21,6 +23,9 @@ public class ShiroSessionListener implements SessionListener {
     @Override
     public void onStart(Session session) {
         System.out.println("onStart====="+session);
+        //获取当前用户信息
+        UserBean userBean = ShiroUtils.getUserInfo();
+
     }
 
     /**

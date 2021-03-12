@@ -12,19 +12,19 @@ layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], 
         if(obj.event == 'edit'){
             top.layer.open({
                 type: 2,
-                title: "编辑音乐",
+                title: "编辑轮播图",
                 shadeClose: true,
                 shade: 0.5,
                 closeBtn:1,
-                area: ['790px', '720px'],
-                content: basePath + '/webMusic/addOrUpdaMusic?type=update&musicId='+data.musicId,
+                area: ['888px', '600px'],
+                content: basePath + '/banner/addOrUpdaBanner?type=update&bannerId='+data.bannerId,
                 end: function () {//层消失回调
                     layReload();
                 }
             });
         }else if(obj.event == 'delete'){
             var lock = false; //默认未锁定
-            top.layer.confirm("确定要删除该条音乐数据吗？", {
+            top.layer.confirm("确定要删除该条轮播图数据吗？", {
                 btn: ["确定","取消"], //按钮
                 title: "提示",
                 icon: 3
@@ -32,9 +32,9 @@ layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], 
                 if(!lock) {
                     lock = true;
                     var deleteIds = [];
-                    deleteIds.push(data.musicId);
+                    deleteIds.push(data.bannerId);
                     $.ajax({
-                        url:basePath + "webMusic/deleteMusicInfo",
+                        url:basePath + "banner/deleteBannerInfo",
                         type:"POST",
                         data:JSON.stringify(deleteIds),
                         dataType:"json",
@@ -57,7 +57,7 @@ layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], 
 
     tableIns = table.render({
         elem: '#table'
-        ,url: basePath + 'webMusic/queryMusicInfo'
+        ,url: basePath + 'banner/queryBannerInfo'
         ,method: 'post'
         ,contentType: "application/json; charset=utf-8"
         ,dataType:"json"
@@ -70,10 +70,9 @@ layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], 
         ,cols: [[
             {checkbox: true, id:"idTest", width:'2%'}
             ,{field:'rk', title:'序号', width:'6%', align:'center'}
-            ,{field:'languageName', title:'轮播图标题', width:'15%', align:'center'}
-            ,{field:'bannerImg', title:'url地址', width:'34%', align:'center'}
+            ,{field:'bannerTitle', title:'轮播图标题', width:'27%', align:'center'}
+            ,{field:'bannerUrl', title:'url地址', width:'34%', align:'center'}
             ,{field:'valid', title:'状态', width:'12%', align:'center', templet : '#valId'}
-            ,{field:'nickName', title:'排序', width:'12%', align:'center'}
             ,{field:'right', title:'操作', width:'18.4%', align:'center', toolbar: '#barDemo'},
         ]]
         ,id:"idTest"
@@ -85,41 +84,34 @@ layui.config({base: '../admin/layuiTablePlug/test/js/'}).use(['testTablePlug'], 
             $(".layui-table-body tr").css("height","25px");
             $(".layui-form-checkbox").css("style","margin-top: 5px;");
         }
-        ,height : "full-165"
-        ,page: {
-            layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
-            //,curr: 5 //设定初始在第 5 页
-            ,groups: 1 //只显示 1 个连续页码
-            ,first: false //不显示首页
-            ,last: false //不显示尾页
-        }
+        ,height: 'full-100'
     });
 
 });
 
-$("#releaseArticle").click(function(){
+$("#addBanner").click(function(){
     top.layer.open({
         type: 2,
-        title: '添加音乐',
+        title: '添加轮播图',
         shadeClose: true,
         shade: 0.5,
         closeBtn:1,
-        area: ['790px', '720px'],
-        content: basePath + '/webMusic/addOrUpdaMusic?type=add',
+        area: ['888px', '600px'],
+        content: basePath + '/banner/addOrUpdaBanner?type=add',
         end: function () {//层消失回调
             layReload();
         }
     });
 });
 
-function deleteMusic(){
+function deleteBanner(){
     var checkedObjs = layui.table.checkStatus('idTest');//获取所有选中的节点
     if(checkedObjs.data.length < 1){
-        top.layer.msg("请选择要删除的音乐数据！");
+        top.layer.msg("请选择要删除的轮播图！");
         return false;
     }
     var lock = false; //默认未锁定
-    top.layer.confirm("确定要批量删除音乐吗？", {
+    top.layer.confirm("确定要批量删除轮播图吗？", {
         btn: ["确定","取消"], //按钮
         title: "提示",
         icon: 3
@@ -128,10 +120,10 @@ function deleteMusic(){
             lock = true;
             var deleteIds = [];
             for(var i = 0;i < checkedObjs.data.length;i++){
-                deleteIds.push(checkedObjs.data[i].musicId);
+                deleteIds.push(checkedObjs.data[i].bannerId);
             }
             $.ajax({
-                url:basePath + "webMusic/deleteMusicInfo",
+                url:basePath + "banner/deleteBannerInfo",
                 type:"POST",
                 data:JSON.stringify(deleteIds),
                 dataType:"json",
@@ -184,7 +176,5 @@ function layReload(page){
 
 //字典初始化
 function findCodeValue(form){
-    loadSelect("#languages","web_music_language", form);
-    loadSelect("#style","web_music_style", form);
-    loadSelect("#valids", "sys_normal_disable", form);
+    loadSelect("#valids", "sys_banner_show", form);
 }

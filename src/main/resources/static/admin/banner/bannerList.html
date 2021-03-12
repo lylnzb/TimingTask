@@ -19,43 +19,15 @@
     .layui-input.layui-unselect{height:30px;}
 </style>
 </head>
-<body style="margin: 0px 10px 0px;padding: 0;">
+<body style="margin: 0px 10px 0px;padding: 0;background-color: #ecf0f5;font-family: 微软雅黑;color: #475059;min-width: 1000px;overflow: auto">
 <div class="container-div">
     <div class="row">
-        <div class="col-sm-12 select-info">
-            <form id="frm" class="layui-form" style="margin-top: 10px;">
-                <div class="layui-input-inline" style="font-weight: bold">音乐名称：</div>
-                <div class="layui-input-inline">
-                    <input type="text" name="musicName" id="musicName" style="height:30px;width:150px;" autocomplete="off" class="layui-input">
-                </div>&nbsp;&nbsp;
-                <div class="layui-input-inline" style="font-weight: bold">语种：</div>
-                <div class="layui-input-inline">
-                    <select name="languages" id='languages' placeholder="请选择">
-                        <option value="">请选择</option>
-                    </select>
-                </div>&nbsp;&nbsp;
-                <div class="layui-input-inline" style="font-weight: bold">风格：</div>
-                <div class="layui-input-inline">
-                    <select name="style" id='style' placeholder="请选择">
-                        <option value="">请选择</option>
-                    </select>
-                </div>&nbsp;&nbsp;
-                <div class="layui-input-inline" style="font-weight: bold">状态：</div>
-                <div class="layui-input-inline">
-                    <select name="valids" id='valids' placeholder="请选择">
-                        <option value="">请选择</option>
-                    </select>
-                </div>&nbsp;&nbsp;
-                <a class="btn btn-primary btn-rounded btn-sm" id="seach"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                <a class="btn btn-success btn-rounded btn-sm" id="reset"><i class="fa fa-cog"></i>&nbsp;重置</a>
-            </form>
-        </div>
         <div class="col-sm-12 select-table table-striped">
             <div class="btn-group hidden-xs" role="group" style="margin-top: 10px">
-                <a class="btn btn-success" id="releaseArticle"><i class="fa fa-plus"></i> 发布音乐</a>
+                <a class="btn btn-success" id="addBanner"><i class="fa fa-plus"></i> 新增轮播图</a>
             </div>
             <div class="btn-group hidden-xs" role="group" style="margin-top: 10px">
-                <a class="btn btn-danger" id="deleteMusic" onclick="deleteMusic()"><i class="fa fa-trash-o"></i> 批量删除</a>
+                <a class="btn btn-danger" id="deleteBanner" onclick="deleteBanner()"><i class="fa fa-trash-o"></i> 批量删除</a>
             </div>
             <table id="table" class="layui-hide" lay-filter="tableEvent" style="margin: 0 auto"></table>
         </div>

@@ -351,3 +351,4 @@ public class AdminServerImpl implements AdminServer {
         return ResultObj.ok(menuList.size(), menuList);
     }
 }
+                 

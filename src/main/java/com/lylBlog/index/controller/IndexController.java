@@ -1,5 +1,6 @@
 package com.lylBlog.index.controller;
 
+import com.lylBlog.admin.bean.BannerBean;
 import com.lylBlog.admin.bean.BlogSetBean;
 import com.lylBlog.common.bean.ResultObj;
 import com.lylBlog.common.util.ShiroUtils;
@@ -31,6 +32,26 @@ public class IndexController {
         return "/about/aboutMe";
     }
 
+    /**
+     * 展示网站首页轮播图信息
+     * @return
+     */
+    @RequestMapping("/showBannerInfo")
+    @ResponseBody
+    public ResultObj showBannerInfo(){
+        try{
+            return indexServer.showBannerInfo();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResultObj.fail();
+    }
+
+    /**
+     * 展示网站首页卡片内容信息
+     * @param articleType
+     * @return
+     */
     @RequestMapping("/showCardInfo")
     @ResponseBody
     public ResultObj showCardInfo(String articleType){
